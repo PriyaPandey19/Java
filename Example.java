@@ -1,6 +1,5 @@
 
 
-
 public class Example {
 
     public static char ch ='Z';
