@@ -385,10 +385,10 @@ import java.util.*;
      }   
 
      int  b2 = scn.nextInt();    
-            int num1=1;                      //   1   
+            int num1=1;                                       //   1   
              for(int i=1;i<=b2;i++){                          //  2 2           
                for(int j=1;j<=b2-i;j++){                      // 3 3 3      
-                    System.out.print(" ");                 //4 4 4 4      
+                    System.out.print(" ");                  //4 4 4 4      
                }   
                for(int j=1;j<=i;j++){
                     System.out.print(num1+" ");

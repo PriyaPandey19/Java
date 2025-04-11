@@ -1,6 +1,8 @@
+import java.util.*;
+
 public class Hello {
     public static void main(String [] args){
-
+       
     int a =10,b=5,c =3,num=7,age =23,marks =85;
     char ch ='z';
     System.out.println("add "+(a+b));    
@@ -100,6 +102,23 @@ else if(marks >= 50 && marks < 60){
 else{
     System.out.println("grade F");
 }
+
+int y = 5;
+switch(y){
+    case 1 :
+    case 2 :
+    case 3 :
+    case 4 :
+    System.out.println("hello");
+    break;
+    case 5:
+    System.out.println("hii");
+    break;
+    default:
+    System.out.println("Byeee");
+}
+
+
 
 
     }
