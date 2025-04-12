@@ -99,33 +99,33 @@ public class TwoDArrays {
     // Removed misplaced code block outside of any method or class
 
     
-// public static boolean Occurance(int matrix[][]){
-//     int maxElement = Integer.MIN_VALUE;
+public static boolean Occurance(int matrix[][]){    //count occurences of each element in 2d matrix 
+    int maxElement = Integer.MIN_VALUE;
 
-//     //find the maximum element 
-//     for(int i =0;i<matrix.length;i++){
-//         for(int j =0;j<matrix[i].length;j++){
-//             maxElement = Math.max(maxElement,matrix[i][j]);
-//         }
-//     }
-//     int freq[] = new int[maxElement+1];
+    //find the maximum element 
+    for(int i =0;i<matrix.length;i++){
+        for(int j =0;j<matrix[i].length;j++){
+            maxElement = Math.max(maxElement,matrix[i][j]);
+        }
+    }
+    int freq[] = new int[maxElement+1];
   
-//     //count occurences of each element
-//     for(int i =0;i<matrix.length;i++){
-//         for(int j =0;j<matrix[i].length;j++){
-//             freq[matrix[i][j]]++;
-//         }
-//     }
-//     //check if any element occur
-//     for(int count : freq){
-//         if(count >0){
-//             //System.out.println();
-//             return true;
-//         }
-//     }
-//     return false;
+    //count occurences of each element
+    for(int i =0;i<matrix.length;i++){
+        for(int j =0;j<matrix[i].length;j++){
+            freq[matrix[i][j]]++;
+        }
+    }
+    //check if any element occur
+    for(int count : freq){
+        if(count >0){
+            //System.out.println();
+            return true;
+        }
+    }
+    return false;
 
-// }
+}
 
 public static int Sumof2ndRow(int matrix[][]){      //sum of 2nd row in 2d Matrix
     int startRow =1;
@@ -138,7 +138,7 @@ public static int Sumof2ndRow(int matrix[][]){      //sum of 2nd row in 2d Matri
     return sum;
 }
 
-public static int[][] Transpose(int m,int n,int matrix[][]){ //wrong ans
+public static int[][] Transpose(int m,int n,int matrix[][]){    //Transpose of matrix
     int ans[][] = new int[n][m];
 
     for(int i=0;i<n;i++){
