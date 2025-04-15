@@ -12,8 +12,6 @@ import java.util.*;
           }
 
 
-
-
           for(int i =1;i<=n;i++){               //1
             for(int j=1;j<=i;j++){              //22
                System.out.print(i);             //333
@@ -41,8 +39,8 @@ import java.util.*;
              char ch ='A';
              for(int i =1;i<=n;i++){                 //A
                for(int j=1;j<=i;j++){                //BC
-                  System.out.print(ch);              //CDEF
-                   ch++;                             //GHIJK
+                  System.out.print(ch);              //DEFG
+                   ch++;                             //HIJKL
                }                                    
                System.out.println();
              }
@@ -142,7 +140,7 @@ import java.util.*;
         System.out.print(" ");
       }
       for(int j=1;j<=i;j++){
-        System.out.print("*");                       //*        */      
+        System.out.print("*");                       //*        *      
       }                                                //**      **
       System.out.println();                            //***    ***
      }                                                //***********
@@ -248,11 +246,11 @@ import java.util.*;
           for(int i=1;i<=y;i++){                                     
             for(int j=1;j<=y-i;j++){                            
                  System.out.print(" ");                       
-            }                                                   //* 
-            for(int j=1;j<=2*i-1;j++){                        //*   *
-              if(i ==1 || i==y|| j==1||j==(2*i-1))           //*     *
-                 System.out.print("*");                   //*       *
-                                                          //************
+            }                                                    //* 
+            for(int j=1;j<=2*i-1;j++){                        //*    *
+              if(i ==1 || i==y|| j==1||j==(2*i-1))           //*      *
+                 System.out.print("*");                   //*        *
+                                                           //************
             else{
               System.out.print(" ");
             }  
@@ -294,7 +292,7 @@ import java.util.*;
 
          for(int i =1;i<=n;i++){               
           for(int j=1;j<=i;j++){               //*
-             if(j ==1|| j ==i ||i==n)          //**
+             if(j ==1|| j ==i ||i==n)          //* *
              System.out.print("*");          //*  *
               else{                            //*****
                 System.out.print(" ");
@@ -369,8 +367,13 @@ import java.util.*;
           System.out.println();
         }
 
-       int x= scn.nextInt();
-     for(int i =1;i<=x;i++){
+
+
+       int x= scn.nextInt();             //   1
+     for(int i =1;i<=x;i++){             //  121
+                                        //  12321
+                                         // 1234321
+                                        // 123454321
        for(int j =1;j<=x-i;j++){
         System.out.print(" ");
        }
@@ -382,7 +385,9 @@ import java.util.*;
        }
        System.out.println("");
 
-     }   
+     } 
+     
+     
 
      int  b2 = scn.nextInt();    
             int num1=1;                                       //   1   
@@ -397,7 +402,28 @@ import java.util.*;
                System.out.println();                       
              }
 
+                                         
+             for(int i=1;i<=5;i++){                     //*                
+               for(int j=1;j<=5-i;j++){               // ***              
+                    System.out.print(" ");         // *****          
+               }                                           
+               for(int j=1;j<=2*i-1;j++){
+                    System.out.print("*");
+               }                                            
+               System.out.println();                       
+             } 
 
-scn.close();
+
+             
+             
+             for(int i =1;i<=5;i++){ 
+              char ch1 ='A';                         //A
+               for(int j=1;j<=i;j++){                //AB
+                  System.out.print(ch1 + " ");       //ABCD
+                   ch1++;                            //ABCDE
+               }                                    
+               System.out.println();
+             }
+
     }
     }
