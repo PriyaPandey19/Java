@@ -418,9 +418,9 @@ import java.util.*;
              
              for(int i =1;i<=5;i++){ 
               char ch1 ='A';                         //A
-               for(int j=1;j<=i;j++){                //AB
-                  System.out.print(ch1 + " ");       //ABCD
-                   ch1++;                            //ABCDE
+               for(int j=1;j<=i;j++){                //A B
+                  System.out.print(ch1 + " ");       //A B C D
+                   ch1++;                            //A B C D E
                }                                    
                System.out.println();
              }

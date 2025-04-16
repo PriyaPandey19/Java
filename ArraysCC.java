@@ -42,7 +42,7 @@ public class ArraysCC {
         return -1;
     }
 
-    public static void reverse(int numbers[]){  //reverse array
+    public static void reverse(int numbers[]){            //reverse array
         int first =0,last =numbers.length-1;    
 
         while(first<last){
@@ -55,7 +55,7 @@ public class ArraysCC {
         }
     }
 
-    public static void Pair(int numbers[]){   //pair of numbers
+    public static void Pair(int numbers[]){           //pair of numbers
         for(int i=0;i<numbers.length;i++){
             int curr = numbers[i];
             for(int j=i+1;j<numbers.length;j++){
