@@ -96,7 +96,7 @@ public class TwoDArrays {
              return false;
       }
 
-    // Removed misplaced code block outside of any method or class
+    
 
     
 public static boolean Occurance(int matrix[][]){    //count occurences of each element in 2d matrix 
