@@ -126,7 +126,7 @@ public static void copyArray(int arr1[]){     //copy array from 1 array to anoth
 }
 
 
-public static void maxElement(int arr1[],int arr2[]){
+public static void maxElement(int arr1[],int arr2[]){     //max element in two array
     int max = Integer.MIN_VALUE;
     for(int i=0;i<arr1.length;i++){
         if(arr1[i] > max){

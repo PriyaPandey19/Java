@@ -1,1 +1,2 @@
-arr1
+printnumbersDec(5);
+    // printnumbersDec(5);
