@@ -259,9 +259,11 @@ public static int buyAndSellStock(int prices[]){   //buy and sell stock problem
 
 
 }
+
     public static void main(String args[]){
-        int height[] ={4,2,0,6,3,2,5};
-        int prices[] ={7,1,5,3,6,4};
+        int arr[] ={9,9,4,6,1};
+        // int height[] ={4,2,0,6,3,2,5};
+        // int prices[] ={7,1,5,3,6,4};ṇ
       //int numbers[] = {2,4,6,8,4,1}; 
        //int key =10;  
     //   int index = linearSearch(numbers, key);
@@ -280,6 +282,7 @@ public static int buyAndSellStock(int prices[]){   //buy and sell stock problem
 //maxSubarraySum(numbers);
 //System.out.println(check(numbers,8));
 //System.out.println(linearSearch(numbers, 6));
-System.out.println(buyAndSellStock(prices));
+//System.out.println(buyAndSellStock(prices));
+
     }
 }
