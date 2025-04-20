@@ -53,7 +53,7 @@ public class Recurison {
         return isSorted(arr, i + 1);
     }
 
-    public static void Occurance(int arr[], int key, int i) {    // find all occurrences of a key in an array
+    public static void Occurance(int arr[], int key, int i) { // find all occurrences of a key in an array
         if (i == arr.length - 1) {
             return;
         }
@@ -65,7 +65,7 @@ public class Recurison {
 
     static String digits[] = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
-    public static void convertToString(int number) {       // convert number to string
+    public static void convertToString(int number) { // convert number to string
         if (number == 0) {
             return;
         }
@@ -74,84 +74,99 @@ public class Recurison {
         System.out.print(digits[lastDigit] + " ");
 
     }
-    public static  int firstOccurance(int arr[],int i,int key){   //first occurance in in array
-        if(i == arr.length-1){
+
+    public static int firstOccurance(int arr[], int i, int key) { // first occurance in in array
+        if (i == arr.length - 1) {
             return -1;
         }
-        if(arr[i] == key){
+        if (arr[i] == key) {
             return i;
         }
-        return firstOccurance(arr, i+1, key);
+        return firstOccurance(arr, i + 1, key);
 
-}
-
-  public static int lastOccurance(int arr[],int i,int key){     // last occurance in array
-    if(i == arr.length){
-        return -1;
     }
-    int isFound = lastOccurance(arr, i+1, key);
-    if(isFound == -1 && arr[i] == key){
-        return i;
+
+    public static int lastOccurance(int arr[], int i, int key) { // last occurance in array
+        if (i == arr.length) {
+            return -1;
+        }
+        int isFound = lastOccurance(arr, i + 1, key);
+        if (isFound == -1 && arr[i] == key) {
+            return i;
+        }
+        return isFound;
     }
-    return isFound;
-  }
 
-  public static int power(int x, int n){    // calculate power of a number
-    if( n ==0){
-        return 1;
+    public static int power(int x, int n) { // calculate power of a number
+        if (n == 0) {
+            return 1;
+        }
+        // int nm1 = power(x, n-1);
+        // int xn = x * nm1;
+        return x * power(x, n - 1);
     }
-    // int nm1 = power(x, n-1);
-    // int xn = x * nm1;
-    return x * power(x, n-1);
-  }
 
-
-
-  public static int powerOptimized(int x, int n){   // optimized power calculation
-   if(n ==0){
-    return 1;
-   }
-   int halfPower = powerOptimized(x, n/2);
-   int halfPowerSq = halfPower * halfPower; // x^n/2 * x^n/2 = x^n
-  //n is odd
-  if(n % 2 != 0){
-    halfPowerSq = x * halfPowerSq;
-  }
-  return halfPowerSq;
-  }
-
-    
-public static int  tilingProblem(int n){     //tiling problem to find number of ways to fill a 2xn board with 1x2 tiles
-    //base case
-    if(n == 0 || n == 1){
-        return 1;
+    public static int powerOptimized(int x, int n) { // optimized power calculation
+        if (n == 0) {
+            return 1;
+        }
+        int halfPower = powerOptimized(x, n / 2);
+        int halfPowerSq = halfPower * halfPower; // x^n/2 * x^n/2 = x^n
+        // n is odd
+        if (n % 2 != 0) {
+            halfPowerSq = x * halfPowerSq;
+        }
+        return halfPowerSq;
     }
-    //vertical case
-    int fnm1 = tilingProblem(n-1);
 
-    //horizonatl case
-    int fnm2 = tilingProblem(n-2);
-    int totalWays = fnm1 + fnm2;
-    return totalWays;
+    public static int tilingProblem(int n) { // tiling problem to find number of ways to fill a 2xn board with 1x2 tiles
+        // base case
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        // vertical case
+        int fnm1 = tilingProblem(n - 1);
 
+        // horizonatl case
+        int fnm2 = tilingProblem(n - 2);
+        int totalWays = fnm1 + fnm2;
+        return totalWays;
 
-}
-
-public static void removeDuplicates(String str, int idx, StringBuilder newStr, boolean map[]){    // remove duplicates from a string
-    if(idx == str.length()){
-        System.out.println(newStr);
-        return;
     }
-    //kaam
-    char currChar = str.charAt(idx);
-    if(map[currChar - 'a'] == true){         //duplicate exists so incresse the idx
-        removeDuplicates(str, idx+1, newStr, map);
+
+    public static void removeDuplicates(String str, int idx, StringBuilder newStr, boolean map[]) { // remove duplicates
+                                                                                                    // from a string
+        if (idx == str.length()) {
+            System.out.println(newStr);
+            return;
+        }
+        // kaam
+        char currChar = str.charAt(idx);
+        if (map[currChar - 'a'] == true) { // duplicate exists so incresse the idx
+            removeDuplicates(str, idx + 1, newStr, map);
+        } else {
+            map[currChar - 'a'] = true;
+            removeDuplicates(str, idx, newStr.append(currChar), map);
+        }
     }
-    else{
-        map[currChar - 'a'] = true;
-        removeDuplicates(str, idx, newStr.append(currChar), map);
+
+    public static int friendsPairing(int n) { // friends pairing problem to find number of ways to pair n friends
+        if (n == 1 || n == 2) {
+            return n;
+        }
+        return friendsPairing(n - 1) + (n - 1) * friendsPairing(n - 2);
     }
-}
+
+    public static void TowerOfHanoi(int n,char A,char B,char C){         //Tower of hanoi
+        if( n==0){
+            return;
+        }
+        TowerOfHanoi(n-1, A, C, B); // move n-1 disks from src to helper
+        System.out.println("Move disk " + n + " from " + A + " to " + C); // move nth disk from src to dest
+        TowerOfHanoi(n-1, B, A, C);
+        System.out.println("Move disk " + n+ " from "+ B+ " to " + C);
+    }
+
     public static void main(String[] args) {
         // printnumbersDec(5);
         // printnumbersDec(5);
@@ -159,7 +174,6 @@ public static void removeDuplicates(String str, int idx, StringBuilder newStr, b
         // System.out.println(calculateSum(6));
         // System.out.println(fibonacci(5));
 
-         String str = "appnnacollege";
-         removeDuplicates(str, 0, new StringBuilder(""), new boolean[26]);
+        TowerOfHanoi(3, 'A', 'B', 'C');
     }
 }
