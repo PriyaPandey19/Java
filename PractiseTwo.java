@@ -85,34 +85,7 @@ public static void mergeTwoArray(int arr1[],int arr2[]){    //merge 2 array
     }
 }
 
-public static void sum2DArray(int arr1[][]){      //sum of 2D array
-    int sum =0;
-   for(int i=0;i<arr1.length;i++){
-    for(int j=0;j<arr1[i].length;j++){
-       
-        sum += arr1[i][j];
-    }
-   }
-   System.out.println("sum of 2D array is "+ sum);
-}
 
-
-public static void uniqueElements(int arr1[],int arr2[]){   //unique elements in two array
-
-    for(int i=0;i<arr1.length;i++){
-        boolean found = false;
-        for(int j=0;j<arr2.length;j++){
-            if(arr1[i] == arr2[j]){
-             found = true;
-             break;
-        }
-    }
-        if(!found){
-            System.out.println(arr1[i] + " "+ arr2[i]);
-        }
-    }
-    
-}
 
 
 public static void copyArray(int arr1[]){     //copy array from 1 array to another
@@ -139,6 +112,54 @@ public static void maxElement(int arr1[],int arr2[]){     //max element in two a
         }
     }
     System.out.println("Max element is "+ max);
+}
+
+public static void EvenOddCount(int arr[]){    //count even and odd elements in array
+    int even =0;
+    int odd =0;
+    for(int i=0;i<arr.length;i++){
+        if(arr[i]% 2 ==0){
+            even++;
+        }
+        else{
+            odd++;
+        }
+    }
+    System.out.println("Even"+ even);
+    System.out.println("Odd"+ odd);
+
+}
+
+public static void AscendingOrder(int arr[]){   //ascending order
+    for(int i=0;i<arr.length;i++){
+         for(int j=i+1;j<arr.length;j++){
+        if(arr[i]>arr[j]) { 
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+        }
+        }
+    }
+    for(int i=0;i<arr.length;i++){
+        System.out.println(arr[i]);
+    }
+}
+
+public static void CheckEqual(int arr1[],int arr2[]){
+    boolean isEqual = true;
+    if(arr1.length != arr2.length){
+     isEqual = false;
+    }
+    else{
+        for(int i=0;i<arr1.length-1;i++){
+            for(int j =0;j<arr2.length-1;j++){
+                if(arr1[i] != arr2[j]){
+                isEqual = false;
+                }
+            }
+        }
+    }
+    System.out.println(isEqual);
 }
 
 
@@ -178,8 +199,8 @@ public static void maxElement(int arr1[],int arr2[]){     //max element in two a
 //     System.out.println("No such pair found");
 //    } 
 int arr1[] = {6,2,3,9,5};
-int arr2[] = {6,7,8,9,10};
-maxElement(arr1, arr2);
+int arr2[] = {10,9,8,7,7};
+CheckEqual(arr1, arr2);
 
 }
 }

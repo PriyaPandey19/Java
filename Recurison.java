@@ -167,6 +167,28 @@ public class Recurison {
         System.out.println("Move disk " + n+ " from "+ B+ " to " + C);
     }
 
+
+    public static void printBinStrings(int n, int lastPlace,String str){    // print binary strings of length n with no consecutive 1s
+        if(n ==0){
+            System.out.println(str);
+            return;
+        }
+
+        //kaam
+        printBinStrings(n-1, 0, str+"0");
+        if(lastPlace == 0){
+            printBinStrings(n-1, 1, str+"1");    
+        }
+    }
+
+    public static int LengthOfString(String str,int i){   // calculate length of string using recursion
+        if(i == str.length()){
+            return 0;
+        }
+
+        return 1 + LengthOfString(str,i+1);
+    }
+
     public static void main(String[] args) {
         // printnumbersDec(5);
         // printnumbersDec(5);
@@ -174,6 +196,9 @@ public class Recurison {
         // System.out.println(calculateSum(6));
         // System.out.println(fibonacci(5));
 
-        TowerOfHanoi(3, 'A', 'B', 'C');
+        // TowerOfHanoi(3, 'A', 'B', 'C');
+       // printBinStrings(3, 0, "");
+        String str ="abcde";
+       System.out.println(LengthOfString(str, 0));
     }
 }
