@@ -77,14 +77,77 @@ public static int minElement(int arr[][]){      //min  element in 2D array
     return min;
 }
 
+public static void StringEqual(String str1,String str2){   //strings are equal or not
+    for(int i=0;i<str1.length();i++){
+      for(int j=0;j<str2.length();j++){
+        if(str1.charAt(i) == str2.charAt(j)){
+            System.out.println(str1.charAt(i));
+        }
+      }
+    }
+}
+
+
+public static boolean isPalindrome(String str){  //to check if the string is palindrome or not
+    for(int i =0;i<str.length()/2;i++){
+      int n = str.length();
+      if(str.charAt(i) != str.charAt(n-1-i)) {
+        //not a palindrome
+        return false;
+      }
+    }
+    return true;
+}
+
+public static void Commonchar(String str){   //find target
+ char[] arr = str.toCharArray();
+ char target ='a';
+ int count =0;
+
+ for(int i=0;i<arr.length;i++){
+    if(arr[i] == target){
+        count++;
+    }
+ }
+ System.out.println(count);
+ 
+}
+
+public static int countVowel(String str){         //to count the number of vowels in a string
+    int count =0;
+    for(int i=0;i<str.length();i++){
+        char ch = str.charAt(i);
+     if(ch =='a'|| ch =='e' || ch =='i' || ch =='o' || ch == 'u'){
+        count++;
+     }
+    }
+    return count;
+}  
+
+public static void removeDuplicate(String str){    //remove duplicate
+    for(int i=0;i<str.length();i++){
+       boolean flag = true;
+       for(int j=0;j<i;j++){
+        if(str.charAt(i) == str.charAt(j) && i!=j){
+            flag = false;
+            break;
+        }
+       }
+       if(flag){
+        System.out.println(str.charAt(i));
+       }
+    }  
+}
+
+
+
 
 
 
 
     public static void main(String[] args) {
-        int arr[][] = {{1,2,3},{4,9,6},{7,8,5}};
-        //RowSum(arr);
-   System.out.println(minElement(arr));
+        String str = "hello";
+      
     
     }
 }
