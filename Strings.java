@@ -127,6 +127,32 @@ public static boolean checkAnagram(String s1,String s2){   //to check if two str
 }
 
 
+
+
+public static void reverseString(String str){           //reverse the whole string
+    int end = str.length();    //end of string
+     String newStr = "";     //new string
+ 
+ 
+    for(int i= str.length()-1;i>=0;i--){
+     if(str.charAt(i) == ' '|| i == 0){
+     int start =(i == 0)? i: i+1;   
+     for(int j= start ;j< end;j++){    //adding elements to new String
+         newStr += str.charAt(j);
+     }
+     if(i != 0){
+         newStr +=' ';    //adding extra space
+     }
+    end = i;
+     }
+    }
+    System.out.println(newStr);
+ }
+ 
+ 
+ 
+
+
     public static void main(String args[]){
         // String str ="aaabbcccdd";
         // System.out.println(compress(str)); // a3b2c2d4

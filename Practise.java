@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.*;     //BASIC QUESTIONS
 
 public class Practise {
     public static void main(String [] args){

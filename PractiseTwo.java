@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class PractiseTwo {
+public class PractiseTwo {       //1D ARRAY
 
    public static int getLargest(int numbers[]){    //get largest
       int largest = Integer.MIN_VALUE;

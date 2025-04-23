@@ -1,4 +1,4 @@
-public class PractiseThree {
+public class PractiseThree {        //TOPIC 2 D ARRAY AND STRING
 
 public static void RowSum(int arr[][]){         //sum of each row in 2D array
     for(int i=0;i<arr.length;i++){
@@ -140,14 +140,105 @@ public static void removeDuplicate(String str){    //remove duplicate
 }
 
 
+public static void removeDuplicate1(String str){   //remove duplicates 2 way
+    String newStr = "";
+    for(int i=0;i<str.length();i++){
+        char c = str.charAt(i);
+        if(newStr.indexOf(c) == -1){
+            newStr+=c;
+        }
+    }
+    System.out.println(newStr);
+}
+
+public static void firstDuplicate(String str){   //first duplicate in string
+    String newStr = "";
+    char[] arr = str.toCharArray();
+    for(int i=0;i<str.length();i++){
+        for(int j=i+1;j<str.length();j++){
+            if(arr[i] == arr[j]){
+             newStr+=arr[i];
+            }
+        }
+    } 
+    System.out.println(newStr);
+    
+} 
+
+
+public static void secondDuplicate(String str){   //second duplicate in string
+    String newStr = "";
+    int duplicatecount = 0;
+    char[] arr = str.toCharArray();
+    for(int i=0;i<str.length();i++){
+        for(int j=i+1;j<str.length();j++){
+            if(arr[i] == arr[j]){
+            duplicatecount++;
+            
+            if(duplicatecount == 2){
+                newStr+=arr[i];
+                System.out.println(newStr);
+                return;
+            }
+            break;
+            }
+        }
+        
+    }  
+}
+
+
+
+public static void reverseString(String str){     //reverse the whole string
+   int end = str.length();    //end of string
+    String newStr = "";     //new string
+
+
+   for(int i= str.length()-1;i>=0;i--){
+    if(str.charAt(i) == ' '|| i == 0){
+    int start =(i == 0)? i: i+1;   
+    for(int j= start ;j< end;j++){
+        newStr += str.charAt(j);
+    }
+    if(i != 0){
+        newStr +=' ';    //adding 
+    }
+   end = i;
+    }
+   }
+   System.out.println(newStr);
+}
+
+
+
+public static void RemoveVowel(String str){ 
+    String newStr ="";                                           //to count the number of vowels in a string and remove it
+    int count =0;
+    for(int i=0;i<str.length();i++){
+        char ch = str.charAt(i);
+     if(ch =='a'|| ch =='e' || ch =='i' || ch =='o' || ch == 'u'){
+        count++;
+     }
+     else{
+        newStr +=str.charAt(i);
+     }
+    }
+    System.out.println(newStr);
+    System.out.println("count of vowel is:"+ count);
+    
+}
+
+
+
 
 
 
 
 
     public static void main(String[] args) {
-        String str = "hello";
-      
+        String str = "hii one";
+
+     RemoveVowel(str);
     
     }
 }
