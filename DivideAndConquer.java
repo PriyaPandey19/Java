@@ -78,6 +78,10 @@ public class DivideAndConquer{
     arr[i] = temp;
     return i;
     }
+
+
+
+    
     public static void main(String[] args){
       int arr[] ={6,3,9,5,2,8};
       quickSort(arr, 0, arr.length-1);

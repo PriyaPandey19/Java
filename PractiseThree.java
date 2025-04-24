@@ -228,6 +228,19 @@ public static void RemoveVowel(String str){
     
 }
 
+public static boolean areRotations(String str1, String str2) {
+    // Check if lengths are equal
+    if (str1.length() != str2.length()) {
+        return false;
+    }
+
+    // Concatenate str1 with itself
+    String concatenated = str1 + str1;
+
+    // Check if str2 is a substring of the concatenated string
+    return concatenated.contains(str2);
+}
+
 
 
 
@@ -236,9 +249,10 @@ public static void RemoveVowel(String str){
 
 
     public static void main(String[] args) {
-        String str = "hii one";
+        String str = "abcs";
+        String str1 = "scba";
 
-     RemoveVowel(str);
+   System.out.println(areRotations(str, str1));
     
     }
 }
