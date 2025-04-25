@@ -228,13 +228,11 @@ public static void RemoveVowel(String str){
     
 }
 
-public static boolean areRotations(String str1, String str2) {
+public static boolean areRotations(String str1, String str2) {     //check id 2 string are rotate of each other or noot
     // Check if lengths are equal
     if (str1.length() != str2.length()) {
         return false;
     }
-
-    // Concatenate str1 with itself
     String concatenated = str1 + str1;
 
     // Check if str2 is a substring of the concatenated string
@@ -242,17 +240,7 @@ public static boolean areRotations(String str1, String str2) {
 }
 
 
-
-
-
-
-
-
     public static void main(String[] args) {
-        String str = "abcs";
-        String str1 = "scba";
-
-   System.out.println(areRotations(str, str1));
-    
+      
     }
 }

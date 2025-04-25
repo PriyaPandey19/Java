@@ -1,0 +1,49 @@
+public class PractiseFour { // TOPIC FUNCTIONS
+
+  public static int Min(int arr[]) { // return min elelment
+    int smallest = Integer.MAX_VALUE;
+    for (int i = 0; i < arr.length - 1; i++) {
+      if (arr[i] < smallest) {
+        smallest = arr[i];
+      }
+    }
+    return smallest;
+  }
+
+  public static int FindTarget(int arr[], int key) { // find target
+    for (int i = 0; i < arr.length - 1; i++) {
+      if (arr[i] == key) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+
+
+
+  public static void missingNumber(int arr[]) {    //missing number in array
+    int largest = Integer.MIN_VALUE;
+    for (int i = 0; i < arr.length; i++) {
+      if (largest < arr[i]) {
+        largest = arr[i];
+      }
+    }
+    int sum = 0;
+    for (int i = 1; i <= largest; i++) { // till largest sum variable sum start with 0
+      sum += i;
+
+    }
+    int sum1 = 0;
+    for (int j = 0; j < arr.length; j++) { // array ka total sum
+      sum1 += arr[j];
+    }
+    int output = sum - sum1;
+    System.out.println(output);
+  }
+
+  public static void main(String[] args) {
+    int arr[] = { 2, 4, 1, 5 };
+    missingNumber(arr);
+  }
+}
