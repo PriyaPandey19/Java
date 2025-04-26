@@ -193,9 +193,23 @@ public static int CommonElements(int arr[]){   //count the max element
    return -1;
 }
 
+public static int getInversionCount(int arr1[]){       //get inversion count where arr[i] > arr[j]
+    int n = arr1.length;
+    int count =0;
+     for(int i=0;i<n-1;i++){
+        for(int j=i+1;j<n;j++){
+            if(arr1[i] > arr1[j]){
+            count++;
+            }
+        }
+     }
+     return count;
+}
+
+
     
     public static void main(String[] args){
-    int arr[] ={2,2,1,1,1,2,2};
-   System.out.println(CommonElements(arr));
+    int arr1[] ={1,20,6,4,5};
+   System.out.println(getInversionCount(arr1));
     }
 }
