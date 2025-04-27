@@ -54,7 +54,7 @@ public class BackTracking {
 
 
 
-    public static boolean isSafe(char board[][],int row,int col){
+    public static boolean isSafe(char board[][],int row,int col){   //n queen problem
         //vertical up
         for(int i=row-1;i>=0;i--){
             if(board[i][col] == 'Q'){
