@@ -1,4 +1,4 @@
-public class PractiseFour { // TOPIC FUNCTIONS
+public class PractiseFour { // TOPIC FUNCTIONS AND SORTING
 
   public static int Min(int arr[]) { // return min elelment
     int smallest = Integer.MAX_VALUE;
@@ -42,8 +42,45 @@ public class PractiseFour { // TOPIC FUNCTIONS
     System.out.println(output);
   }
 
+
+
+  public static int LinearSearch(int arr[],int key){     //Linear search
+    for(int i =0;i<arr.length;i++){
+      if(arr[i] == key){
+        return i;
+      }
+    }
+    return -1;
+
+  }
+
+  public static int binarySearch(int arr[],int key,int start,int end){   //binary search
+   if(start >= end){
+    return -1;
+   }
+   int mid = (start+ end)/2;
+
+   for(int i=0;i<arr.length;i++){
+     if(arr[i] == key){
+      return i;
+     }
+     else if(key > arr[mid]){  //key badi hai right side
+     binarySearch(arr, key, mid+1, end);
+     }
+     else{
+      binarySearch(arr, key, start, mid-1);
+     }
+   }
+   return -1;
+  }
+
+
+
+
+
+
   public static void main(String[] args) {
-    int arr[] = { 2, 4, 1, 5 };
-    missingNumber(arr);
+    int arr[] = { 1,2,3,4,5};
+  System.out.println(binarySearch(arr, 3, 0, arr.length));
   }
 }

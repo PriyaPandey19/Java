@@ -241,6 +241,7 @@ public static boolean areRotations(String str1, String str2) {     //check id 2 
 
 
     public static void main(String[] args) {
-      
+        String str = "sky is blue";
+     reverseString(str); 
     }
 }
