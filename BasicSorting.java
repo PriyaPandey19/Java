@@ -99,9 +99,9 @@ public class BasicSorting {
   public static void main(String args[]){
     int arr[] ={1,4,1,3,2,4,3,7};
     
-    // insertionSort(arr);
+    
     //Arrays.sort(arr,Collections.reverseOrder());  //using inbuilt function to sort in descending order
-    countingSort(arr);
-     printArr(arr);
+    // countingSort(arr);
+    //  printArr(arr);
   }
 }

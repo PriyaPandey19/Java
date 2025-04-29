@@ -1,3 +1,53 @@
+import java.util.*;
+
+class AreaOfRectangle{
+
+  int l, w;
+  void Area(int l,int w){
+    System.out.println(l*w);
+  }
+}
+class BankAccount{
+  int accNumber;
+  String accHolder;
+  int currbalance = 5000;
+  void displayName(String accHolder){
+    System.out.println(accHolder);
+  }
+  void displayAccNumber(int accNumber){
+    System.out.println(accNumber);
+  }
+  void displayCurrBalance(){
+   System.out.println("currBalance"+ currbalance);
+  }
+  void deposit(int deposit){
+    
+    currbalance = currbalance + deposit;
+    System.out.println(currbalance);
+  }
+  void withdraw(int withdrawAmt){
+   
+    currbalance = currbalance - withdrawAmt;
+    System.out.println(currbalance);
+  }
+
+}
+
+class Student{
+  int rollNumber;
+  String name;
+  int marks;
+  void ShowRollNumber(int rollNumber){
+    System.out.println(rollNumber);
+  }
+  void ShowName(String name){
+    System.out.println(name);
+  }
+  void ShowMarks(int marks){
+    System.out.println(marks);
+  }
+}
+
 public class PractiseFour { // TOPIC FUNCTIONS AND SORTING
 
   public static int Min(int arr[]) { // return min elelment
@@ -75,12 +125,41 @@ public class PractiseFour { // TOPIC FUNCTIONS AND SORTING
   }
 
 
+  public static void bubbleSort(String str[]){      //bubble sort to sort string Eg. "A","B","C"
+    for(int turn =0;turn<str.length-1;turn++){
+      for(int j =0;j<str.length-1-turn;j++){
+        
+         if(str[j].charAt(0) > str[j+1].charAt(0)) {
+             String temp = str[j];
+             str[j] = str[j+1];
+             str[j+1] = temp;
+         }
+      }
+    }
+    for(String c:str){
+      System.out.println(c + " ");
+    }
+  }
+
+  
+
+
+
+
 
 
 
 
   public static void main(String[] args) {
-    int arr[] = { 1,2,3,4,5};
-  System.out.println(binarySearch(arr, 3, 0, arr.length));
+    Scanner sc = new Scanner(System.in);
+  //  String[] str = {"B","C","A"};
+  //    bubbleSort(str);
+    BankAccount ba = new BankAccount();
+    ba.displayName("priya");
+    ba.displayAccNumber(12233);
+    ba.displayCurrBalance();
+
+    ba.deposit(400);
+    ba.withdraw(300);
   }
 }

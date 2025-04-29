@@ -132,13 +132,7 @@ public class BackTracking {
 
 
 
-
-
-
     
-
-
-
 
 
 
@@ -174,9 +168,6 @@ public static boolean isSafe1(int sudoku[][], int row, int col,int digit){  //he
 }
 
 
-
-
-
 public static boolean sudokuSolver(int sudoku[][], int row, int col){  //sudoku solver problem
     //base case
     if(row == 9){            //last rigid
@@ -190,7 +181,7 @@ public static boolean sudokuSolver(int sudoku[][], int row, int col){  //sudoku 
         nextCol =0;
     }
  
-    if(sudoku[row][col] != 0){      //to place the elements only  at 0 position
+    if(sudoku[row][col] != 0){      //to place the elements only  where 0 position
        return sudokuSolver(sudoku, nextRow, nextCol);
     }
 
@@ -207,7 +198,7 @@ public static boolean sudokuSolver(int sudoku[][], int row, int col){  //sudoku 
 }
 
 
-public static void printSudoku(int sudoku[][]){
+public static void printSudoku(int sudoku[][]){     //print sudoku
     for(int i=0;i<9;i++){
         for(int j=0;j<9;j++){
             System.out.print(sudoku[i][j] +" ");
@@ -215,6 +206,149 @@ public static void printSudoku(int sudoku[][]){
         System.out.println();
     }
 }
+
+
+
+
+
+
+
+public static void printSolution(int sol[][]){ //print Sol for rat in maze
+    for(int i=0;i<sol.length;i++){
+        for(int j=0;j<sol.length;j++){
+            System.out.print(" "+ sol[i][j] +" ");
+        }
+        System.out.println();
+    }
+}
+
+public static boolean isSafe(int maze[][],int x, int y){   //helper function for rat in maze
+    //if x or y outside maze return false
+    return (x >=0 && x < maze.length && y>=0 && y<maze.length && maze[x][y] ==1);
+}
+
+public static boolean solveMaze(int maze[][]){
+    int N = maze.length;
+    int sol[][] = new int[N][N];
+    if(solveMazeUtil(maze, 0, 0, sol) == false) {
+        System.out.println("solution does not exists");
+        return false;
+    }
+    printSolution(sol);
+    return true;
+}
+
+public static boolean solveMazeUtil(int maze[][],int x,int y,int sol[][]){  //rat in maze
+    if(x == maze.length-1 && y == maze.length-1 && maze[x][y] == 1){   // if  already at the last cell
+        sol[x][y] = 1;
+        return true;
+    }
+    //check if ,maze[x][y] is valid
+   if(isSafe(maze, x, y) == true) {
+    if(sol[x][y] ==1) //if solution already counted or not
+    return false;
+    sol[x][y] =1;     //if not then add it in sol
+
+
+
+    if(solveMazeUtil(maze, x+1, y, sol))    //down condition
+    return true;
+   
+   if(solveMazeUtil(maze, x, y+1, sol))    //up condition
+    return true;
+
+    sol[x][y] =0;
+    return false;
+}
+   return false;
+}
+
+
+
+//keypad combinations
+final  static char[][] L ={{},{},{'a','b','c'},{'d','e','f'},{'g','h','i'},
+                   {'j','k','l'},{'m','n','o'},{'p','q','r','s'},{'t','u','v'},{'w','x','y','z'}};
+
+public static void letterCombinations(String D){
+    int len = D.length();
+    if(len == 0){
+        System.out.println("");
+        return;
+    }
+    bfs(0,len,new StringBuilder(), D);
+}
+
+public static void bfs(int pos, int len, StringBuilder sb, String D){
+    if(pos == len){
+        System.out.println(sb.toString());
+    }
+    else{
+        char[] letters = L[Character.getNumericValue(D.charAt(pos))];
+        for(int i=0;i<letters.length;i++){
+            bfs(pos+1,len,new StringBuilder(sb).append(letters[i]), D);
+        }
+    }
+}
+
+   
+
+//knight tour
+static int N = 8;
+public static boolean isSafe(int x, int y,int sol[][]){
+    return(x >= 0 && x < N && y >=0 && y<N  && sol[x][y] == -1); 
+}
+
+public static void printKnightTourSolution(int sol [][]){
+    for(int x =0;x<N;x++){
+        for(int y=0;y<N;y++)
+            System.out.print(sol[x][y] +" ");
+            System.out.println();  
+    }
+}
+
+public static boolean solveKT(){
+    int sol[][] = new int[8][8];
+    for(int x =0;x<N;x++)
+        for(int y=0;y<N;y++)
+            sol[x][y] =-1;
+
+    int xMove[] ={2,1,-1,-2,-2,-1,1,2};
+    int yMove[] ={1,2,2,1,-1,-2,-2,-1};
+    
+    //knight start from (0,0)
+    sol[0][0] =0;
+
+    if(!solveKTUtil(0,0,1,sol,xMove,yMove)){
+        System.out.println("solution does not exists");
+    }
+    else
+        printSolution(sol);
+        return true;
+     
+}
+
+public static boolean solveKTUtil(int x,int y, int movei,int sol[][],int xMove[],int yMove[]){
+    int k,next_x,next_y;
+    if(movei == N*N)
+    return true;
+
+    for(k=0;k<8;k++){
+        next_x = x + xMove[k];
+        next_y = y + yMove[k];
+        if(isSafe(next_x, next_y, sol)){
+            sol[next_x][next_y] = movei;
+            if(solveKTUtil(next_x, next_y, movei+1, sol, xMove, yMove))
+            return true;
+            else
+            sol[next_x][next_y] = -1;
+        }
+    }
+    return false;
+}
+
+
+
+
 
 
 
@@ -237,23 +371,34 @@ public static void printSudoku(int sudoku[][]){
         // }
 
       
-      int sudoku[][] ={{0,0,8,0,0,0,0,0,0},
-       {4,9,0,1,5,7,0,0,2},
-       {0,0,3,0,0,4,1,9,0},
-       {1,8,5,0,6,0,0,2,0},
-       {0,0,0,0,2,0,0,6,0},
-       {9,6,0,4,0,5,3,0,0},
-       {0,3,0,0,7,2,0,0,4},
-       {0,4,9,0,3,0,0,5,7},
-       {8,2,7,0,0,9,0,1,3} };
+    //   int sudoku[][] ={{0,0,8,0,0,0,0,0,0},
+    //    {4,9,0,1,5,7,0,0,2},
+    //    {0,0,3,0,0,4,1,9,0},
+    //    {1,8,5,0,6,0,0,2,0},
+    //    {0,0,0,0,2,0,0,6,0},
+    //    {9,6,0,4,0,5,3,0,0},
+    //    {0,3,0,0,7,2,0,0,4},
+    //    {0,4,9,0,3,0,0,5,7},
+    //    {8,2,7,0,0,9,0,1,3} };
 
-    if(sudokuSolver(sudoku, 0, 0)){
-        System.out.println("solution exists");
-        printSudoku(sudoku);
-    }
-    else{
-        System.out.println("solution does not exists");
-    }
+    // if(sudokuSolver(sudoku, 0, 0)){
+    //     System.out.println("solution exists");
+    //     printSudoku(sudoku);
+    // }
+    // else{
+    //     System.out.println("solution does not exists");
+    // }
+
+//     int maze[][] ={{1,0,0,0},
+//                    {1,1,0,1},
+//                    {0,1,0,0},
+//                   {1,1,1,1}   
+// };
+// solveMaze(maze);
+
+//letterCombinations(("23"));         
+ solveKT(); 
+
 
     }   
 }
