@@ -129,7 +129,8 @@ public static boolean checkAnagram(String s1,String s2){   //to check if two str
 
 
 
-public static void reverseString(String str){           //reverse the whole string
+public static void reverseString(String str){  
+    str = str.trim();                                            //reverse the whole string
     int end = str.length();    //end of string
      String newStr = "";     //new string
  
@@ -144,6 +145,10 @@ public static void reverseString(String str){           //reverse the whole stri
          newStr +=' ';    //adding extra space
      }
     end = i;
+    //skip the multiple spaces
+    while( i> 0 && str.charAt(i-1) == ' '){
+        i--;
+    }
      }
     }
     System.out.println(newStr);
@@ -188,11 +193,13 @@ public static void reverseString(String str){           //reverse the whole stri
     // String fruits[] ={"apple", "banana", "cherry", "date", "elderberry"};
     // PrintLargestString(fruits); 
 
-    String str="ApnaCollege";
-    String str1 = "ApnaCollege";
-    String str2 = "ApnaCoegell";
-    System.out.println(checkAnagram(str1,str2)); // true
-     //System.out.println(countVowel(str));
+    // String str="ApnaCollege";
+    // String str1 = "ApnaCollege";
+    // String str2 = "ApnaCoegell";
+    // System.out.println(checkAnagram(str1,str2)); // true
+    //  //System.out.println(countVowel(str));
+
+    reverseString(" hello world ");
 
     }
 } 
