@@ -318,7 +318,7 @@ public class LinkedListImplementationt {
             return mergedLL.next;
         }
 
-        public void zigZag(){
+        public void zigZag(){              //zig zag LL 1st with last 2nd with 2nd last
             //find mid
             Node slow = head;
             Node fast = head.next;
@@ -377,6 +377,36 @@ public class LinkedListImplementationt {
 
 
 
+        public Node oddEvenLL(Node head){                //rearange the LL from 1st part even then odd
+            if(head == null || head.next == null){
+                return head;
+            }
+           Node oddHead = new Node(-1);              //even node
+           Node evenHead = new Node(-1);             //odd node
+           Node odd = oddHead;                       //pointer to point odd node
+           Node even = evenHead;                     //pointer to point even node
+           Node temp = head;
+
+           while(temp != null){
+            if(temp.data % 2 == 0){
+                even.next = temp;
+                even = even.next;
+            }
+            else{
+                odd.next = temp;
+                odd = odd.next; 
+            }
+            temp = temp.next;
+           }
+           even.next = null;
+           even.next = oddHead.next;
+
+           return evenHead.next; 
+        }
+
+
+
+
 
 
     public static void  main(String args[]){
@@ -398,8 +428,10 @@ public class LinkedListImplementationt {
     ll.addLast(5);
     
     ll.print();
-    ll.zigZag();
+   head = ll.oddEvenLL(head);
     ll.print();
+    
+    
    
     }
 }
