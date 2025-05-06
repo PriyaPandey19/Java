@@ -1,19 +1,26 @@
-class Student{
-    String name ="rohit";
-    int age = 34;
-    Student(String n,int a){
-    name = n;
-    age = a;
-    System.out.println(name+ age);
-    }
+class Student{     //TOPIC CONSTRUCTOR AND CONSTRUCTOR CHAINING
+   String name;
+   Student(){   //default constructor
+    System.out.println("hyy");
+   }
+   Student(int a){  //paramatrized constructor
+    this();
+    System.out.println(a);
+   }
+   Student(int a,int b){
+    this(a);
+    System.out.println(a + b);
+   }  
 
+   
 }
+
 
 
 public class PractiseFive {
    public static void main(String args[]){
-   Student st = new Student("rahul",32);
-System.out.println(st.age);
-    System.out.println(st.name);
+   Student obj = new Student();
+   Student obj1 = new Student(243);
+   Student obj2 = new Student(23,78);
    } 
 }
