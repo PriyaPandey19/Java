@@ -1,26 +1,69 @@
-class Student{     //TOPIC CONSTRUCTOR AND CONSTRUCTOR CHAINING
-   String name;
-   Student(){   //default constructor
-    System.out.println("hyy");
-   }
-   Student(int a){  //paramatrized constructor
-    this();
-    System.out.println(a);
-   }
-   Student(int a,int b){
-    this(a);
-    System.out.println(a + b);
+class Animal{     //TOPIC CONSTRUCTOR AND CONSTRUCTOR CHAINING And Inheritance
+   void show(){
+      System.out.println("animal");
    }  
-
-   
 }
+class Dog extends Animal{
+   void eat(){
+      System.out.println("eat");
+   }
+}
+class Puppy extends Dog{
+   void cute(){
+      System.out.println("cutiee");
+   }
+}
+
+
+
+class Parent{
+  void eat(){
+   System.out.println("maggie");
+  }
+  }
+  class Child extends Parent{
+   void eat(){
+       System.out.println("pastaa");
+       super.eat();
+   }
+  }
+
+  class Shape{
+   void area(int a, int b){
+  System.out.println("Area of rectangle" + a*b);
+   }
+   void area(double r){
+      System.out.println("Area of circle" + 3.14*r*r);
+       }
+   void area(int c){
+         System.out.println("Area of square" + c*c);
+          }    
+   void area(double h,double b){
+      System.out.println("Arae of triangle"+0.5 * b*h);
+   }
+  }
+
+
+  class Square{
+   void print(){
+      System.out.println("Area of square");
+   }
+   void print(int i){
+      System.out.println(i*i);
+   }
+  }
+
+
+  
+
 
 
 
 public class PractiseFive {
    public static void main(String args[]){
-   Student obj = new Student();
-   Student obj1 = new Student(243);
-   Student obj2 = new Student(23,78);
+   Square obj = new Square();
+   obj.print();
+   obj.print(4);
+
    } 
 }

@@ -1,5 +1,7 @@
 import java.util.*;
 
+import javax.xml.transform.stax.StAXResult;
+
 public class StackB{
     static class Node{               //implementation of stack using Linked list
       int data;
@@ -127,7 +129,7 @@ public class StackB{
     }
 
 
-    public static void stockSpan(int stocks[],int span[]){
+    public static void stockSpan(int stocks[],int span[]){       //stock span problem
         Stack<Integer> s = new Stack<>();
         span[0] =1;
         s.push(0);
@@ -149,15 +151,92 @@ public class StackB{
     }
 
 
-    
-    public static void main(String args[]){
-      int stocks[] ={100,80,60,70,60,85,100};
-      int span[] =new int[stocks.length];
-      stockSpan(stocks,span);
 
-      for(int i=0;i<span.length;i++){
-        System.out.println(span[i] +" ");
+    public static void nxtGreater(Stack<Integer> s, int arr[], int nxtGreater[]){   //nxt greater
+    for(int i=arr.length-1;i>=0;i--){
+        //while to pop smaller elements
+        while(!s.isEmpty() && arr[s.peek()] <= arr[i]){
+            s.pop();
+        }
+
+        //if else is stack is empty or we found our nxtgreater
+        if(s.isEmpty()){
+            nxtGreater[i] = -1;
+        }
+        else{
+            nxtGreater[i] = arr[s.peek()];
+        }
+
+        //push
+        s.push(i);
+    }
+    for(int i=0;i<nxtGreater.length;i++){
+        System.out.print(nxtGreater[i]+ " ");
+    }
+    System.out.println();
+    }
+
+
+
+
+    public static boolean isValidParenthesis(String str){     //valid Parenthesis
+        Stack<Character> s = new Stack<>();
+
+        for(int i=0;i<str.length();i++){
+            char ch = str.charAt(i);
+
+            if(ch == '(' || ch == '{'|| ch == '['){    //opening so push in stack
+                s.push(ch);
+            }
+
+            else{
+                if(s.isEmpty()){
+                    return false;
+                }                                //checking if combination exists
+          if((s.peek() == '(' && ch == ')')  || (s.peek() == '{' && ch == '}') || (s.peek() == '[' && ch == ']')){
+                s.pop();
+                }
+                else{
+                    return false;
+                }
+            }
+        }
+      if(s.isEmpty()){
+        return true;
       }
+      else{
+        return false;
+      }
+    }
 
+
+    public static boolean isDuplicate(String str){                //is duplicate parenthesis
+    Stack<Character> s = new Stack<>();
+
+    for(int i=0;i<str.length();i++){
+     char ch = str.charAt(i);
+
+     //closing
+     if(ch == ')'){
+        int count =0;
+        while(s.pop() != '('){
+            count++;
+        }
+        if(count < 1){
+            return true;   //duplicate
+        }
+        
+     }
+     else{
+        //opening
+        s.push(ch);
+     }
+    }
+    return false;
+    }
+
+    public static void main(String args[]){
+      String str ="((a+b))";
+     System.out.println(isDuplicate(str));
     }
 }
