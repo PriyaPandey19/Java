@@ -235,8 +235,104 @@ public class StackB{
     return false;
     }
 
+
+    public static void  maxArea(int arr[]){       //largest area of histogram
+        int maxArea = 0;
+        int nsr[] = new int[arr.length];
+        int nsl[] = new int[arr.length];
+
+        //nxt smaller right
+        Stack<Integer> s = new Stack<>();
+
+        for(int i=arr.length-1;i>=0;i--){
+            while(!s.isEmpty() && arr[s.peek()] >= arr[i]){
+                s.pop();
+            }
+            if(s.isEmpty()){
+                nsr[i] = arr.length;
+            }
+            else{
+                nsr[i] = s.peek();
+            }
+            s.push(i);
+        }
+
+
+        //nxt smaller left
+        s = new Stack<>();
+        for(int i=0;i<=arr.length-1;i++){
+            while(!s.isEmpty() && arr[s.peek()] >= arr[i]){
+                s.pop();
+            }
+            if(s.isEmpty()){
+                nsl[i] = -1;
+            }
+            else{
+                nsl[i] = s.peek();
+            }
+            s.push(i);
+        }
+
+        //current area : width = j-i-1
+        for(int i=0;i<arr.length-1;i++){
+            int height = arr[i];
+            int width = nsr[i]-nsl[i]-1;
+            int currArea = height * width;
+            maxArea = Math.max(currArea, maxArea);
+
+        }
+        System.out.println("max area of histogram "+ maxArea);
+
+    }
+
+
+
+    public String simplifyPath(String path) {             //simplify path name
+        String arr[] = path.split("/");
+        Stack<String> st = new Stack<>();
+   
+        for(int i=0;i<arr.length;i++){
+           if(st.isEmpty() == false && arr[i].equals("..") == true){
+               st.pop();
+           }
+           if(arr[i].equals("") == false && arr[i].equals(".") == false && arr[i].equals("..") == false){
+               st.push(arr[i]);
+           }
+        }   
+        if(st.isEmpty() == true){
+           return "/";
+        }
+        StringBuilder ans = new StringBuilder();
+        for(String curr: st){
+           ans.append("/");
+           ans.append(curr);
+        }
+        return ans.toString();
+       }
+
+
+       public static int maxWater(int height[]){      //trapping rain water
+        Stack<Integer> stack = new Stack<>();
+        int n = height.length;
+        int ans =0;
+        for(int i=0;i<n;i++){
+            while((!stack.isEmpty()) && (height[stack.peek()]< height[i])){
+               int pop_height = height[stack.peek()];
+               stack.pop();
+               if(stack.isEmpty())
+               break;
+
+               int distance = i-stack.peek()-1;
+               int min_height = Math.min(height[stack.peek()], height[i]) - pop_height;
+
+               ans += distance * min_height;
+            }
+            stack.push(i);
+        }
+        return ans;
+       }
     public static void main(String args[]){
-      String str ="((a+b))";
-     System.out.println(isDuplicate(str));
+      int arr[] ={7,0,4,2,5,0,6,4,0,6};
+      System.out.println(maxWater(arr));
     }
 }
