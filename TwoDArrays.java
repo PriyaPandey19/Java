@@ -150,6 +150,16 @@ public static int[][] Transpose(int m,int n,int matrix[][]){    //Transpose of m
 
 }
 
+public static void SortArray(int arr[]){           //0s 1s 2s in array
+    int size = arr.length;
+    Arrays.sort(arr);
+
+    for(int i=0;i<size;i++){
+        System.out.print(arr[i] +" ");
+    }
+    System.out.println();
+}
+
 
 
 
@@ -184,14 +194,17 @@ public static int[][] Transpose(int m,int n,int matrix[][]){    //Transpose of m
     };
    //staircaseSearch(matrix, 14);
     // System.out.println(Sumof2ndRow(matrix));
-  int[][] result = Transpose(3, 3, matrix);
+//   int[][] result = Transpose(3, 3, matrix);
 
-  for(int i =0;i<result.length;i++){
-    for(int j =0;j<result[i].length;j++){
-      System.out.print(result[i][j]+" ");  
+//   for(int i =0;i<result.length;i++){
+//     for(int j =0;j<result[i].length;j++){
+//       System.out.print(result[i][j]+" ");  
       
-    }
-    System.out.println();
-  }
+//     }
+//     System.out.println();
+//   }
+
+int arr[] ={5,7,0,1,2,5,3,2};
+SortArray(arr);
     }
 }
