@@ -237,7 +237,67 @@ public class QueueB {
 
 
 
+    public static void printNonRepeating(String str){      //print Non repeating element in queue
+        int freq[] = new int[26];
+        java.util.Queue<Character> q = new LinkedList<>();
+      
+        for(int i=0;i<str.length();i++){
+            char ch = str.charAt(i);
+            q.add(ch);
+            freq[ch-'a']++;
 
+            while(!q.isEmpty() && freq[q.peek()-'a'] > 1){
+                q.remove();
+            }
+
+            if(q.isEmpty()){
+                System.out.print(-1 + " ");
+            }
+            else{
+                System.out.print(q.peek()+" ");
+            }
+        }
+       System.out.println();
+        
+    }
+
+
+
+
+   public static void interLeave(java.util.Queue<Integer> q){      //interleave 1234 =>  1324
+     java.util.Queue<Integer> firsthalf = new LinkedList<>();    //first queue to store starting elements
+        int size = q.size();
+
+        for(int i=0;i<size/2;i++){
+            firsthalf.add(q.remove());                            
+        }
+
+        while (!firsthalf.isEmpty()) {
+           q.add(firsthalf.remove());
+           q.add(q.remove()); 
+        }
+   }
+
+
+
+   public static void reverse(java.util.Queue<Integer> q){     //reverse the queue using stack
+       Stack<Integer> s = new Stack<>();
+
+       while(!q.isEmpty()){
+        s.push(q.remove());
+       }
+
+       while(!s.isEmpty()){
+        q.add(s.pop());
+       }
+   }
+
+   public static void generateBinary(int n){
+    for(int i=1;i<= n;i++){
+        String s = Integer.toBinaryString(i);
+        System.out.println(s);
+    }
+   }
 
 
    
@@ -245,14 +305,35 @@ public class QueueB {
 
     
     public static void main(String args[]){
-    StackQueue q = new StackQueue();
-    q.add(1);
-    q.add(2);
-    q.add(3);
+    // StackQueue q = new StackQueue();
+    // q.add(1);
+    // q.add(2);
+    // q.add(3);
     
-    while (! q.isEmpty()) {
-      System.out.println(q.peek());
-      q.remove();  
-    }
+    // while (! q.isEmpty()) {
+    //   System.out.println(q.peek());
+    //   q.remove();  
+    // }
+
+    // java.util.Queue<Integer> q = new LinkedList<>();
+    // q.add(1);
+    // q.add(2);
+    // q.add(3);
+    // q.add(4);
+   
+
+    // reverse(q);
+
+    // while(!q.isEmpty()){
+    //     System.out.print(q.remove() +" ");
+    // }
+    // System.out.println();
+
+    int n =5;
+    generateBinary(n);
+
+  
+
+    
     }
 }

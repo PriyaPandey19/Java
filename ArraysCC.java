@@ -284,5 +284,6 @@ public static int buyAndSellStock(int prices[]){   //buy and sell stock problem
 //System.out.println(linearSearch(numbers, 6));
 //System.out.println(buyAndSellStock(prices));
 
+kadanes(arr);
     }
 }
