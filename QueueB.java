@@ -292,11 +292,60 @@ public class QueueB {
        }
    }
 
-   public static void generateBinary(int n){
+
+   public static void generateBinary(int n){         //generate binary numbers from 1 to n
     for(int i=1;i<= n;i++){
         String s = Integer.toBinaryString(i);
         System.out.println(s);
     }
+   }
+
+
+
+
+   public static int minCost(int arr[],int n){         //minmium cost to connect n ropes
+    PriorityQueue<Integer> pq = new PriorityQueue<>();
+     for(int i=0;i<n;i++){
+        pq.add(arr[i]);
+     }
+     int res =0;
+
+     while(pq.size()>1){
+        int first = pq.poll();
+        int second = pq.poll();
+
+        res+= first+second;
+        pq.add(first+second);
+     }
+     return res;
+   }
+
+
+
+
+   
+
+
+   public static java.util.Queue<Integer> reverseK(java.util.Queue<Integer> q, int k){     //reverse the first k elements of queue
+    if(q ==null || k<=0|| k>q.size()){
+        return q;
+    }
+
+    Stack<Integer> s = new Stack<>();
+
+    for(int i=0;i<k;i++){
+        s.push(q.remove());
+    }
+
+    while(!s.isEmpty()){
+        q.add(s.pop());
+    }
+
+    int size = q.size();
+    for(int i=0;i<size-k;i++){
+        q.add(q.poll());
+    }
+    return q;
    }
 
 
@@ -322,18 +371,18 @@ public class QueueB {
     // q.add(4);
    
 
-    // reverse(q);
+    java.util.Queue<Integer> q = new LinkedList<>();
+    q.add(10);
+    q.add(20);
+    q.add(30);
+    q.add(40);
+    q.add(50);
 
-    // while(!q.isEmpty()){
-    //     System.out.print(q.remove() +" ");
-    // }
-    // System.out.println();
-
-    int n =5;
-    generateBinary(n);
-
-  
-
+        reverseK(q, 3);
+        while(!q.isEmpty()){
+            System.out.print(q.remove() +" ");
+        }
+        System.out.println();
     
     }
 }
