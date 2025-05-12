@@ -122,6 +122,7 @@ public class GreedyAlgorithms {
             capacity-= weight[idx];
          }
          else{
+          //else fractional part
             finalVal += (ratio[i][1]* capacity);
             capacity =0;
             break;
@@ -132,11 +133,72 @@ public class GreedyAlgorithms {
 
     
 
+    public static void minAbsoluteDiff(int A[],int B[]){           //minimum absolute difference of pair
+      Arrays.sort(A);
+      Arrays.sort(B);
+
+      int minDiff =0;
+
+      for(int i=0;i<A.length;i++){
+        minDiff += Math.abs(A[i]-B[i]);
+         
+      }
+      System.out.println("min absolute diff of pair "+ minDiff);
+    }
+
+
+
+
+
+    public static void chainPairs(int pairs[][]){             //chain of pairs
+      Arrays.sort(pairs,Comparator.comparingDouble(o -> o[1]));
+
+      int chainLen =1;
+      int chainEnd = pairs[0][1];   //last selected pair
+
+      for(int i=1;i<pairs.length;i++){
+        if(pairs[i][0] > chainEnd){   //if next pair start is greater than last selected pair end
+          chainLen++;
+          chainEnd = pairs[i][1];      //update last selected pair end
+        }
+      }
+      System.out.println("max length of chain " + chainLen);
+
+    }
+
+
+
+
+
+
+    public static void minCoins(Integer[] coins ,int amount){     //minimum coins to make given amount
+      Arrays.sort(coins, Comparator.reverseOrder());   //sort in descending order
+
+    int countOfCoins =0;
+    ArrayList<Integer> ans = new ArrayList<>();
+
+    for(int i=0;i<coins.length;i++){
+      if(coins[i] <= amount){                         //if coin is less than amount
+        while(coins[i] <= amount){                    //keep adding coins
+          countOfCoins++;
+          ans.add(coins[i]);
+          amount -= coins[i];
+        }
+      }
+    }
+    System.out.println("Total sum of coins "+ countOfCoins);
+    for(int i=0;i<ans.size();i++){
+      System.out.print(ans.get(i) + " ");
+    }
+  }
+
+
+
+
     public static void main(String args[]){
-     int val[] ={60,100,120};
-     int weight[] ={10,20,30};
-     int W = 50;
-        knapsack(val,weight,W);
+    Integer coins[] ={1,2,5,10,20,50,100,500,1000};
+    int amount = 1219;
+    minCoins(coins, amount);
 
     }
 }
