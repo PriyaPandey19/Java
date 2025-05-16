@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class BinaryTreeB {
@@ -269,13 +270,189 @@ public class BinaryTreeB {
         System.out.print(map.get(i).data+" ");
     }
     System.out.println();
-  }  
+  } 
+  
+  
+  public static void KLevel(Node root,  int level, int k){     //kth level of tree
+    if(root == null){
+        return;
+    }
+    if(level == k){
+        System.out.println(root.data+ " ");
+        return;
+    }
+
+    KLevel(root.left, level+1, k);
+    KLevel(root.right, level+1, k);
+  }
+
+
+
+
+
+
+
+
+
+
+  public static boolean getPath(Node root, int n, ArrayList<Node> path){   //helper of lca
+    if(root == null){
+        return false;
+    }
+    path.add(root);    //add root in path
+
+    if(root.data == n){       //node ka data if equal to n so need to check subtree
+        return true;
+    }
+   
+    boolean foundLeft = getPath(root.left, n, path);
+    boolean foundRight = getPath(root.right, n, path);
+
+    if(foundLeft || foundRight){           // the node exists in left or in right
+        return true;
+    }
+    path.remove(path.size()-1);
+    return false;
+  }
+
+  public static Node lca(Node root, int n1,int n2){               //lowest common ancestor(approach 1)
+    ArrayList<Node> path1 = new ArrayList<>();
+    ArrayList<Node> path2 = new ArrayList<>();
+
+    getPath(root,n1,path1);
+    getPath(root,n2, path2);
+
+    //last common ancestor
+    int i=0;
+    for(;i < path1.size()  && i < path2.size();i++){
+        if(path1.get(i) != path2.get(i)){
+            break;
+        }
+    }
+    //last lca node -> i-1th
+    Node lca = path1.get(i-1);
+    return lca;
+  }
+
+
+
+
+
+ 
+  public static Node lca2(Node root, int n1, int n2){                 //least common ancestor(approach 2)
+    if(root == null || root.data== n1 || root.data == n2){
+        return root;
+    }
+
+    Node leftLca = lca2(root.left, n1, n2);
+    Node rightLca = lca2(root.right, n1, n2);
+
+    if(leftLca == null){                          //both n1 and n2 exists in right only
+        return rightLca;
+    }
+
+    if(rightLca == null){                        //both n1 and n2 exists in left only
+        return leftLca;
+    }
+
+    return root;                                 //if both exits in alternative side 
+  }
+
+
+
+
+
+  public static int lcaDist(Node root, int n){
+    if(root == null){
+        return -1;
+    }
+    if(root.data == n){
+        return 0;
+    }
+
+    int leftDist = lcaDist(root.left, n);
+    int rightDist = lcaDist(root.right, n);
+
+    if(leftDist == -1 && rightDist == -1){
+        return -1;
+    }
+    else if(leftDist == -1){
+        return rightDist + 1;
+    }
+    else{
+        return leftDist + 1;
+    }
+  }
+
+
+
+  public static int minDist(Node root, int n1, int n2){    //min diatsnce between the 2 nodes
+    Node lca = lca2(root, n1, n2);
+    int dist1 = lcaDist(lca, n1);
+    int dist2 = lcaDist(lca, n2);
+    
+    return dist1 + dist2;
+  }
+
+
+
+
+
+  public static int KAncestor(Node root, int n, int k){   //to find k ancestor of node
+    if(root == null){
+        return -1;
+    }
+
+    if(root.data == n){
+        return 0;
+    }
+
+    int leftDist = KAncestor(root.left, n, k);
+    int rightDist = KAncestor(root.right, n, k);
+
+    if(leftDist == -1 &&  rightDist == -1){
+        return -1;
+    }
+    int max = Math.max(leftDist, rightDist);
+    if( max+1 == k){
+        System.out.println(root.data);
+    }
+    return max+1;
+  }
+
+
+
+
+  public static int transform(Node root){                //transform tree to sum of all nodes  tree 
+    if(root == null){
+        return 0;
+    }
+    int leftChild = transform(root.left);
+    int rightChild = transform(root.right);
+
+    int data= root.data;
+
+    int newLeft = root.left == null ? 0 : root.left.data;
+    int newRight = root.right == null ? 0 : root.right.data;
+    root.data = newLeft + leftChild + newRight + rightChild;
+    return data;
+  }
+
+  public static void preoder(Node root){
+    if(root == null){
+        return;
+    }
+    System.out.println(root.data +" ");
+    preoder(root.left);
+    preoder(root.right);
+  }
+
 
 
   
 
 
-
+  
 
 public static void main(String args[]){
     Node root = new Node(1);
@@ -287,6 +464,16 @@ public static void main(String args[]){
     root.right.right = new Node(7);
     
 
-TopView(root);
+//TopView(root);
+//int k = 2;
+//KLevel(root, 1, k);
+
+// int n =5, k = 2;
+// KAncestor(root, n, k);
+
+transform(root);
+preoder(root);
+
+
 }    
 }
