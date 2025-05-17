@@ -295,6 +295,7 @@ public class BinaryTreeB {
 
 
 
+
   public static boolean getPath(Node root, int n, ArrayList<Node> path){   //helper of lca
     if(root == null){
         return false;
@@ -449,8 +450,107 @@ public class BinaryTreeB {
 
 
 
-  
+  public static boolean uniValued(Node root){        //univalued tree or not
+    if(root== null){
+        return true;
+    }
+    if(root.left != null && root.data != root.left.data){
+        return false;
+    }
+    if(root.right != null && root .data != root.right.data){
+        return false;
+    }
+    return uniValued(root.left) && uniValued(root.right);
 
+  }
+
+
+
+
+
+
+
+    public static Node mirror(Node root){                //invert binary tree
+        if(root == null){
+            return root;
+        }
+
+        Node left = mirror(root.left);
+        Node right = mirror(root.right);
+
+        root.left = right;
+        root.right = left;
+
+        return root;
+
+    }
+
+
+    public static void inorder(Node root){
+        if(root == null){
+            return;
+        }
+
+        inorder(root.left);
+        System.out.println(root.data);
+        inorder(root.right);
+    }
+
+
+
+    public static Node deleteLeaves(Node root,int x){       //delete the target leaf node
+        if(root == null){
+            return null;
+        }
+
+        root.left = deleteLeaves(root.left,x);
+        root.right = deleteLeaves(root.right,x);
+
+        if(root.data == x && root.left == null && root.right == null){
+            return null;
+    }
+      return root;
+
+
+    }
+
+
+
+
+
+
+
+    static class Result{
+        int maxSum ;
+    }
+
+    public static int maxSum(Node node, Result result){
+        if(node == null){
+            return 0;
+        }
+
+        int leftSum = maxSum(node.left, result);
+        int rightSum = maxSum(node.right, result);
+
+
+        //max single element
+        int maxSinglePath = Math.max(Math.max(leftSum, rightSum) + node.data, node.data);
+
+        int maxTop = Math.max(maxSinglePath,leftSum + rightSum + node.data);
+
+        result.maxSum = Math.max(result.maxSum, maxTop);
+        return maxSinglePath;   
+    }
+    
+
+
+public static int findMaxSum(Node root){
+    Result result = new Result();
+    result.maxSum = Integer.MIN_VALUE;
+    maxSum(root, result);
+    return result.maxSum;
+    
+}
 
   
 
@@ -470,9 +570,14 @@ public static void main(String args[]){
 
 // int n =5, k = 2;
 // KAncestor(root, n, k);
+ 
+// int x= 3;
+// deleteLeaves(root,x);
+// //System.out.print("Inorder traversal after ");
+// inorder(root);
 
-transform(root);
-preoder(root);
+
+System.out.println("Max path sum is "+ findMaxSum(root));
 
 
 }    
