@@ -524,7 +524,7 @@ public class BinaryTreeB {
         int maxSum ;
     }
 
-    public static int maxSum(Node node, Result result){
+    public static int maxSum(Node node, Result result){        //To find maxSum 
         if(node == null){
             return 0;
         }
@@ -551,6 +551,10 @@ public static int findMaxSum(Node root){
     return result.maxSum;
     
 }
+
+
+
+
 
   
 
