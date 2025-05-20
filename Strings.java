@@ -130,7 +130,7 @@ public static boolean checkAnagram(String s1,String s2){   //to check if two str
 
 
 public static void reverseWholeString(String str){  
-    str = str.trim();                                            //reverse the whole string
+    str = str.trim();                                            //reverse the whole string in line
     int end = str.length();    //end of string
      String newStr = "";     //new string
  
