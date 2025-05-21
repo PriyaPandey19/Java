@@ -122,6 +122,9 @@ public class BST {
 
 
 
+
+
+
   public static void printPath(ArrayList<Integer> path){
     for(int i=0;i<path.size();i++){
         System.out.print(path.get(i) + "->");
@@ -129,7 +132,7 @@ public class BST {
     System.out.println("null");
   }
 
-  public static void printRoot2Leaf(Node root, ArrayList<Integer> path){
+  public static void printRoot2Leaf(Node root, ArrayList<Integer> path){    //root to leaf diffrent paths
     if(root == null){
         return;
     }
@@ -139,25 +142,102 @@ public class BST {
     }
     printRoot2Leaf(root.left, path);    //call for left
     printRoot2Leaf(root.right, path);   //call for right
-    path.remove(path.size()-1);
+    path.remove(path.size()-1);       //remove while traversing back
 
   }
+
+
+
+  public static boolean isValidBST(Node root, Node min, Node max){         //is valid BST or not
+    if(root == null){
+        return true;
+    }
+    if(min != null && root.data <= min.data){
+        return  false;
+    }
+    else if(max != null && root.data >= max.data){
+        return false;
+    }
+    return isValidBST(root.left, min, root) && isValidBST(root.right, root, max);
+  }
+
+   
+
+
+  public static Node createMirror(Node root){          //create mirror of BST
+    if(root == null){
+        return null;
+    }
+
+    Node leftMirror = createMirror(root.left);
+    Node rigthMirror = createMirror(root.right);
+
+    root.left = rigthMirror;
+    root.right = leftMirror;
+    return root;
+  }
+
+  public static void preorder(Node root){
+    if(root == null){
+        return;
+    }
+    System.out.println(root.data +" ");
+    preorder(root.left);
+    preorder(root.right);
+  }
+
+
+
+  public static Node createBST(int arr[], int st, int end){    //create BST using sorted array
+    if(st > end){
+        return null;
+    }
+    int mid = (st + end)/2;          //mid find
+    Node root = new Node(arr[mid]);      //add in root
+    root.left = createBST(arr, st, mid-1);    //for left
+    root.right = createBST(arr, mid+1, end);   //for right
+    return root;
+  }
+
+
 
     
 
 
     public static void main(String args[]){
-        int values[] = {8,5,3,1,4,6,10,11,14};
-        Node root = null;
+        int values[] = {3,5,6,8,10,11,12};
+        Node root = createBST(values, 0, values.length-1);
+        preorder(root);
+    //     Node root = null;
 
-        for(int i =0;i<values.length;i++){
-            root = insert(root, values[i]);
-        }
+    //     for(int i =0;i<values.length;i++){
+    //         root = insert(root, values[i]);
+    //     }
         
-        inorder(root);
-        System.out.println();
+    //     inorder(root);
+    //     System.out.println();
 
-       printRoot2Leaf(root, new ArrayList<>());
+    //   // printRoot2Leaf(root, new ArrayList<>());
+    //  if(isValidBST(root, null, null)){
+    //   System.out.println("valid");
+    //  }
+    //  else{
+    //     System.out.println("not valid");
+    //  }
+
+
+
+
+
+    // Node root = new Node(8);
+    // root.left = new Node(5);
+    // root.right = new Node(10);
+    // root.left.left = new Node(3);
+    // root.left.right = new Node(6);
+    // root.right.right = new Node(11);
+
+    // root = createMirror(root);
+    // preorder(root);
     }
 }
 

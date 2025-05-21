@@ -61,6 +61,7 @@ class Parent{
 
 
 
+
 public class PractiseFive {
    public static void main(String args[]){
    Square obj = new Square();

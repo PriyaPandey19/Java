@@ -70,7 +70,7 @@ public class Strings{
         char ch = Character.toUpperCase(str.charAt(0));
         sb.append(ch);
 
-        for(int i=1;i<str.length();i++){
+        for(int i=1;i<str.length();i++)
             if(str.charAt(i) == ' ' && i<str.length()-1) {
                 sb.append(str.charAt(i));
                 i++;
@@ -79,9 +79,10 @@ public class Strings{
             else{
                 sb.append(str.charAt(i));
             }
-        }
+      
         return sb.toString();
     }
+    
 
     public static String compress(String str){              //to compress the string
         String newStr ="";
@@ -96,7 +97,6 @@ public class Strings{
         if(count > 1){
             newStr += count.toString();
         }
-        
            }
            return newStr;
     }
@@ -164,11 +164,11 @@ public static void reverseWholeString(String str){
  
  
  
- 
+
 
 
     public static void main(String args[]){
-        // String str ="aaabbcccdd";
+         String str ="aaabbbb";
         // System.out.println(compress(str)); // a3b2c2d4
 
 
@@ -206,7 +206,7 @@ public static void reverseWholeString(String str){
     // System.out.println(checkAnagram(str1,str2)); // true
     //  //System.out.println(countVowel(str));
 
-    reverseString(" hello world ");
-
+   System.out.println(compress(str));
     }
-} 
+}
+ 
