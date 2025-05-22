@@ -155,12 +155,36 @@ public static void reverseWholeString(String str){
  }
 
 
- public static void reverseString(String str){   //
+ public static void reverseString(String str){   //revere the word
     for(int i =str.length()-1;i>0;i--){
         System.out.print(str.charAt(i) + " ");
     }
     System.out.println();
 }
+
+
+
+
+public static void removeDuplicates(String str, int idx, boolean map[]){    //remove duplicate using boolean array  
+   if(idx == str.length()){        //idx last tak chala gaya                                      and idexes form 0 - 25   
+  StringBuilder newStr = new StringBuilder(); 
+   for(int i=0;i< 26;i++){
+    if(map[i]){
+        newStr.append((char)(i + 'a'));
+        
+    }
+   }
+   System.out.println(newStr.toString());
+   return;
+   }
+
+   char currchar = str.charAt(idx);
+   map[currchar - 'a'] = true;      //element exists so update idx
+    removeDuplicates(str, idx+1, map);
+   
+}
+
+
  
  
  
@@ -168,7 +192,14 @@ public static void reverseWholeString(String str){
 
 
     public static void main(String args[]){
-         String str ="aaabbbb";
+         String str ="bbccaee";
+         boolean[] map = new boolean[26];
+         removeDuplicates(str, 0,map);
+
+         String s1 = "listen";
+         String s2 = "silent";
+         System.out.println(checkAnagram(s1, s2));
+
         // System.out.println(compress(str)); // a3b2c2d4
 
 
@@ -206,7 +237,7 @@ public static void reverseWholeString(String str){
     // System.out.println(checkAnagram(str1,str2)); // true
     //  //System.out.println(countVowel(str));
 
-   System.out.println(compress(str));
+   //System.out.println(compress(str));
     }
 }
  
