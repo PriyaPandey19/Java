@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import javax.swing.tree.TreeNode;
+
 public class BST {
     static class Node{
         int data;
@@ -285,10 +287,32 @@ public class BST {
      return new Info(true, size, min,max);
     }
 
-    return new Info(false, size, min, max); 
-
-    
+    return new Info(false, size, min, max);  
   }
+
+
+
+
+
+
+  static int helper1(Node root, int low,int high){
+        if(root == null){
+            return 0;
+        }
+        if(low > root.data){
+            return helper1(root.right,low,high);
+        }
+        else if(high < root.data){
+            return helper1(root.left,low,high);
+        }
+        else{
+            return root.data + helper1(root.left,low,high)+ helper1(root.right,low,high);
+        }
+     }
+  public  static int rangeSumBST(Node root, int low, int high) {
+    int num = helper1(root, low,high);
+    return num;    
+    }
 
 
 
@@ -361,8 +385,11 @@ public class BST {
     root.right.right.right= new Node(80);
 
 
+
    Info info = largestBST(root);
    System.out.println("largest BST size "+ maxBST);
+
+   //System.out.println(printInRange(root, 5, 70));
 
 
     }

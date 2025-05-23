@@ -14,7 +14,7 @@ public class AVLTrees {
 
 
 
-     public static int height(Node root){
+     public static int height(Node root){       //height of tree
         if(root == null)
             return 0;
         
@@ -80,9 +80,7 @@ public class AVLTrees {
 
 
 
-
-
-       public static Node insert(Node root, int key){
+       public static Node insert(Node root, int key){      //insert the node
         if(root == null)
         return new Node(key);
 
@@ -125,7 +123,12 @@ public class AVLTrees {
 
        }
 
-       public static void preorder(Node root){
+
+
+
+
+
+       public static void preorder(Node root){      //preorder of the node
         if(root == null){
             return;
         }
@@ -140,6 +143,102 @@ public class AVLTrees {
 
 
 
+
+       public static Node getMiNode(Node root){
+        Node curr = root;
+        //min data is in left
+        while(curr.left != null)
+            curr = curr.left;
+            return curr;
+        
+    }
+
+        public static Node deleteNode(Node root, int key){
+            //perform usual BST delete
+            if(root ==  null){
+                return root;
+            }
+
+            //key < root's data
+            if(key < root.data){
+                root.left = deleteNode(root.left, key);
+            }
+
+            //key > root's data
+            else if(key > root.data){
+                root.right = deleteNode(root.right, key);
+            }
+
+            else{
+                //node with only one child or no child
+                if((root.left== null)|| (root.right == null)){
+                    Node temp = null;
+                    if(temp == root.left)
+                       temp = root.right;
+                    else
+                       temp = root.left;
+                       
+                       //no child case
+                       if(temp == null){
+                        temp = root;
+                        root = null;
+                       }
+                       else
+                        root = temp;
+                       
+                }
+             else{
+               //node with 2 children
+               Node temp = getMiNode(root.right);
+               //copy the inorder successor
+               root.data = temp.data;
+               //delete the inorder successor
+               root.right = deleteNode(root.right, temp.data);
+             }
+            }
+
+            if(root == null)
+            return root;
+
+            //update height
+            root.height = Math.max(height(root.left), height(root.right))+1;
+
+            //get balance
+            int bf = getBalance(root);
+            //if this node become unbalace then 4 cases
+
+
+
+            //left left case
+            if(bf > 1 && getBalance(root.left) >=0)
+            return rightRotate(root);
+
+            //left right case
+            if(bf > 1 && getBalance(root.left) < 0){
+                root.left = leftRotate(root.left);
+                return rightRotate(root);
+            }
+
+            //right right case
+            if(bf < -1 && getBalance(root.right) <= 0)
+            return leftRotate(root);
+
+            //right left case
+            if(bf < -1 && getBalance(root.right) > 0){
+                root.right= rightRotate(root.right);
+                return leftRotate(root);
+            }
+            return root;
+        }
+
+        
+       
+
+
+
+
+
+
     public static void main(String args[]){
         root = insert(root, 10);
         root = insert(root, 20);
@@ -147,6 +246,8 @@ public class AVLTrees {
         root = insert(root, 40);
         root = insert(root, 50);
         root = insert(root, 25);
+
+        //root = deleteNode(root, 40);
 
 
         preorder(root);
