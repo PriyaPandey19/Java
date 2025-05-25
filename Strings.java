@@ -185,6 +185,50 @@ public static void removeDuplicates(String str, int idx, boolean map[]){    //re
 }
 
 
+
+public static String longestCommonPrefix(String[] str){      //27)longest common prefix
+        if(str == null || str.length == 0)
+          return "";
+
+          //start with th first string
+          String prefix = str[0];
+
+          for(int i=1;i<str.length;i++){
+            //reduce prefix until it match the current string
+            while(!str[i].startsWith(prefix)){
+                prefix = prefix.substring(0, prefix.length()-1);
+                if(prefix.isEmpty())
+                return "";
+            }
+          }
+          return prefix;
+    }
+
+
+
+
+public static int subStringSearch(String haystack, String needle){     //29) to check substring exists or not in haystack means in  main string
+    if(needle.length() == 0){
+        return 0;
+    }
+        int hlength = haystack.length();
+        int nlength = needle.length();    
+    for(int i=0;i<=hlength-nlength;i++){
+    int j;
+    for(j=0;j<nlength;j++){
+        if(haystack.charAt(i+j) != needle.charAt(j)){
+            break;
+        }
+    } 
+    if(j == nlength){
+        return i;
+    }   
+    }
+    return -1;
+}
+
+
+
  
  
  
