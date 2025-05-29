@@ -1,4 +1,8 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class PriorityQueueD {
   static class Student implements Comparable<Student>{ //overriding   comparision basis on student rank
@@ -61,6 +65,146 @@ public class PriorityQueueD {
       }
      }
     }
+
+
+
+
+
+    static class Pair implements Comparable<Pair>{          //sliding window problem
+      int val;
+      int idx;
+
+      public Pair(int val, int idx){
+        this.val = val;
+        this.idx = idx;
+      }
+
+      @Override
+      public int compareTo(Pair p2){
+        //descending order
+        return p2.val - this.val;
+      }
+
+    } 
+
+
+
+
+
+    static class Node implements Comparable<Node>{
+        int row,col,effort;
+
+        Node(int row,int col,int effort){
+            this.row = row;
+            this.col = col;
+            this.effort = effort;
+        }
+        public int compareTo(Node other){
+            return this.effort - other.effort;
+        }
+    }
+
+     public static int minimumEffortPath(int[][] heights) {     //path with min effort
+            int rows = heights.length,cols = heights[0].length;
+            boolean[][] vis = new boolean [rows][cols];
+
+            //top,right,down,left
+            int[] dr ={-1,0,+1,0};
+            int[] dc = {0,+1,0,-1};
+
+            Queue<Node> q = new PriorityQueue<>();
+            q.add(new Node(0,0,0));
+
+            while(q.size() != 0) {
+                Node node = q.remove();
+                int sr = node.row, sc = node.col;
+                vis[sr][sc] = true;
+                int effort = node.effort;
+
+                if(sr == rows-1 && sc == cols-1) return effort;
+
+                for(int idx =0;idx<4;idx++){
+                    int nr = sr + dr[idx];
+                    int nc = sc+ dc[idx];
+
+                    if(nr < 0 || nc < 0 || nr >= rows || nc >= cols) continue;  //out of boundary
+                    if(vis[nr][nc] == true) continue;
+
+                    int diff = Math.abs(heights[nr][nc] - heights[sr][sc]);
+                    q.add(new Node (nr,nc,Math.max(effort, diff)));
+                }
+            } 
+            return 0;
+    }
+
+
+
+
+
+
+
+
+
+    static PriorityQueue<Integer> min;       //kth largest element in stream of integer
+    static int t;
+
+    static List<Integer>getAllKthNumber(int arr[]){
+      List<Integer> list = new ArrayList<>();
+      for(int val : arr){
+        if(min.size() < t)      //add elements in priority queue till size t
+            min.add(val);
+        else{
+          if(val > min.peek()){    
+            min.poll();           //this will give min value and at last add current value in pq
+            min.add(val);
+          }
+        }
+        if(min.size() >=t)          //we obtain smallest kth element that is in peek
+          list.add(min.peek());
+        else
+           list.add(-1);
+
+      }
+      return list;
+    }
+
+
+
+    
+
+
+  public static void minTime(int arr[],int n,int k){     //min time to fill slots
+  Queue<Integer> q = new LinkedList<>();
+
+  boolean vis[] = new boolean[n+1];
+  int time =0;
+
+  for(int i=0;i<k;i++){
+    q.add(arr[i]);
+  vis[arr[i]] =true;
+  }
+
+  while (q.size() > 0) {
+   for(int i=0;i<q.size();i++) {
+    int curr = q.poll();
+    if(curr-1 >= 1 && !vis[curr-1]){  //adding of the left side element 
+        vis[curr-1] = true;
+        q.add(curr-1);
+    }
+    if(curr+1 <= n && !vis[curr+1]){   //adding of the right side element
+        vis[curr+1] = true;
+        q.add(curr+1);
+    }
+   }
+   time++;
+  }
+  System.out.println(time -1);
+}
+  
+
+
+
+
 
 
 
@@ -140,5 +284,73 @@ public class PriorityQueueD {
      pq2.add(min + min2);
     }
     System.out.println("cost of conecting n ropes "+ cost);
+
+
+
+
+
+
+
+
+    int arr[] = {1,3,-1,-3,5,3,6,7};                     //sliding window main function
+    int p =3;  //window size
+    int res[] =new int[arr.length-p+1]; //n-k+1
+
+    PriorityQueue<Pair> pq4 = new PriorityQueue<>();
+
+    //1st window
+    for(int i=0;i<p;i++){
+      pq4.add(new Pair(arr[i], i));
+    }
+   res[0] = pq4.peek().val;
+
+   //rest window
+   for(int i=p;i<arr.length;i++){
+    while (pq4.size() > 0 && pq4.peek().idx <= (i-p)) {    //remove the elements if they are not in window
+     pq4.remove();
+    }
+    pq4.add(new Pair(arr[i], i));                     //add current element
+    res[i-p+1] = pq4.peek().val;
+   }
+
+   for(int i=0;i<res.length;i++){
+    System.out.print(res[i] +" ");
+   } 
+   System.out.println(); 
+
+
+
+
+
+
+int heights[][] ={{1,2,2},{3,8,2},{5,3,5}};      //main function path with min efforts
+  System.out.println(minimumEffortPath(heights)); 
+
+
+
+
+
+
+
+
+  min = new PriorityQueue<>();        //kth largest element in a stream main fumction
+  t=3;
+  int arr1[] = {1,2,3,4,5,6};
+  List<Integer>res1 = getAllKthNumber(arr1);
+  for(int x :res1){
+    System.out.println(x +" ");
+  }
+
+
+
+  int n = 6;                                     //min time to fill slot main function
+  int arr2[] ={2,6};
+   int u = arr2.length;
+  System.out.print("min time: ");
+  minTime(arr2,n,u);
+
+
+
+
   }  
 }
