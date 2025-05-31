@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -200,6 +201,88 @@ public class PriorityQueueD {
   }
   System.out.println(time -1);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+static class ListNode{      
+  int data;
+  ListNode next;
+
+  ListNode(int key){
+    data = key;
+    next = null;
+  }
+}
+
+
+static class ListNodeComparator implements Comparator<ListNode>{
+  public int compare(ListNode k1, ListNode k2){
+    if(k1.data > k2.data)
+        return 1;
+  
+    else if(k1.data < k2.data)
+        return -1;
+    return 0;
+  }
+}
+
+static ListNode mergeKlist(ListNode[] arr, int k){              //merge k linked list in ascneding order
+  PriorityQueue<ListNode> queue = new PriorityQueue<>(new ListNodeComparator());
+ ListNode at[] = new ListNode[k];
+  ListNode head = new ListNode(0);
+  ListNode last = head;
+
+  for(int i=0;i<k;i++){    //intialize priority queue with nodes of each
+    if(arr[i] != null){
+      queue.add(arr[i]);
+    }
+  }
+
+  if(queue.isEmpty()){
+    return null;
+  }
+
+  while (!queue.isEmpty()) {
+    ListNode curr = queue.poll();
+    last.next = curr;
+    last = last.next;
+    if(curr.next != null){
+      queue.add(curr.next);
+    } 
+  }
+  return head.next;
+}
+
+public static void printList(ListNode node){     //to print LL
+  while (node!= null) {
+    System.out.println(node.data+ " ");
+    node = node.next;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 
 
@@ -348,6 +431,39 @@ int heights[][] ={{1,2,2},{3,8,2},{5,3,5}};      //main function path with min e
    int u = arr2.length;
   System.out.print("min time: ");
   minTime(arr2,n,u);
+
+
+
+
+  int N = 3;                                    //merge k linked list main function
+  ListNode[] a = new ListNode[N];
+  ListNode head1 = new ListNode(1);
+  a[0] = head1;                         //1 Linked list
+  head1.next = new ListNode(3);
+  head1.next.next = new ListNode(5);
+  head1.next.next.next = new ListNode(7);
+
+
+   ListNode head2 = new ListNode(2);
+  a[1] = head2;                         //2 Linked list
+  head2.next = new ListNode(4);
+  head2.next.next = new ListNode(6);
+  head2.next.next.next = new ListNode(8);
+
+
+   ListNode head3 = new ListNode(0);
+  a[2] = head3;                         //3 Linked list
+  head3.next = new ListNode(9);
+  head3.next.next = new ListNode(10);
+  head3.next.next.next = new ListNode(11);
+
+
+
+  ListNode mergedList = mergeKlist(a, N);
+  if(mergedList != null)
+      printList(mergedList);
+      System.out.println();
+
 
 
 

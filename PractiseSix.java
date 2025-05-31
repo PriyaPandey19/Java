@@ -53,7 +53,7 @@ public class PractiseSix {
 
 
 public static void firstNonrepeating(){
- HashMap<Character, Integer>map = new HashMap<>(); 
+ HashMap<Character, Integer> map = new HashMap<>(); 
  String str = "aaabcccdddeeef";
 char[] ch = str.toCharArray();
  for(char i : ch){
