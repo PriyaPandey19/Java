@@ -1,22 +1,98 @@
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.ListIterator;
 
+// class ClgStudent implements Comparable<ClgStudent>{
+//     int age;
+//     String name;
+//   public ClgStudent(int age, String name){
+//     this.age = age;
+//     this.name = name;
+//    }
+   
+//    public String toString(){
+//     return age+" "+name;
+//    }
+
+//    //@Override
+//    public int compareTo(ClgStudent s){
+//     return this.age - s.age;
+//    }
+// }
+
+
+class ClgStudent{
+    int rolln;
+    String name;
+    int age;
+
+    public ClgStudent(int rolln,String name, int age){
+        this.rolln = rolln;
+        this.name = name;
+        this.age = age;
+    }
+
+       public String toString(){
+       return rolln+" "+name+" "+ age;
+   }
+
+}
+
+class sortByName implements Comparator<ClgStudent>{       //sort by name
+    public int compare(ClgStudent s1, ClgStudent s2){
+        return s1.name.compareTo(s2.name); 
+    }
+}
+
+class sortByAge implements Comparator<ClgStudent>{       //sort by age
+    public int compare(ClgStudent s1, ClgStudent s2){
+        return Integer.compare(s1.age, s2.age); 
+    }
+}
+
+class sortByRoll implements Comparator<ClgStudent>{       //sort by rollN
+    public int compare(ClgStudent s1, ClgStudent s2){
+        return Integer.compare(s1.rolln, s2.rolln); 
+    }
+}
+
+
+
+
+
 public class PractiseSeven {
 
+    public static void main(String[] args) {
+    ArrayList<ClgStudent> list = new ArrayList<>();
+     list.add(new ClgStudent(56, "rahul",12));
+     list.add(new ClgStudent(12, "rohit",87));
+     list.add(new ClgStudent(91, "rina",62));
+    System.out.println("Sort by name ---------");
+    Collections.sort(list,new sortByName());
+    for(ClgStudent s : list){
+        System.out.println(s.toString());
+    }
+
+
+
+    System.out.println("sort by age--------- ");
+    Collections.sort(list,new sortByAge());
+    for(ClgStudent s : list){
+        System.out.println(s.toString());
+    }
+
+
+     System.out.println("sort by rollN------ ");
+    Collections.sort(list,new sortByRoll());
+    for(ClgStudent s : list){
+        System.out.println(s.toString());
+    }
     
 
-    public static void main(String[] args) {
-    ArrayList<Integer> list = new ArrayList<>();
-    list.add(1);
-     list.add(6);
-     list.add(2);
-     list.add(4);
-     System.out.println(list);
-     
-
+   
      
 
 
