@@ -1,9 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.ListIterator;
+import java.util.*;     //topic ArrayList and collections
 
 // class ClgStudent implements Comparable<ClgStudent>{
 //     int age;
