@@ -10,67 +10,67 @@
         
 //     }
 // }
-class downloadFile{                                       //without thread
-    public static void file(String file){
-     for(int i=1;i<=5;i++){
-        System.out.println(file + " downloading.."+(i*20) + "%");
+// class downloadFile{                                       //without thread
+//     public static void file(String file){
+//      for(int i=1;i<=5;i++){
+//         System.out.println(file + " downloading.."+(i*20) + "%");
      
-     try{
-       Thread.sleep(2000);
-     }catch(Exception e){}
-     }
-     System.out.println(file + " done");
-    }
-}
+//      try{
+//        Thread.sleep(2000);
+//      }catch(Exception e){}
+//      }
+//      System.out.println(file + " done");
+//     }
+// }
 
 
 
-class DownloadFile extends Thread{             //with thread
-    String file;
+// class DownloadFile extends Thread{             //with thread
+//     String file;
 
-    public DownloadFile(String file){
-        this.file = file;
-    }
-    public  void run(){
-     for(int i=1;i<=5;i++){
-        System.out.println(file + " downloading.."+(i*20) + "%");
+//     public DownloadFile(String file){
+//         this.file = file;
+//     }
+//     public  void run(){
+//      for(int i=1;i<=5;i++){
+//         System.out.println(file + " downloading.."+(i*20) + "%");
      
-     try{
-       Thread.sleep(2000);
-     }catch(Exception e){}
-     }
-     System.out.println(file + " done");
-    }
+//      try{
+//        Thread.sleep(2000);
+//      }catch(Exception e){}
+//      }
+//      System.out.println(file + " done");
+//     }
 
-}
+// }
 
-class MyRunnable implements Runnable{
-   String file;
+// class MyRunnable implements Runnable{
+//    String file;
 
-    public MyRunnable(String file){
-        this.file = file;
-    }
-    public  void run(){
-     for(int i=1;i<=5;i++){
-        System.out.println(file + " downloading.."+(i*20) + "%");
+//     public MyRunnable(String file){
+//         this.file = file;
+//     }
+//     public  void run(){
+//      for(int i=1;i<=5;i++){
+//         System.out.println(file + " downloading.."+(i*20) + "%");
      
-     try{
-       Thread.sleep(2000);
-     }catch(Exception e){}
-     }
-     System.out.println(file + " done");
-    }
-}
+//      try{
+//        Thread.sleep(2000);
+//      }catch(Exception e){}
+//      }
+//      System.out.println(file + " done");
+//     }
+// }
 
 
 
 class bank extends Thread {
     int amt;
+    boolean isAvailableBalance = false;
     static int balance=1000;
 
     public bank(int amt) {
-        this.amt = amt;
-      
+        this.amt = amt; 
     }
 
     public void run() {
@@ -87,14 +87,100 @@ class bank extends Thread {
       }
     }
     }
+
+
+    public synchronized void run(int amt){
+    while(isAvailableBalance){
+      try {
+        wait();
+      } catch (Exception e) {
+        
+      }
+    }
+    
+
+    }
+}
+
+class MyThread extends Thread{
+  public void run(){
+    for(int i=1;i<10;i++){
+      System.out.println(getName() + " is running with priority "+ getPriority());
+      Thread.yield();
+    }
+  }
+}
+
+ 
+class sharedResource{        //data produce and consume
+  int data;
+  boolean dataAvailabe = false;
+
+  public synchronized void produce(int value){
+   while(dataAvailabe){
+    try {
+      wait();
+    } catch (Exception e) {
+      Thread.currentThread().interrupt();
+    }
+   } 
+   data = value;
+   dataAvailabe = true;
+   System.out.println("produced " + data);
+   notify();
+  }
+
+  
+   public synchronized void consume(){
+    while (!dataAvailabe) {
+      try {
+        System.out.println("consumer waiting for signal....");
+        wait();
+      } catch (InterruptedException e) {
+       
+      }
+      // System.out.println("consumer consumed...");
+    }
+    System.out.println("consumed "+ data);
+    dataAvailabe = false;
+    notify();
+   }
 }
 
 
 
 
-
 public class PractiseEight {
+   
     public static void main(String[] args) {
+      sharedResource resource= new sharedResource();
+
+      Thread producer = new Thread(() -> {
+        for(int i=0;i<= 5;i++){
+          resource.produce(i);
+        }
+      });
+
+      Thread consumer = new Thread(() -> {
+        for(int i=0;i<= 5;i++){
+          resource.consume();
+        }
+      });
+
+
+      // MyThread t1 = new MyThread();
+      // MyThread t2 = new MyThread();
+
+      // t1.setName("low priority");
+      //  t2.setName("high priority");
+
+      //  t1.setPriority(Thread.MIN_PRIORITY);
+      //  t2.setPriority(Thread.MAX_PRIORITY);
+
+       producer.start();
+       consumer.start();
+
+      //System.out.println("bura");
     //  MyThread t1 = new MyThread();
     //  t1.start();
     //  for(int i=0;i<5;i++){
@@ -121,11 +207,20 @@ public class PractiseEight {
 // for(int i=1;i<5;i++){
 //   System.out.println(i);
 // }
+// Thread t1 = new Thread(() -> {
+// System.out.println("accha accha");
+// try {
+//   Thread.sleep(2000);
+// } catch (Exception e) {  
+// }
+// System.out.println("ham last mai aayenge");
+// }); 
+// t1.start();
 
-bank b1 = new bank(800);
-b1.start();
-bank b2 = new bank(500);
-b2.start();
+// bank b1 = new bank(800);
+// b1.start();
+// bank b2 = new bank(500);
+// b2.start();
 
     }
 }

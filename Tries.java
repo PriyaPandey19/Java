@@ -6,7 +6,7 @@ public class Tries {
         Node children[] = new Node[26];
         boolean eow = false;
 
-        Node(){
+        public Node(){
             for(int i=0;i<26;i++){
                 children[i] = null;
             }
@@ -26,7 +26,7 @@ public class Tries {
         curr.eow = true;
     } 
 
-    public static boolean search(String key){       //search kry exists or not
+    public static boolean search(String key){       //search key exists or not
       Node curr = root;
         for(int level =0;level<key.length();level++){
             int idx = key.charAt(level)-'a';
@@ -38,12 +38,34 @@ public class Tries {
       return curr.eow == true;   
     }
 
+    public static boolean wordBreak(String key){   //word break problem
+      if(key.length() == 0){
+        return true;
+      }
+       for(int i=1;i<= key.length();i++){
+         if(search(key.substring(0,i)) && wordBreak(key.substring(i))){
+          return true;
+         }
+       }
+       return false;
+    }
+
   public static void main(String[] args) {
-  String words[] ={"the","a","there","their","any","three"};
-  for(int i=0;i<words.length;i++){
-    insert(words[i]);
-  } 
-  System.out.println(search("there"));
-  System.out.println(search("thor")); 
+  // String words[] ={"the","a","there","their","any","three"};
+  // for(int i=0;i<words.length;i++){
+  //   insert(words[i]);
+  // } 
+  // System.out.println(search("there"));
+  // System.out.println(search("thor"));
+
+  String arr[] = {"i","like","sam","samsung","mobile","ice"};
+  for(int i=0;i<arr.length;i++){
+    insert(arr[i]);
+  }
+  String key ="ilikesung";
+  System.out.println(wordBreak(key));
+
+  
+  
   }  
 }
