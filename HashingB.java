@@ -2,6 +2,66 @@ import java.util.*;
 
 public class HashingB {
 
+    static class Node{
+        int data;
+        Node left;
+        Node right;
+
+        Node(int data){
+            this.data = data;
+            this.left =null;
+            this.right = null;
+        }
+    }
+
+
+
+    static class Pair{
+       int level;
+       int data;
+
+       Pair(int level,int data){
+        this.level = level;
+        this.data = data;
+       }
+    }
+
+    public static void helper(Node root, int dist, int level, TreeMap<Integer,Pair>map){   //helper function of bottom view
+        if(root == null)
+        return;
+
+        if(!map.containsKey(dist) || map.get(dist).level <= level) {
+            map.put(dist, new Pair(level,root.data));
+        }
+        helper(root.left, dist-1, level+1, map);
+        helper(root.right, dist+1, level+1, map);
+    }
+
+    public static ArrayList<Integer> printbottomView(Node root){     //bottom view
+        TreeMap<Integer,Pair> map = new TreeMap<>();
+        ArrayList<Integer> ans = new ArrayList<>();
+
+        helper(root, 0, 0, map);
+        for(Map.Entry<Integer,Pair> entry : map.entrySet()){
+            ans.add(entry.getValue().data);
+        }
+        return ans;
+    }
+
+    public static String frequencySort(String s){
+        Map<Character,Integer> frequencyMap = new HashMap<>();
+        for(int i=0;i< s.length();i++){
+            char ch = s.charAt(i);
+            frequencyMap.put(ch,frequencyMap.getOrDefault(ch,0) + 1);
+        }
+        List
+    }
+
+
+
+
+
+
     public static void majorityElements(int arr[]){       //majority element in array if greater than n/3
      HashMap<Integer,Integer> map = new HashMap<>();
 
@@ -130,6 +190,8 @@ public class HashingB {
             }
             System.out.println(ans);
      }
+
+
 
 
 

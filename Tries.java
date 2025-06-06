@@ -1,15 +1,16 @@
- 
-
+import java.io.StringReader;
 
 public class Tries {
   static class Node{
         Node children[] = new Node[26];
         boolean eow = false;
+        int freq;
 
         public Node(){
-            for(int i=0;i<26;i++){
+            for(int i=0;i<children.length;i++){
                 children[i] = null;
             }
+            freq =1;
         }
     } 
     public static Node root = new Node();
@@ -20,6 +21,8 @@ public class Tries {
             int idx = word.charAt(level)-'a';
             if(curr.children[idx] == null){
                 curr.children[idx]= new Node();
+            }else{
+            curr.children[idx].freq++;
             }
             curr = curr.children[idx];
         }
@@ -50,6 +53,39 @@ public class Tries {
        return false;
     }
 
+    
+
+
+    public static void findPrefix(Node root, String ans){   //shortest unique prefix
+      if(root == null){
+        return;
+      }
+      if(root.freq == 1){
+        System.out.println(ans);
+        return;
+      }
+     for(int i=0;i<root.children.length;i++){
+      if(root.children[i] != null){
+        findPrefix(root.children[i], ans+(char)(i +'a'));
+      }
+     }
+    }
+
+    public static boolean startsWith(String prefix){    //start with given orefix or not
+      Node curr = root;
+
+      for(int i=0;i<prefix.length();i++){
+        int idx = prefix.charAt(i) - 'a';
+        if(curr.children[idx] == null){
+          return false;
+        }
+        curr = curr.children[idx];
+      }
+      return true;
+    }
+
+
+
   public static void main(String[] args) {
   // String words[] ={"the","a","there","their","any","three"};
   // for(int i=0;i<words.length;i++){
@@ -58,14 +94,27 @@ public class Tries {
   // System.out.println(search("there"));
   // System.out.println(search("thor"));
 
-  String arr[] = {"i","like","sam","samsung","mobile","ice"};
-  for(int i=0;i<arr.length;i++){
-    insert(arr[i]);
-  }
-  String key ="ilikesung";
-  System.out.println(wordBreak(key));
+  // String arr[] = {"i","like","sam","samsung","mobile","ice"};
+  // for(int i=0;i<arr.length;i++){
+  //   insert(arr[i]);
+  // }
+  // String key ="ilikesung";
+  // System.out.println(wordBreak(key));
 
-  
-  
+
+  // String arr[] ={"zebra","dog","duck","dove"};
+  //  for(int i=0;i<arr.length;i++){
+  //    insert(arr[i]);
+  //  }
+  //  root.freq = -1;
+  //  findPrefix(root, "");
+  String words[] ={"apple","app","mango","man","women"};
+  String prefix1 = "app";
+  String prefix2 ="moon";
+
+  for(int i=0;i<words.length;i++){
+    insert(words[i]);
+  }
+  System.out.println(startsWith(prefix1));
   }  
 }

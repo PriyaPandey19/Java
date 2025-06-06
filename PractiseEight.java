@@ -1,4 +1,5 @@
-// class MyThread extends Thread{         //TOPIC Multithreading
+import java.util.stream.*;
+// class MyThread extends Thread{         //TOPIC Multithreading and stream API
 //     public void run(){
 //          System.out.println("helllo");
       
@@ -62,7 +63,13 @@
 //     }
 // }
 
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collector;
 
 class bank extends Thread {
     int amt;
@@ -153,19 +160,46 @@ class sharedResource{        //data produce and consume
 public class PractiseEight {
    
     public static void main(String[] args) {
-      sharedResource resource= new sharedResource();
+      List<Integer> list = Arrays.asList(1,2,10,15,20,44,25);
+      List<Integer> evenList = list.stream().filter(n -> n%2 == 0).map(n -> n *5).collect(Collectors.toList());
+      int  sum = list.stream().reduce(10,(a,b) -> a+b);
 
-      Thread producer = new Thread(() -> {
-        for(int i=0;i<= 5;i++){
-          resource.produce(i);
-        }
-      });
+       int sumList = list.stream().filter(n -> n > 2).filter(n -> n% 2 ==0).reduce(0,(a,b)-> a+b);
+       
+      int  smallest = list.stream().reduce(Integer.MAX_VALUE, (a, b) -> a < b ? a : b); 
 
-      Thread consumer = new Thread(() -> {
-        for(int i=0;i<= 5;i++){
-          resource.consume();
-        }
-      });
+      int  secMin = list.stream().sorted((a,b) -> a-b).skip(1).findFirst().orElse(Integer.MIN_VALUE); 
+      System.out.println(secMin);
+      
+
+      // ArrayList<String> list = new ArrayList<>();
+      // list.add("rahul");
+      // list.add("rohit");
+      // list.add("mohit");
+      // Collections.sort(list,(a,b)-> a.compareTo(b));
+      // System.out.println(list);
+    //  Runnable r = new Runnable() {
+    //   public void run(){
+    //     System.out.println("runnable using anonyms class");
+    //   }
+    //  };
+    //  r.run();
+    //  Runnable t = ()-> System.out.println("runnable using lambda");
+    //   t.run();
+
+
+      // sharedResource resource= new sharedResource();
+      // Thread producer = new Thread(() -> {
+      //   for(int i=0;i<= 5;i++){
+      //     resource.produce(i);
+      //   }
+      // });
+
+      // Thread consumer = new Thread(() -> {
+      //   for(int i=0;i<= 5;i++){
+      //     resource.consume();
+      //   }
+      // });
 
 
       // MyThread t1 = new MyThread();
@@ -177,8 +211,8 @@ public class PractiseEight {
       //  t1.setPriority(Thread.MIN_PRIORITY);
       //  t2.setPriority(Thread.MAX_PRIORITY);
 
-       producer.start();
-       consumer.start();
+      //  producer.start();
+      //  consumer.start();
 
       //System.out.println("bura");
     //  MyThread t1 = new MyThread();
