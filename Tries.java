@@ -71,7 +71,7 @@ public class Tries {
      }
     }
 
-    public static boolean startsWith(String prefix){    //start with given orefix or not
+    public static boolean startsWith(String prefix){    //start with given prefix or not
       Node curr = root;
 
       for(int i=0;i<prefix.length();i++){

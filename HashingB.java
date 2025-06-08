@@ -37,7 +37,7 @@ public class HashingB {
         helper(root.right, dist+1, level+1, map);
     }
 
-    public static ArrayList<Integer> printbottomView(Node root){     //bottom view
+    public static ArrayList<Integer> printbottomView(Node root){     //bottom view problem
         TreeMap<Integer,Pair> map = new TreeMap<>();
         ArrayList<Integer> ans = new ArrayList<>();
 

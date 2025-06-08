@@ -162,9 +162,10 @@ public class PractiseEight {
     public static void main(String[] args) {
       List<Integer> list = Arrays.asList(1,2,10,15,20,44,25);
       List<Integer> evenList = list.stream().filter(n -> n%2 == 0).map(n -> n *5).collect(Collectors.toList());
+
       int  sum = list.stream().reduce(10,(a,b) -> a+b);
 
-       int sumList = list.stream().filter(n -> n > 2).filter(n -> n% 2 ==0).reduce(0,(a,b)-> a+b);
+      int sumList = list.stream().filter(n -> n > 2).filter(n -> n% 2 ==0).reduce(0,(a,b)-> a+b);
        
       int  smallest = list.stream().reduce(Integer.MAX_VALUE, (a, b) -> a < b ? a : b); 
 
