@@ -1,4 +1,11 @@
 import java.util.stream.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collector;
 // class MyThread extends Thread{         //TOPIC Multithreading and stream API
 //     public void run(){
 //          System.out.println("helllo");
@@ -63,13 +70,7 @@ import java.util.stream.*;
 //     }
 // }
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collector;
+
 
 class bank extends Thread {
     int amt;
@@ -160,17 +161,87 @@ class sharedResource{        //data produce and consume
 public class PractiseEight {
    
     public static void main(String[] args) {
-      List<Integer> list = Arrays.asList(1,2,10,15,20,44,25);
-      List<Integer> evenList = list.stream().filter(n -> n%2 == 0).map(n -> n *5).collect(Collectors.toList());
-
-      int  sum = list.stream().reduce(10,(a,b) -> a+b);
-
-      int sumList = list.stream().filter(n -> n > 2).filter(n -> n% 2 ==0).reduce(0,(a,b)-> a+b);
+      List<Integer> list = Arrays.asList(1,2,3,4,5);
+      List<Integer> list3 = Arrays.asList(10,14,22,30);
+       List<Integer> list4 = Arrays.asList(1,2,3,4);
+        List<Integer> list2 = Arrays.asList(999,1000,1500,1000,2000);
        
-      int  smallest = list.stream().reduce(Integer.MAX_VALUE, (a, b) -> a < b ? a : b); 
+       List<String> listName1 = Arrays.asList("Java is fun","Stream are poweful");  
+      List<String> listName = Arrays.asList("Ram","Shyam","Om","Sita");
+      List<String> listStartA= Arrays.asList("apple","banana","apricot","cherry","Avacado");
+      
+      
+      // List<Integer> evenList = list.stream().filter(n -> n%2 == 0).map(n -> n *5).collect(Collectors.toList());
 
-      int  secMin = list.stream().sorted((a,b) -> a-b).skip(1).findFirst().orElse(Integer.MIN_VALUE); 
-      System.out.println(secMin);
+      // int  sum = list.stream().reduce(10,(a,b) -> a+b);
+
+      // int sumList = list.stream().filter(n -> n > 2).filter(n -> n% 2 ==0).reduce(0,(a,b)-> a+b);
+       
+      // int  smallest = list.stream().reduce(Integer.MAX_VALUE, (a, b) -> a < b ? a : b); 
+
+      // int  secMin = list.stream().sorted((a,b) -> a-b).skip(1).findFirst().orElse(Integer.MIN_VALUE); 
+      // System.out.println(secMin);
+
+
+
+      List<Integer> evenSq = list.stream().filter(n -> n%2 == 0).map(n -> n*n).collect(Collectors.toList());
+       System.out.println(evenSq);
+
+
+
+      int sum =0;
+      Integer oddSum = list.stream().filter(n -> n%2 != 0).reduce(0,Integer::sum);
+      System.out.println(oddSum);
+
+
+
+     List<String> listNameList = listName.stream().filter(name -> name.length() > 3).map(String::toUpperCase).collect(Collectors.toList());
+     System.out.println(listNameList);
+
+
+
+    List<Integer> wordLength = listName.stream().map(String::length).collect(Collectors.toList());
+     System.out.println(wordLength);
+
+
+
+    Integer totalSum = list2.stream().filter(n -> n > 1000).reduce(0,Integer::sum);
+    System.out.println(totalSum);
+
+
+    long startswithACount = listStartA.stream().filter(name ->name.startsWith("A")||name.startsWith("a")).count();
+     System.out.println(startswithACount);
+
+
+     boolean anyDivSeven = list3.stream().anyMatch(n -> n%7 == 0); 
+      System.out.println(anyDivSeven);
+   
+
+     Integer MulNumber = list4.stream().reduce(1,(a,b) -> a* b);  
+    System.out.println(MulNumber);
+
+    List<String> alWords = listName1.stream().flatMap(sentence -> Arrays.stream(sentence.split(" "))).collect(Collectors.toList());
+    System.out.println(alWords);
+
+
+
+     
+
+      
+
+
+
+
+
+
+
+
+
+     
+
+
+
+      
       
 
       // ArrayList<String> list = new ArrayList<>();

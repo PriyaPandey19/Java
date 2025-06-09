@@ -48,13 +48,38 @@ public class HashingB {
         return ans;
     }
 
-    public static String frequencySort(String s){
+    public static String frequencySort(String s){   //on the basis of frequency sort the character
         Map<Character,Integer> frequencyMap = new HashMap<>();
         for(int i=0;i< s.length();i++){
             char ch = s.charAt(i);
             frequencyMap.put(ch,frequencyMap.getOrDefault(ch,0) + 1);
         }
-        List
+        List<Map.Entry<Character,Integer>> freqList = new ArrayList<>(frequencyMap.entrySet());
+
+        Collections.sort(freqList,(a,b) -> b.getValue() - a.getValue());
+        StringBuilder result = new StringBuilder();
+        for(Map.Entry<Character,Integer> entry : freqList) {
+            char ch = entry.getKey();
+            int count = entry.getValue();
+            while (count-- > 0) {
+                result.append(ch);
+            }
+        }
+        return result.toString();
+    }
+
+    public static int[] TwoSum(int[] arr, int target){
+        HashMap<Integer,Integer> m = new HashMap<>();
+        int n = arr.length;
+        for(int i=0;i<n;i++){
+            if(m.containsKey(target - arr[i])){
+                return new int[]{m.get(target - arr[i]),i};
+            }
+            else{
+            m.put(arr[i],i);
+            }
+        }
+        return new int[] {};
     }
 
 
