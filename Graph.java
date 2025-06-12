@@ -18,7 +18,8 @@ public class Graph {
       graph[i] = new ArrayList<>();
       }  
       
-    
+    //0  vertex
+        graph[0].add(new Edge(0, 3));
     
      //2 vertex
      graph[2].add(new Edge(2, 3));
@@ -246,15 +247,70 @@ public class Graph {
     }
     s.push(curr); 
    }
-    
+
+
+
+
+
+
+
+   public static void calcIndeg(ArrayList<Edge> graph[],int indeg[]){
+    for(int i=0;i<graph.length;i++){
+        int v = i;
+        for(int j=0;j<graph[v].size();j++){
+            Edge e = graph[v].get(j);
+            indeg[e.dest]++;
+        }
+    }
+   } 
+
+   public static void topSort1(ArrayList<Edge> graph[]){
+    int indeg[] = new int[graph.length];
+    calcIndeg(graph, indeg);
+    Queue<Integer> q = new LinkedList<>();
+
+    for(int i=0;i<indeg.length;i++){
+        if(indeg[i] == 0){
+            q.add(i);
+        }
+    }
+
+    //bfs
+    while (!q.isEmpty()) {
+       int curr = q.remove();
+       System.out.print(curr+" "); 
+
+       for(int i=0;i<graph[curr].size();i++){
+        Edge e = graph[curr].get(i);
+        indeg[e.dest]--;
+        if(indeg[e.dest] == 0){
+            q.add(e.dest);
+        }
+       }
+    }
+    System.out.println();
+   }
+
+
+   public static void printAllPath(ArrayList<Edge> graph[],int src,int dest,String path){
+    if(src == dest){
+        System.out.println(path+dest);
+        return;
+    }
+    for(int i=0;i<graph[src].size();i++){
+        Edge e = graph[src].get(i);
+        printAllPath(graph, e.dest, dest, path +src);
+    }
+   }
 
 
     public static void main(String[] args) {
       int V = 6;
       ArrayList<Edge>[] graph = new ArrayList[V];
        createGraph(graph);
-    //   System.out.println(isCycle(graph));
-      topSort(graph);
+       int src = 5,dest = 1;
+    printAllPath(graph, src, dest, "");
+      //topSort1(graph);
     //   System.out.println(detectCycle(graph));
     //   System.out.println(isBipartitieGraph(graph));
     // System.out.println(hasPath(graph, 0, 5, new boolean[V]));
