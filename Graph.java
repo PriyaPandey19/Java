@@ -119,7 +119,7 @@ public class Graph {
 
 
 
-    public static boolean detectCycle(ArrayList<Edge>[] graph){   //detect cycle in undirected graph
+    public static boolean detectCycle(ArrayList<Edge>[] graph){   //detect cycle in undirected graph using DFS
         boolean vis[] = new boolean[graph.length];
         for(int i=0;i<graph.length;i++){
             if(!vis[i]){
@@ -146,6 +146,55 @@ public class Graph {
         }
       }
       return false;
+    }
+
+
+
+
+
+
+
+    static void addEdge(ArrayList<Integer> adj[],int u, int v){     //detect cycle in undirected graph using BFS
+        adj[u].add(v);    //add edge
+        adj[v].add(u); 
+    }
+
+    static boolean isCyclicConnected(ArrayList<Integer> adj[],int s, int V, boolean visited[]){
+        int parent[] = new int[V];
+        Arrays.fill(parent, -1);
+
+        Queue<Integer> q = new LinkedList<>();
+        visited[s] = true;
+        q.add(s);
+
+        while(!q.isEmpty()){
+            int u= q.poll();
+            for(int i=0;i<adj[u].size();i++){   //if not visited then add to queue
+               int v  = adj[u].get(i);
+               if(!visited[v]){
+                visited[v] = true;
+                q.add(v);
+                parent[v] =u;
+               }
+               else if(parent[u] != v){
+                   return true;
+               }
+            }
+           
+        }
+         return false;
+    }
+
+    static boolean isCyclicDisconnected(ArrayList<Integer> adj[],int V){  //to check if the graph is cyclic or not
+        boolean visited[] = new boolean[V];
+        Arrays.fill(visited, false);
+        for(int i=0;i<V;i++){
+                if(!visited[i] && isCyclicConnected(adj, i, V, visited))
+                       return true;
+                    
+                
+        }
+        return false;
     }
 
 
@@ -323,7 +372,7 @@ public class Graph {
     }
    }
 
-   
+
 
    public static void dijkstra(ArrayList<Edge> graph[],int src){   //dijkstra algo
     int dist[] = new int[graph.length];  //har kisi ko intilize kar diya with +infinity except src
