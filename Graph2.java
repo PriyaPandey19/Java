@@ -221,6 +221,40 @@ public class Graph2 {
     return finalCost;
     }
 
+    static int n = 7;
+   static int par[] = new int[n];
+    static int rank[] = new int[n];
+
+    public static void init(){
+        for(int i=0;i<n;i++){
+            par[i] = i;
+
+        }
+    }
+
+    public static int find(int x){
+        if(x == par[x]){
+        return x;
+        }
+        return  find(par[x]);
+    }
+
+public static void union(int a, int b){
+    int parA = find(a);
+    int parB = find(b);
+
+    if(rank[parA] == rank[parB]){          //if both have same rank so no change
+        par[parB] = parA;
+        rank[parA]++;
+    }
+    else if(rank[parA] < rank[parB]){   //if rank of A is less it should be added with B
+       par[parA] = parB;  
+    }
+    else{
+      par[parB] = parA;  //if rank of B is less it should be added with A
+    }
+
+}
 
 
 
@@ -229,6 +263,17 @@ public class Graph2 {
 
 
     public static void main(String[] args) {
+        init();
+        union(1, 3);
+       System.out.println(find(3));
+       union(2, 4);
+       union(3, 6);
+       union(1, 4);
+       System.out.println(find(3));
+       System.out.println(find(4));
+       union(1, 5);
+
+
         int n = 4;
         int flights[][] ={{0,1,100},{1,2,100},{2,0,100},{1,3,600},{2,3,200}};
         int src=0;
