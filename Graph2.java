@@ -117,7 +117,7 @@ public class Graph2 {
     }
 
 
-    public static void createGraph(int flights[][], ArrayList<Edge> graph1[]){
+    public static void createGraph(int flights[][], ArrayList<Edge> graph1[]){     //cheapest flight
         for(int i=0;i<graph1.length;i++){       //intitilize the empty  arrayList
             graph1[i] = new ArrayList<>();
         }
@@ -144,7 +144,7 @@ public class Graph2 {
     }
 
     public static int cheapestFlight(int n, int flights[][],int src,int dest,int k){
-         ArrayList<Edge> graph1[] = new ArrayList[n];
+     ArrayList<Edge> graph1[] = new ArrayList[n]; //create graph and initilize with infinite
      createGraph(flights, graph1);
        int dist[] = new int[n];
        for(int i=0;i<n;i++){
@@ -152,21 +152,21 @@ public class Graph2 {
             dist[i] = Integer.MAX_VALUE;
         }
        }
-       Queue<Info> q = new LinkedList<>();
+       Queue<Info> q = new LinkedList<>();  //queue ke andar add kiya src ko
        q.add(new Info(src, 0, 0));
 
-       while (!q.isEmpty()) {
+       while (!q.isEmpty()) {                     //if curr ke stop grater than k hai to stop
         Info curr = q.remove();
         if(curr.stops > k){
             break;
         }
-        for(int i=0;i<graph1[curr.v].size();i++){
+        for(int i=0;i<graph1[curr.v].size();i++){    //sare neighbours ke liya 
             Edge e = graph1[curr.v].get(i);
             int u = e.src;
             int v = e.dest;
             int wt = e.wt;
 
-            if(curr.cost+ wt < dist[v] && curr.stops <= k){
+            if(curr.cost+ wt < dist[v] && curr.stops <= k){   //relaxation step 
             dist[v] = curr.cost + wt;
             q.add(new Info(v, dist[v], curr.stops+1));
             }
@@ -186,6 +186,47 @@ public class Graph2 {
 
 
 
+    static class Edge1 implements Comparable<Edge1>{
+        int dest;
+        int cost;
+        
+        public Edge1(int d, int c){
+            this.dest = d;
+            this.cost = c;
+        }
+        @Override
+        public int compareTo(Edge1 e2){
+            return this.cost - e2.cost;
+        }
+    }
+    public static int connectCitiesS(int cities[][]){    //min cost to connect  cities
+      PriorityQueue<Edge1> pq = new PriorityQueue<>();
+      boolean vis[] = new boolean[cities.length];
+
+   pq.add(new Edge1(0, 0));
+    int finalCost=0;
+    while(!pq.isEmpty()){
+        Edge1 curr = pq.remove();
+        if(!vis[curr.dest]){    //if not visited than visit and add in final cost
+        vis[curr.dest] = true;
+        finalCost += curr.cost;
+        
+        for(int i=0;i<cities[curr.dest].length;i++){    //phir check karenge neighbour if edge exists or not agar hoti hai to add karo pq mai
+            if(cities[curr.dest][i] != 0){
+                pq.add(new Edge1(i, cities[curr.dest][i]));
+            }
+        }
+        }
+    }
+    return finalCost;
+    }
+
+
+
+
+
+
+
 
     public static void main(String[] args) {
         int n = 4;
@@ -193,6 +234,14 @@ public class Graph2 {
         int src=0;
         int dest =3, k =1;
         System.out.println(cheapestFlight(n, flights, src, dest, k));
+
+
+        int cities[][] ={{0,1,2,3,4},
+                         {1,0,5,0,7},
+                        {2,5,0,6,0},
+                        {3,0,6,0,0},
+                        {4,7,0,0,0}};
+                        System.out.println(connectCitiesS(cities));
     
      int V =4;
      ArrayList<Edge> graph[] = new ArrayList[V];
