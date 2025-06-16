@@ -354,8 +354,11 @@ image[sr][sc] = color;
 
 //left
 helper(image, sr, sc-1, color, vis, orgCol);
+//right
 helper(image, sr, sc+1, color, vis, orgCol);
+//top
 helper(image, sr-1, sc, color, vis, orgCol);
+//bottom
 helper(image, sr+1, sc, color, vis, orgCol);
 
 }
