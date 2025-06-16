@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -115,6 +116,11 @@ public class Graph2 {
         }
         System.out.println("final(min) cost "+ finalCost);
     }
+
+
+
+
+
 
 
     public static void createGraph(int flights[][], ArrayList<Edge> graph1[]){     //cheapest flight
@@ -262,8 +268,113 @@ public static void union(int a, int b){
 
 
 
+
+static class Edge2 implements Comparable<Edge2>{
+        int src;
+        int dest;
+        int wt;
+
+        public Edge2(int s, int d,int w){
+            this.src = s;
+            this.dest = d;
+           this.wt = w;
+        }
+        @Override
+        public int compareTo(Edge2 e2){
+            return this.wt - e2.wt;
+        }
+    }
+    static void createGraph(ArrayList<Edge2> edges){
+        edges.add(new Edge2(0, 1, 10));
+        edges.add(new Edge2(0, 2, 15));
+        edges.add(new Edge2(0, 3, 30));
+        edges.add(new Edge2(1, 3, 40));
+        edges.add(new Edge2(2, 3, 50));
+    }
+     static int m=4;
+     static int par1[] = new int[m];
+      static int rank1[] = new int[m];
+
+      public static void init1(){
+        for(int i=0;i<n;i++){
+            par[i] =i;
+        }
+      }
+       public static int find1(int x){
+        if(x == par[x]){
+        return x;
+        }
+        return  find1(par[x]);
+    }
+
+    public static void union1(int a, int b){
+    int parA = find(a);
+    int parB = find(b);
+
+    if(rank[parA] == rank[parB]){          //if both have same rank so no change
+        par[parB] = parA;
+        rank[parA]++;
+    }
+    else if(rank[parA] < rank[parB]){   //if rank of A is less it should be added with B
+       par[parA] = parB;  
+    }
+    else{
+      par[parB] = parA;  //if rank of B is less it should be added with A
+    }
+
+}
+
+public static void kruskalsMST(ArrayList<Edge2>edges, int V){    //kruskal algo
+    init();
+    Collections.sort(edges);
+    int mstCost =0;
+    int count =0;
+
+    for(int i=0;count < V-1;i++){
+    Edge2 e = edges.get(i);
+
+    int parA = find(e.src);
+    int parB = find(e.dest);
+    if(parA != parB){
+        union(e.src, e.dest);
+        mstCost += e.wt;
+        count++;
+    }
+    }
+    System.out.println(mstCost);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public static void main(String[] args) {
-        init();
+     int V = 4;                                          //main function of kruskal
+    ArrayList<Edge2> edges = new ArrayList<>();
+    createGraph(edges);
+    kruskalsMST(edges, V);
+
+
+
+
+
+
+        init();                    //disjoint set union
         union(1, 3);
        System.out.println(find(3));
        union(2, 4);
@@ -274,21 +385,23 @@ public static void union(int a, int b){
        union(1, 5);
 
 
-        int n = 4;
+        int n = 4;                          //cheapest flight main function
         int flights[][] ={{0,1,100},{1,2,100},{2,0,100},{1,3,600},{2,3,200}};
         int src=0;
         int dest =3, k =1;
         System.out.println(cheapestFlight(n, flights, src, dest, k));
 
 
-        int cities[][] ={{0,1,2,3,4},
+
+
+        int cities[][] ={{0,1,2,3,4},                                       //connect cities main function
                          {1,0,5,0,7},
                         {2,5,0,6,0},
                         {3,0,6,0,0},
                         {4,7,0,0,0}};
                         System.out.println(connectCitiesS(cities));
     
-     int V =4;
+     int V1=4;
      ArrayList<Edge> graph[] = new ArrayList[V];
      createGraph(graph);
      bellmanFord(graph, 0);
