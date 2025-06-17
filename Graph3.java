@@ -50,7 +50,7 @@ public class Graph3 {
     s.push(curr);
 
     }
-    public static void dfs(ArrayList<Edge> graph[], int curr, boolean vis[]){
+    public static void dfs(ArrayList<Edge> graph[], int curr, boolean vis[]){  //step 2 helper function
         vis[curr] = true;
 
         for(int i=0;i<graph[curr].size();i++){
