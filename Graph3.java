@@ -38,15 +38,15 @@ public class Graph3 {
      //3 vertex
      graph[3].add(new Edge(3, 0));
      graph[3].add(new Edge(3, 4));
-    graph[3].add(new Edge(0, 5));
+    //graph[3].add(new Edge(0, 5));
 
     //4 vertex
      graph[4].add(new Edge(4, 3));
-      graph[4].add(new Edge(4, 5));
+     // graph[4].add(new Edge(4, 5));
 
     //5 vertex
-     graph[5].add(new Edge(5, 3));
-    graph[5].add(new Edge(5, 4));  
+    // graph[5].add(new Edge(5, 3));
+    //graph[5].add(new Edge(5, 4));  
 
      
     }
@@ -129,7 +129,7 @@ public class Graph3 {
                 
             }
             else{
-              low[curr] = Math.min(low[curr], dt[neigh]);  
+              low[curr] = Math.min(low[curr], dt[neigh]);  //agar already visited hai to bus lowest ko update karna hai
             }
         }
     } 
@@ -149,7 +149,7 @@ public class Graph3 {
     }
 
    public static void main(String[] args) {
-    int V = 6;
+    int V = 5;
     ArrayList<Edge> graph[] = new ArrayList[V];
     createGraph(graph);
     tarjanBridge(graph, V);
