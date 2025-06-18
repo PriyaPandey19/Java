@@ -20,20 +20,34 @@ public class Graph3 {
       }  
       
     //0 vertex
+     graph[0].add(new Edge(0, 1));
      graph[0].add(new Edge(0, 2));
-     graph[0].add(new Edge(0, 3));
+    graph[0].add(new Edge(0, 3));
      
     
      //1vertex
      graph[1].add(new Edge(1, 0));
+     graph[1].add(new Edge(1, 2));
      
      
      //2 vertex
-     graph[2].add(new Edge(2, 1));
+     graph[2].add(new Edge(2, 0));
+    graph[2].add(new Edge(2, 1));
     
 
      //3 vertex
+     graph[3].add(new Edge(3, 0));
      graph[3].add(new Edge(3, 4));
+    graph[3].add(new Edge(0, 5));
+
+    //4 vertex
+     graph[4].add(new Edge(4, 3));
+      graph[4].add(new Edge(4, 5));
+
+    //5 vertex
+     graph[5].add(new Edge(5, 3));
+    graph[5].add(new Edge(5, 4));  
+
      
     }
 
@@ -60,7 +74,7 @@ public class Graph3 {
             }
         }
     }
-    public static void kosaraju(ArrayList<Edge> graph[],int V){
+    public static void kosaraju(ArrayList<Edge> graph[],int V){  //kosaraju algo
         //step 1
         Stack<Integer> s = new Stack<>();    //perform the topological sort
         boolean vis[] = new boolean[V];
@@ -94,13 +108,11 @@ public class Graph3 {
             }
         }
 
-
-
-
     }
+    
 
    public static void main(String[] args) {
-    int V = 5;
+    int V = 6;
     ArrayList<Edge> graph[] = new ArrayList[V];
     createGraph(graph);
     kosaraju(graph, V);
