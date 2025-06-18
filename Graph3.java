@@ -42,11 +42,7 @@ public class Graph3 {
 
     //4 vertex
      graph[4].add(new Edge(4, 3));
-     // graph[4].add(new Edge(4, 5));
-
-    //5 vertex
-    // graph[5].add(new Edge(5, 3));
-    //graph[5].add(new Edge(5, 4));  
+       
 
      
     }
@@ -144,15 +140,68 @@ public class Graph3 {
             dfs(graph, i, -1, dt, low, vis, time);
         }
       }
+    }
+
+    public static void dfs(ArrayList<Edge> graph[],int curr, int par, int dt[],int low[], int time, boolean vis[],boolean ap[]){
+        vis[curr] = true;
+        dt[curr] = low[curr] = ++time;
+        int children =0;
+
+        for(int i=0;i<graph[curr].size();i++){
+            Edge e = graph[curr].get(i);
+            int neigh = e.dest;
+
+            if(par == neigh){
+                continue;
+            }
+            else if(vis[neigh]){
+                low[curr] = Math.min(low[curr],dt[neigh]);
+            }
+            else{
+              dfs(graph, neigh, curr, dt, low, time, vis,ap);
+              low[curr] = Math.min(low[curr], low[neigh]);
+              if(par != -1 && dt[curr] <= low[neigh]){
+                ap[curr] = true;
+              }
+              children++;
+            }
+        }
+        if(par == -1 && children > 1){
+           ap[curr] = true;
+        }
+    }
+
+
+    public static void getAP(ArrayList<Edge> graph[], int V){
+        int dt[] = new int[V];
+        int low[] = new int[V];
+        int time =0;
+        boolean vis[] = new boolean[V];
+        boolean ap[] = new boolean[V];
+
+        for(int i=0;i<V;i++){
+            if(!vis[i]){
+                dfs(graph,i,-1,dt,low, time,vis,ap);
+            }
+        }
+
+        for(int i=0;i<V;i++){
+            if(ap[i]){
+               System.out.println("AP: "+ i);
+            }
+        }
 
 
     }
+
+    
 
    public static void main(String[] args) {
     int V = 5;
     ArrayList<Edge> graph[] = new ArrayList[V];
     createGraph(graph);
-    tarjanBridge(graph, V);
+    getAP(graph, V);
+   // tarjanBridge(graph, V);
    // kosaraju(graph, V);
    } 
 }
