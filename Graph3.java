@@ -109,12 +109,50 @@ public class Graph3 {
         }
 
     }
-    
+
+    public static void dfs(ArrayList<Edge> graph[],int curr, int par, int dt[],int low[], boolean vis[], int time){
+        vis[curr] = true;
+        dt[curr] = low[curr] = ++time;
+
+        for(int i=0;i<graph[curr].size();i++){
+            Edge e = graph[curr].get(i); //e.src ---- e.dest
+            int neigh = e.dest;
+            if(neigh == par){          //if neighbour is equal to parent than ignore
+                continue;
+            }
+            else if(!vis[neigh]){                  //if not visited than call dfs to visit them
+                dfs(graph, neigh, curr, dt, low, vis, time);
+                low[curr] = Math.min(low[curr], low[neigh]);
+                if(dt[curr] < low[neigh]){               //bridge condition
+                    System.out.println("Bridge : "+ curr + "----"+ neigh);
+                }
+                
+            }
+            else{
+              low[curr] = Math.min(low[curr], dt[neigh]);  
+            }
+        }
+    } 
+    public static void tarjanBridge(ArrayList<Edge> graph[],int V){  //tarjans algo
+        int dt[] = new int[V];
+        int low[] = new int[V];
+        int time =0;
+        boolean vis[] = new boolean[V];
+
+      for(int i=0;i<V;i++){
+        if(!vis[i]){
+            dfs(graph, i, -1, dt, low, vis, time);
+        }
+      }
+
+
+    }
 
    public static void main(String[] args) {
     int V = 6;
     ArrayList<Edge> graph[] = new ArrayList[V];
     createGraph(graph);
-    kosaraju(graph, V);
+    tarjanBridge(graph, V);
+   // kosaraju(graph, V);
    } 
 }
