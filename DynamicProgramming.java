@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class DynamicProgramming {
     public static int fibTabulation(int n, int f[]){
         int dp[] = new int[n+1];
@@ -9,9 +11,37 @@ public class DynamicProgramming {
         }
         return dp[n];
     }
+
+    public static int countWays(int n){      //using recursion
+        if(n ==0){
+            return 1;
+        }
+        if( n < 0 ){
+            return 0;
+        }
+        return countWays(n-1)+countWays(n-2);
+    }
+
+    public static int countWays(int n,int ways[]){      //using recursion
+        if(n ==0){
+            return 1;
+        }
+        if( n < 0 ){
+            return 0;
+        }
+        if(ways[n] != -1){
+            return ways[n];
+        }
+        ways[n]= countWays(n-1, ways)+ countWays(n-2,ways);
+        return ways[n];
+    }
+
+
     public static void main(String[] args) {
      int n = 5;
      int f[] = new int[n+1];
-     System.out.println(fibTabulation(n,f));   
+     //System.out.println(fibTabulation(n,f));  
+    Arrays.fill(f,-1);
+     System.out.println(countWays(n,f)); 
     }
 }
