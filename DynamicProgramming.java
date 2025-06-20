@@ -36,7 +36,7 @@ public class DynamicProgramming {
         return ways[n];
     }
 
-     public static int countWays1(int n){      //using tabulation
+     public static int countWays1(int n){      // number of stairs using tabulation
 
        int dp[] = new int[n+1];
        dp[0] =1;
@@ -53,6 +53,22 @@ public class DynamicProgramming {
        return dp[n];
     }
 
+    public static int knapsack(int val[], int wt[], int W, int n){
+        if(W==0|| n ==0){
+            return 0;
+        }
+        if(wt[n-1] <= W){   //valid
+            //include
+          int ans1 = val[n-1] +knapsack(val, wt, W-wt[n-1], n-1);
+          //exclude
+          int ans2 = knapsack(val, wt, W, n-1);
+          return Math.max(ans1, ans2);
+        }
+        else{   //not valid
+            return knapsack(val, wt, W, n-1);
+        }
+    }
+
     
 
     
@@ -62,10 +78,11 @@ public class DynamicProgramming {
 
 
     public static void main(String[] args) {
-     int n = 5;
-     int f[] = new int[n+1];
+    int val[] ={15, 14, 10,45, 30};
+    int wt[] ={2,5,1,3,4};
+    int W = 7;
      //System.out.println(fibTabulation(n,f));  
-    Arrays.fill(f,-1);
-     System.out.println(countWays1(n)); 
+   
+     System.out.println(knapsack(val, wt, W, val.length)); 
     }
 }
