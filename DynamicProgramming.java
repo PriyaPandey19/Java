@@ -188,13 +188,42 @@ public class DynamicProgramming {
 
 
 
+
+  public static int coinChange(int coins[], int sum){
+    int n = coins.length;
+    int dp[][] = new int[n+1][sum+1];
+
+    for(int i=0;i<n+1;i++){
+        dp[i][0] =1;
+    }
+     for(int j=1;j<sum+1;j++){
+        dp[0][j] =0;
+    }
+    for(int i=1;i<n+1;i++){
+        for(int j=1;j<sum+1;j++){
+            if(coins[i-1] <= j){   //valid
+                dp[i][j] = dp[i][j-coins[i-1]]+ dp[i-1][j];
+            }
+            else{                    //not valid
+                dp[i][j] = dp[i-1][j];
+            }
+        }
+    }
+    return dp[n][sum];
+
+  }
+
+
+
     public static void main(String[] args) {
+   int coins[] ={1,2,3};
+   int sum =4;
+   System.out.println(coinChange(coins, sum));
 
-
-    int val[] ={15, 14,10,45, 30};
-    int wt[] ={2,5,1,3,4};
-    int W = 7;
-    System.out.println(unboundedKnapsack(val, wt, W));
+    // int val[] ={15, 14,10,45, 30};
+    // int wt[] ={2,5,1,3,4};
+    // int W = 7;
+   // System.out.println(unboundedKnapsack(val, wt, W));
 //     int dp[][] = new int[val.length+1][W+1];
 //     for(int i=0;i<dp.length;i++){
 //         for(int j=0;j<dp[0].length;j++){
@@ -203,7 +232,7 @@ public class DynamicProgramming {
 //     }
    
   //   System.out.println(knapsack(val, wt, W, val.length,dp)); 
-  System.out.println(knapsackTab(val, wt, W));
+  //System.out.println(knapsackTab(val, wt, W));
 
 
 
