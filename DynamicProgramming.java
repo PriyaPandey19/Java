@@ -133,6 +133,8 @@ public class DynamicProgramming {
         }
 
 
+
+
     public static boolean targetSumSubset(int arr[], int sum){    //target subset sum using tabulation
         int n = arr.length;
         boolean dp[][] = new boolean[n+1][sum+1];
@@ -156,6 +158,10 @@ public class DynamicProgramming {
          print1(dp);
          return dp[n][sum];
     }
+
+    
+
+
     
 
     
@@ -167,9 +173,9 @@ public class DynamicProgramming {
     public static void main(String[] args) {
 
 
-//     int val[] ={15, 14, 10,45, 30};
-//     int wt[] ={2,5,1,3,4};
-//     int W = 7;
+    int val[] ={15, 14,10,45, 30};
+    int wt[] ={2,5,1,3,4};
+    int W = 7;
 //     int dp[][] = new int[val.length+1][W+1];
 //     for(int i=0;i<dp.length;i++){
 //         for(int j=0;j<dp[0].length;j++){
@@ -183,9 +189,6 @@ public class DynamicProgramming {
 
 
 
-int arr[]= {4,2,7,1,3};
-int sum =10; 
-System.out.println(targetSumSubset(arr, sum));
 
 
 
