@@ -210,7 +210,33 @@ public class DynamicProgramming {
         }
     }
     return dp[n][sum];
+  }
 
+  //weight => length , val->prices, W-> totRod
+  public static int rodCutting(int length[], int prices[], int totRod){
+
+    int n = prices.length;
+    int dp[][] = new int[n+1][totRod+1];
+
+    for(int i=0;i<n+1;i++){
+        for(int j=0;j<totRod+1;j++){
+            if(i ==0 || j==0){
+                dp[i][j] =0;
+            }
+        }
+    }
+    for(int i=1;i<n+1;i++){
+        for(int j=1;j<totRod+1;j++){
+            //valid
+            if(length[i-1] <= j){
+                dp[i][j] = Math.max(prices[i-1] + dp[i][j-length[i-1]], dp[i-1][j]);
+            }
+            else{  //invalid
+                dp[i][j] = dp[i-1][j];
+            }
+        }
+    }
+    return dp[n][totRod]; 
   }
 
 
@@ -220,19 +246,12 @@ public class DynamicProgramming {
    int sum =4;
    System.out.println(coinChange(coins, sum));
 
-    // int val[] ={15, 14,10,45, 30};
-    // int wt[] ={2,5,1,3,4};
-    // int W = 7;
-   // System.out.println(unboundedKnapsack(val, wt, W));
-//     int dp[][] = new int[val.length+1][W+1];
-//     for(int i=0;i<dp.length;i++){
-//         for(int j=0;j<dp[0].length;j++){
-//             dp[i][j] = -1;
-//         }
-//     }
-   
-  //   System.out.println(knapsack(val, wt, W, val.length,dp)); 
-  //System.out.println(knapsackTab(val, wt, W));
+   int length[] = {1,2,3,4,5,6,7,8};
+   int prices[] ={1,5,8,9,10,17,17,20};
+   int totRod = 8;
+   System.out.println(rodCutting(length, prices, totRod));
+
+ 
 
 
 
