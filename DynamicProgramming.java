@@ -189,7 +189,7 @@ public class DynamicProgramming {
 
 
 
-  public static int coinChange(int coins[], int sum){
+  public static int coinChange(int coins[], int sum){    //coin change using tabulation
     int n = coins.length;
     int dp[][] = new int[n+1][sum+1];
 
