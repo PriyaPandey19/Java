@@ -323,6 +323,11 @@ public class DynamicProgramming {
   }
 
 
+
+
+
+
+
   public static int lcs(int arr1[], int arr2[]){    //helper function of lis
     int n = arr1.length;
     int m = arr2.length;
@@ -348,7 +353,6 @@ public class DynamicProgramming {
      }
     }
     return dp[n][m];
-
   }
 
   public static int lis(int arr1[]){                //longest increasing subseqence
