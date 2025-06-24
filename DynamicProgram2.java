@@ -1,6 +1,6 @@
 public class DynamicProgram2 {
 
-    public static int editDistance(String str1, String str2){
+    public static int editDistance(String str1, String str2){    //edit distance
         int n = str1.length();
         int m = str2.length();
         int dp[][] = new int[n+1][m+1];
@@ -14,16 +14,14 @@ public class DynamicProgram2 {
                   if(j==0){
                     dp[i][j] =i;
                 }
-
             }
         }
-
         for(int i=1;i<n+1;i++){
             for(int j=1;j<m+1;j++){
                 if(str1.charAt(i-1) == str2.charAt(j-1)){     //same
                  dp[i][j] = dp[i-1][j-1];          //so reduce length of both the string
                 } 
-                else{                                     //diffrent
+                else{                                     //diffrent so add it with +1
                   int add = dp[i][j-1]+1; 
                   int del = dp[i-1][j] +1;
                   int rep = dp[i-1][j-1]+1;
