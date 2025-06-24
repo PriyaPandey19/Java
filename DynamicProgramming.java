@@ -326,7 +326,7 @@ public class DynamicProgramming {
   public static int lcs(int arr1[], int arr2[]){    //helper function of lis
     int n = arr1.length;
     int m = arr2.length;
-    int dp[][] = new int[n][m];
+    int dp[][] = new int[n+1][m+1];
 
     for(int i=0;i<n+1;i++){
         dp[i][0] = 0;
@@ -392,6 +392,9 @@ public class DynamicProgramming {
    String str4 = "ABGCE";
    System.out.println(longestCommonSubstring(str3, str4));
 
+
+   int arr[] = {50,3,10,7,40,80};
+   System.out.println(lis(arr));
 
 
 
