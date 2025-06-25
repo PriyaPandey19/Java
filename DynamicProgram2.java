@@ -33,7 +33,7 @@ public class DynamicProgram2 {
     }
 
 
-    public static boolean isMatch(String s, String p){
+    public static boolean isMatch(String s, String p){    //wildcard matching
         int n = s.length();
         int m = p.length();
 
