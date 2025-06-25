@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class DynamicProgram2 {
 
     public static int editDistance(String str1, String str2){    //edit distance
@@ -70,7 +72,7 @@ public class DynamicProgram2 {
     }
 
 
-    public static int catalnRec(int n){
+    public static int catalnRec(int n){      //catalan using recursion
         if(n ==0 || n == 1){
             return 1;
         }
@@ -80,6 +82,25 @@ public class DynamicProgram2 {
         }
         return ans;
     }
+
+
+    public static int catalanMem(int n, int dp[]){    //catalan using memoization
+        if(n ==0 || n ==1){
+            return 1;
+        }
+        if(dp[n] != -1){
+            return  dp[n];
+        }
+        int ans =0;
+        for(int i=0;i<n;i++){
+            ans += catalanMem(i, dp) * catalanMem(n-i-1, dp);
+
+        }
+        return dp[n] = ans;
+    }
+
+
+
 
 
     public static void main(String[] args) {
@@ -92,6 +113,9 @@ public class DynamicProgram2 {
     String p = "**d";
     System.out.println(isMatch(s, p));
 
-    System.out.println(catalnRec(4));
+    int n =4;
+    int dp[] = new int[n+1];
+    Arrays.fill(dp,-1);
+    System.out.println(catalanMem(n, dp));
     }
 }
