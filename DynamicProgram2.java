@@ -70,6 +70,17 @@ public class DynamicProgram2 {
     }
 
 
+    public static int catalnRec(int n){
+        if(n ==0 || n == 1){
+            return 1;
+        }
+        int ans =0;
+        for(int i=0;i<= n-1;i++){
+            ans += catalnRec(i)* catalnRec(n-i-1);
+        }
+        return ans;
+    }
+
 
     public static void main(String[] args) {
     String word1 ="intention";
@@ -80,5 +91,7 @@ public class DynamicProgram2 {
     String s = "abc";
     String p = "**d";
     System.out.println(isMatch(s, p));
+
+    System.out.println(catalnRec(4));
     }
 }
