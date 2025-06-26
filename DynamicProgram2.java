@@ -161,37 +161,63 @@ public class DynamicProgram2 {
     }
 
 
+    public static int mcmMem(int arr[],int i,int j, int dp[][]){
+        if(i==j){
+            return 0;
+        }
+        if(dp[i][j] != -1){
+            return dp[i][j];
+        }
+        int ans = Integer.MAX_VALUE;
+        for(int k =i;k<=j-1;k++){
+            int cost1 = mcmMem(arr, i, k, dp);
+            int cost2 = mcmMem(arr, k+1, j, dp);
+            int cost3 = arr[i-1] * arr[k] * arr[j];
+            ans = Math.min(ans, cost1+ cost2 + cost3);
+        }
+        return dp[i][j] = ans;
+    }
+
+
 
 
 
 
 
     public static void main(String[] args) {
-    String word1 ="intention";
-    String word2 = "execution";
-    System.out.println(editDistance(word1, word2));
+    // String word1 ="intention";
+    // String word2 = "execution";
+    // System.out.println(editDistance(word1, word2));
 
 
-    String s = "abc";
-    String p = "**d";
-    System.out.println(isMatch(s, p));
+    // String s = "abc";
+    // String p = "**d";
+    // System.out.println(isMatch(s, p));
 
-    int n =4;
-    int dp[] = new int[n+1];
-    Arrays.fill(dp,-1);
-    System.out.println(catalanMem(n, dp));
+    // int n =4;
+    // int dp[] = new int[n+1];
+    // Arrays.fill(dp,-1);
+    // System.out.println(catalanMem(n, dp));
 
-    System.out.println(catalanTab(30));
+    // System.out.println(catalanTab(30));
 
-    int m =3;
-    System.out.println(countBST(m));
+    // int m =3;
+    // System.out.println(countBST(m));
 
-    int h =4;
-    System.out.println(mountainRanges(h));
+    // int h =4;
+    // System.out.println(mountainRanges(h));
 
-    int arr[] ={1,2,3,4,3};
-    int t = arr.length;
-    System.out.println(mcm(arr, 1, t-1));
+    // int arr[] ={1,2,3,4,3};
+    // int t = arr.length;
+    // System.out.println(mcm(arr, 1, t-1));
+
+    int arr1[] ={1,2,3,4,3};
+    int n = arr1.length;
+    int dp[][] = new int[n][n];
+    for(int i=0;i<n;i++){
+        Arrays.fill(dp[i], -1);
+    }
+    System.out.println(mcmMem(arr1, 1, n-1,dp));
 
     }
 }
