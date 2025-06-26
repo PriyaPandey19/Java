@@ -130,7 +130,7 @@ public class DynamicProgram2 {
     }
 
 
-    public static int mountainRanges(int n){    // mountain ranges
+    public static int mountainRanges(int n){    // mountain ranges using tabulation
         int dp[] = new int[n+1];
         dp[0] =1;
         dp[1] =1;
@@ -144,6 +144,21 @@ public class DynamicProgram2 {
         return dp[n];
     }
 
+
+    public static int mcm(int arr[],int i, int j){
+        if(i==j){
+            return 0;
+        }
+        int ans = Integer.MAX_VALUE;
+        for(int k=i;k<=j-1;k++){
+            int cost1 = mcm(arr, i, k);   //Ai....Ak => arr[i-1]*arr[k]
+            int cost2 = mcm(arr, k+1, j);   //Ai+1......Aj => arr[k]*arr[j]
+            int cost3 = arr[i-1]*arr[k]*arr[j];
+            int finalCost = cost1+cost2+cost3;
+            ans = Math.min(ans, finalCost);
+        }
+        return ans;
+    }
 
 
 
@@ -173,5 +188,10 @@ public class DynamicProgram2 {
 
     int h =4;
     System.out.println(mountainRanges(h));
+
+    int arr[] ={1,2,3,4,3};
+    int t = arr.length;
+    System.out.println(mcm(arr, 1, t-1));
+
     }
 }
