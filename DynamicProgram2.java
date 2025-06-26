@@ -112,7 +112,10 @@ public class DynamicProgram2 {
     return dp[n];
     }
 
-    public static int countBST(int n){
+
+
+
+    public static int countBST(int n){    //count BST tree
         int dp[] = new int[n+1];
         dp[0] =1;
         dp[1] =1;
@@ -121,6 +124,21 @@ public class DynamicProgram2 {
                 int left = dp[j];
                 int right = dp[i-j-1];
                 dp[i] += left *right;
+            }
+        }
+        return dp[n];
+    }
+
+
+    public static int mountainRanges(int n){    // mountain ranges
+        int dp[] = new int[n+1];
+        dp[0] =1;
+        dp[1] =1;
+        for(int i=2;i<n+1;i++){
+            for(int j=0;j<i;j++){
+                int inside = dp[j];
+                int outside = dp[i-j-1];
+                dp[i] += inside *outside;
             }
         }
         return dp[n];
@@ -152,5 +170,8 @@ public class DynamicProgram2 {
 
     int m =3;
     System.out.println(countBST(m));
+
+    int h =4;
+    System.out.println(mountainRanges(h));
     }
 }
