@@ -145,8 +145,8 @@ public class DynamicProgram2 {
     }
 
 
-    public static int mcm(int arr[],int i, int j){
-        if(i==j){
+    public static int mcm(int arr[],int i, int j){     //mcm using recursion
+        if(i==j){                       //base case single matrix
             return 0;
         }
         int ans = Integer.MAX_VALUE;
