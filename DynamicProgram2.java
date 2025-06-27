@@ -165,7 +165,7 @@ public class DynamicProgram2 {
         return dp[i][j] = ans;
     }
 
-    public static int mcmTab(int arr[]) {
+    public static int mcmTab(int arr[]) {       //mcm using tabulation
         int n = arr.length;
         int dp[][] = new int[n][n];
 
@@ -186,7 +186,18 @@ public class DynamicProgram2 {
                 }
             }
         }
+        print(dp);
         return dp[1][n - 1];
+    }
+
+    public static void print(int dp[][]){
+        for(int i=0;i<dp.length;i++){
+            for(int j=0;j<dp[0].length;j++){
+                System.out.print(dp[i][j] +" ");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) {
