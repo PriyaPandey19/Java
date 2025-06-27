@@ -200,14 +200,14 @@ public class DynamicProgram2 {
         System.out.println();
     }
 
-    public static int minPartition(int arr[]){
+    public static int minPartition(int arr[]){     //min patition using tabulation
         int n = arr.length;
         int sum =0;
         for(int i=0;i<arr.length;i++){
             sum += arr[i];
         }
 
-        int W = sum/2;
+        int W = sum/2;            //bag weight exactly half to find min diffrence btw them
 
         int dp[][] = new int[n+1][W+1];
 
@@ -259,7 +259,7 @@ public class DynamicProgram2 {
         // int t = arr.length;
         // System.out.println(mcm(arr, 1, t-1));
 
-        int arr1[] = { 1,6,11,5};
+        int arr1[] = {1,2,3};
         System.out.println(minPartition(arr1));
 
     }
