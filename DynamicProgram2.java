@@ -223,6 +223,12 @@ public class DynamicProgram2 {
             }
         }
         int sum1 = dp[n][W];
+        if( sum %2 == 0 && sum1 == sum/2){
+          System.out.println("TRUE");
+        }
+        else{
+            System.out.println("FALSE");
+        }
         int sum2 = sum - sum1;
         return Math.abs(sum1 - sum2);
     }
