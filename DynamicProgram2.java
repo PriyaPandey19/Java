@@ -2,68 +2,64 @@ import java.util.Arrays;
 
 public class DynamicProgram2 {
 
-    public static int editDistance(String str1, String str2){    //edit distance
+    public static int editDistance(String str1, String str2) { // edit distance
         int n = str1.length();
         int m = str2.length();
-        int dp[][] = new int[n+1][m+1];
+        int dp[][] = new int[n + 1][m + 1];
 
-        //intilize
-        for(int i=0;i<n+1;i++){
-            for(int j=0;j<m+1;j++){
-                if(i==0){
-                    dp[i][j] =j;
+        // intilize
+        for (int i = 0; i < n + 1; i++) {
+            for (int j = 0; j < m + 1; j++) {
+                if (i == 0) {
+                    dp[i][j] = j;
                 }
-                  if(j==0){
-                    dp[i][j] =i;
+                if (j == 0) {
+                    dp[i][j] = i;
                 }
             }
         }
-        for(int i=1;i<n+1;i++){
-            for(int j=1;j<m+1;j++){
-                if(str1.charAt(i-1) == str2.charAt(j-1)){     //same
-                 dp[i][j] = dp[i-1][j-1];          //so reduce length of both the string
-                } 
-                else{                                     //diffrent so add it with +1
-                  int add = dp[i][j-1]+1; 
-                  int del = dp[i-1][j] +1;
-                  int rep = dp[i-1][j-1]+1;
-                  dp[i][j] = Math.min(add, Math.min(del, rep));  
+        for (int i = 1; i < n + 1; i++) {
+            for (int j = 1; j < m + 1; j++) {
+                if (str1.charAt(i - 1) == str2.charAt(j - 1)) { // same
+                    dp[i][j] = dp[i - 1][j - 1]; // so reduce length of both the string
+                } else { // diffrent so add it with +1
+                    int add = dp[i][j - 1] + 1;
+                    int del = dp[i - 1][j] + 1;
+                    int rep = dp[i - 1][j - 1] + 1;
+                    dp[i][j] = Math.min(add, Math.min(del, rep));
                 }
             }
         }
         return dp[n][m];
     }
 
-
-    public static boolean isMatch(String s, String p){    //wildcard matching
+    public static boolean isMatch(String s, String p) { // wildcard matching
         int n = s.length();
         int m = p.length();
 
-        boolean dp[][] = new boolean[n+1][m+1];
-        //intilize
+        boolean dp[][] = new boolean[n + 1][m + 1];
+        // intilize
         dp[0][0] = true;
-        //patter =" "
-        for(int i=1;i<n+1;i++){
+        // patter =" "
+        for (int i = 1; i < n + 1; i++) {
             dp[i][0] = false;
         }
-        //s =" "
-        for(int  j=1;j<m+1;j++){
-            if(p.charAt(j-1) == '*'){
-                dp[0][j] = dp[0][j-1];
+        // s =" "
+        for (int j = 1; j < m + 1; j++) {
+            if (p.charAt(j - 1) == '*') {
+                dp[0][j] = dp[0][j - 1];
             }
         }
 
-        //bootom up approach
-        for(int i=1;i<n+1;i++){
-            for(int j=1;j<m+1;j++){
-                //case ->ith char == jth char || jth char == ?
-                if(s.charAt(i-1) == p.charAt(j-1) || p.charAt(j-1) == '?'){
-                    dp[i][j] = dp[i-1][j-1];
-                }
-                else if(p.charAt(j-1) == '*'){
-                    dp[i][j] = dp[i-1][j] || dp[i][j-1];
-                }
-                else{
+        // bootom up approach
+        for (int i = 1; i < n + 1; i++) {
+            for (int j = 1; j < m + 1; j++) {
+                // case ->ith char == jth char || jth char == ?
+                if (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '?') {
+                    dp[i][j] = dp[i - 1][j - 1];
+                } else if (p.charAt(j - 1) == '*') {
+                    dp[i][j] = dp[i - 1][j] || dp[i][j - 1];
+                } else {
                     dp[i][j] = false;
                 }
             }
@@ -71,153 +67,156 @@ public class DynamicProgram2 {
         return dp[n][m];
     }
 
-
-    public static int catalnRec(int n){      //catalan using recursion
-        if(n ==0 || n == 1){
+    public static int catalnRec(int n) { // catalan using recursion
+        if (n == 0 || n == 1) {
             return 1;
         }
-        int ans =0;
-        for(int i=0;i<= n-1;i++){
-            ans += catalnRec(i)* catalnRec(n-i-1);
+        int ans = 0;
+        for (int i = 0; i <= n - 1; i++) {
+            ans += catalnRec(i) * catalnRec(n - i - 1);
         }
         return ans;
     }
 
-
-    public static int catalanMem(int n, int dp[]){    //catalan using memoization
-        if(n ==0 || n ==1){
+    public static int catalanMem(int n, int dp[]) { // catalan using memoization
+        if (n == 0 || n == 1) {
             return 1;
         }
-        if(dp[n] != -1){
-            return  dp[n];
+        if (dp[n] != -1) {
+            return dp[n];
         }
-        int ans =0;
-        for(int i=0;i<n;i++){
-            ans += catalanMem(i, dp) * catalanMem(n-i-1, dp);
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            ans += catalanMem(i, dp) * catalanMem(n - i - 1, dp);
 
         }
         return dp[n] = ans;
     }
 
-
-    public static int catalanTab(int n){          //catalan using tabulation
-    int dp[] = new int[n+1];
-    dp[0] = 1;
-    dp[1] = 1;
-    for(int i=2;i<=n;i++){
-        for(int j=0;j<i;j++){
-            dp[i] += dp[j]* dp[i-j-1];
+    public static int catalanTab(int n) { // catalan using tabulation
+        int dp[] = new int[n + 1];
+        dp[0] = 1;
+        dp[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            for (int j = 0; j < i; j++) {
+                dp[i] += dp[j] * dp[i - j - 1];
+            }
         }
+        return dp[n];
     }
-    return dp[n];
-    }
 
-
-
-
-    public static int countBST(int n){    //count BST tree
-        int dp[] = new int[n+1];
-        dp[0] =1;
-        dp[1] =1;
-        for(int i=2;i<n+1;i++){
-            for(int j=0;j<i;j++){
+    public static int countBST(int n) { // count BST tree
+        int dp[] = new int[n + 1];
+        dp[0] = 1;
+        dp[1] = 1;
+        for (int i = 2; i < n + 1; i++) {
+            for (int j = 0; j < i; j++) {
                 int left = dp[j];
-                int right = dp[i-j-1];
-                dp[i] += left *right;
+                int right = dp[i - j - 1];
+                dp[i] += left * right;
             }
         }
         return dp[n];
     }
 
-
-    public static int mountainRanges(int n){    // mountain ranges using tabulation
-        int dp[] = new int[n+1];
-        dp[0] =1;
-        dp[1] =1;
-        for(int i=2;i<n+1;i++){
-            for(int j=0;j<i;j++){
+    public static int mountainRanges(int n) { // mountain ranges using tabulation
+        int dp[] = new int[n + 1];
+        dp[0] = 1;
+        dp[1] = 1;
+        for (int i = 2; i < n + 1; i++) {
+            for (int j = 0; j < i; j++) {
                 int inside = dp[j];
-                int outside = dp[i-j-1];
-                dp[i] += inside *outside;
+                int outside = dp[i - j - 1];
+                dp[i] += inside * outside;
             }
         }
         return dp[n];
     }
 
-
-    public static int mcm(int arr[],int i, int j){     //mcm using recursion
-        if(i==j){                       //base case single matrix
+    public static int mcm(int arr[], int i, int j) { // mcm using recursion
+        if (i == j) { // base case single matrix
             return 0;
         }
         int ans = Integer.MAX_VALUE;
-        for(int k=i;k<=j-1;k++){
-            int cost1 = mcm(arr, i, k);   //Ai....Ak => arr[i-1]*arr[k]
-            int cost2 = mcm(arr, k+1, j);   //Ai+1......Aj => arr[k]*arr[j]
-            int cost3 = arr[i-1]*arr[k]*arr[j];
-            int finalCost = cost1+cost2+cost3;
+        for (int k = i; k <= j - 1; k++) {
+            int cost1 = mcm(arr, i, k); // Ai....Ak => arr[i-1]*arr[k]
+            int cost2 = mcm(arr, k + 1, j); // Ai+1......Aj => arr[k]*arr[j]
+            int cost3 = arr[i - 1] * arr[k] * arr[j];
+            int finalCost = cost1 + cost2 + cost3;
             ans = Math.min(ans, finalCost);
         }
         return ans;
     }
 
-
-    public static int mcmMem(int arr[],int i,int j, int dp[][]){
-        if(i==j){
+    public static int mcmMem(int arr[], int i, int j, int dp[][]) { // mcm using memoization
+        if (i == j) {
             return 0;
         }
-        if(dp[i][j] != -1){
+        if (dp[i][j] != -1) {
             return dp[i][j];
         }
         int ans = Integer.MAX_VALUE;
-        for(int k =i;k<=j-1;k++){
+        for (int k = i; k <= j - 1; k++) {
             int cost1 = mcmMem(arr, i, k, dp);
-            int cost2 = mcmMem(arr, k+1, j, dp);
-            int cost3 = arr[i-1] * arr[k] * arr[j];
-            ans = Math.min(ans, cost1+ cost2 + cost3);
+            int cost2 = mcmMem(arr, k + 1, j, dp);
+            int cost3 = arr[i - 1] * arr[k] * arr[j];
+            ans = Math.min(ans, cost1 + cost2 + cost3);
         }
         return dp[i][j] = ans;
     }
 
+    public static int mcmTab(int arr[]) {
+        int n = arr.length;
+        int dp[][] = new int[n][n];
 
+        // initilization
+        for (int i = 0; i < n; i++) {
+            dp[i][i] = 0;
+        }
 
-
-
-
+        for (int len = 2; len <= n - 1; len++) {
+            for (int i = 1; i <= n - len; i++) {
+                int j = i + len - 1;
+                dp[i][j] = Integer.MAX_VALUE;
+                for (int k = i; k <= j - 1; k++) {
+                    int cost1 = dp[i][k];
+                    int cost2 = dp[k + 1][j];
+                    int cost3 = arr[i - 1] * arr[k] * arr[j];
+                    dp[i][j] = Math.min(dp[i][j], cost1 + cost2 + cost3);
+                }
+            }
+        }
+        return dp[1][n - 1];
+    }
 
     public static void main(String[] args) {
-    // String word1 ="intention";
-    // String word2 = "execution";
-    // System.out.println(editDistance(word1, word2));
+        // String word1 ="intention";
+        // String word2 = "execution";
+        // System.out.println(editDistance(word1, word2));
 
+        // String s = "abc";
+        // String p = "**d";
+        // System.out.println(isMatch(s, p));
 
-    // String s = "abc";
-    // String p = "**d";
-    // System.out.println(isMatch(s, p));
+        // int n =4;
+        // int dp[] = new int[n+1];
+        // Arrays.fill(dp,-1);
+        // System.out.println(catalanMem(n, dp));
 
-    // int n =4;
-    // int dp[] = new int[n+1];
-    // Arrays.fill(dp,-1);
-    // System.out.println(catalanMem(n, dp));
+        // System.out.println(catalanTab(30));
 
-    // System.out.println(catalanTab(30));
+        // int m =3;
+        // System.out.println(countBST(m));
 
-    // int m =3;
-    // System.out.println(countBST(m));
+        // int h =4;
+        // System.out.println(mountainRanges(h));
 
-    // int h =4;
-    // System.out.println(mountainRanges(h));
+        // int arr[] ={1,2,3,4,3};
+        // int t = arr.length;
+        // System.out.println(mcm(arr, 1, t-1));
 
-    // int arr[] ={1,2,3,4,3};
-    // int t = arr.length;
-    // System.out.println(mcm(arr, 1, t-1));
-
-    int arr1[] ={1,2,3,4,3};
-    int n = arr1.length;
-    int dp[][] = new int[n][n];
-    for(int i=0;i<n;i++){
-        Arrays.fill(dp[i], -1);
-    }
-    System.out.println(mcmMem(arr1, 1, n-1,dp));
+        int arr1[] = { 1, 2, 3, 4, 3 };
+        System.out.println(mcmTab(arr1));
 
     }
 }
