@@ -222,7 +222,7 @@ public class DynamicProgram2 {
                 }
             }
         }
-        int sum1 = dp[n][W];
+        int sum1 = dp[n][W];      //2d array
         if( sum %2 == 0 && sum1 == sum/2){
           System.out.println("TRUE");
         }
