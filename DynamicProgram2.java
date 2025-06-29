@@ -234,31 +234,7 @@ public class DynamicProgram2 {
     }
 
     public static void main(String[] args) {
-        // String word1 ="intention";
-        // String word2 = "execution";
-        // System.out.println(editDistance(word1, word2));
-
-        // String s = "abc";
-        // String p = "**d";
-        // System.out.println(isMatch(s, p));
-
-        // int n =4;
-        // int dp[] = new int[n+1];
-        // Arrays.fill(dp,-1);
-        // System.out.println(catalanMem(n, dp));
-
-        // System.out.println(catalanTab(30));
-
-        // int m =3;
-        // System.out.println(countBST(m));
-
-        // int h =4;
-        // System.out.println(mountainRanges(h));
-
-        // int arr[] ={1,2,3,4,3};
-        // int t = arr.length;
-        // System.out.println(mcm(arr, 1, t-1));
-
+       
         int arr1[] = {1,2,3};
         System.out.println(minPartition(arr1));
 
