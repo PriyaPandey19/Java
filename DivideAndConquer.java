@@ -208,7 +208,7 @@ public static int getInversionCount(int arr1[]){       //get inversion count whe
 
 
     
-    public static void main(String[] args){
+    public static void main(String[] args){          //main function
     int arr1[] ={1,20,6,4,5};
    System.out.println(getInversionCount(arr1));
     }
