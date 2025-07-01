@@ -1,5 +1,5 @@
 public class SegmentTrees {
-    static int tree[];
+    static int tree[];                  //array to store the segment tree
     
     public static void init(int n){                //intilize the array
      tree = new int[4*n];
