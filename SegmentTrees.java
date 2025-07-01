@@ -4,7 +4,7 @@ public class SegmentTrees {
     public static void init(int n){                //intilize the array
      tree = new int[4*n];
     }
-    public static int buildSt(int arr[], int i, int start, int end){            //build bst tree
+    public static int buildSt(int arr[], int i, int start, int end){            //build bst  tree using array 
         if(start == end){
             tree[i] = arr[start];
             return arr[start];
