@@ -1,0 +1,7 @@
+Name: priya 
+Account Number: 1001
+Balance: 9550.0
+Account Type: Savings
+Transaction History:
+Account created with balance: 10000.0
+Withdrawn: 450, New Balance: 9550.0

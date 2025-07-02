@@ -1,7 +1,7 @@
 
-// import java.util.*;
-// import java.io.File;
-// import java.io.FileWriter;
+import java.util.*;
+import java.io.File;
+import java.io.FileWriter;
 
 // class Account{
 // String type;
@@ -91,9 +91,7 @@
 // }
 
 // }
-import java.util.*;
-import java.io.File;
-import java.io.FileWriter;public class AccountBank {
+public class AccountBank {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -223,7 +221,7 @@ class Account {
 
             writer.close();
             System.out.println("Account details saved successfully to file.");
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println("An error occurred while saving to file.");
             e.printStackTrace();
         }
@@ -239,62 +237,6 @@ class Account {
 
 
 
-    public class AccountBank {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Enter your name:");
-        String name = sc.nextLine();
-
-        int accNumber = 1001;
-        double balance = 10000;
-        String type = "Savings";
-
-        Account ab = new Account(name, accNumber, balance, type);
-
-        while (true) {
-            System.out.println("\nATM Menu------");
-            System.out.println("1. Deposit amount");
-            System.out.println("2. Withdraw amount");
-            System.out.println("3. Transaction History");
-            System.out.println("4. Check balance");
-            System.out.println("5. Exit");
-            System.out.println("Enter your choice:");
-
-            int c = sc.nextInt();
-
-            switch (c) {
-                case 1:
-                    System.out.println("Enter the deposit amount:");
-                    int depAmount = sc.nextInt();
-                    ab.deposit(depAmount);
-                    break;
-
-                case 2:
-                    System.out.println("Enter the withdrawal amount:");
-                    int withAmount = sc.nextInt();
-                    ab.withdraw(withAmount);
-                    break;
-
-                case 3:
-                    ab.viewTransaction();
-                    break;
-
-                case 4:
-                    ab.checkBalance();
-                    break;
-
-                case 5:
-                    ab.saveAccountTofile();
-                    System.out.println("Exiting... Thank you!");
-                    return;
-
-                default:
-                    System.out.println("Invalid choice");
-            }
-        }
-    }
-}
 
 
 
