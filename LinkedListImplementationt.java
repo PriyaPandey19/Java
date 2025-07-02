@@ -1,3 +1,4 @@
+import java.lang.classfile.components.ClassPrinter.ListNode;
 import java.util.LinkedList;
 
 public class LinkedListImplementationt {
@@ -403,6 +404,36 @@ public class LinkedListImplementationt {
 
            return evenHead.next; 
         }
+
+
+    public Node addTwoNumbers(Node l1, Node l2) {          //add two numbers from 2 diffrent linked list
+
+
+      Node dummy = new Node(0);    //dummy node to insert all the elements here  
+      Node current= dummy;       //pointer to point the dummy node
+      int carry =0;               //current to store the carry
+
+      while(l1 != null || l2 != null){
+        int sum = carry;       //intilize the sum variable with carry and store the addition 
+
+        if(l1 != null){             //traverse the first linked list
+            sum += l1.data;
+            l1 = l1.next;
+        }
+        if(l2!= null){             //traverse the first linked list
+            sum += l2.data;
+            l2 = l2.next;
+        }
+
+      carry = sum /10;      //take the carry to next number to add there 
+      current.next   = new Node(sum%10);   //This creates a new node for the current digit of the result.
+      current = current.next;
+      }
+      if(carry > 0){
+        current.next = new Node(carry);
+      }
+      return dummy.next;
+    }
 
 
 
