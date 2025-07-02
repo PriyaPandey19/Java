@@ -1,6 +1,6 @@
 import java.util.*;             // TOPIC If else statement
 
-public class Hello {
+public class IfElse {
     public static void main(String [] args){
        
     int a =10,b=5,c =3,num=7,age =23,marks =85;
