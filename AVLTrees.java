@@ -153,7 +153,7 @@ public class AVLTrees {
         
     }
 
-        public static Node deleteNode(Node root, int key){
+        public static Node deleteNode(Node root, int key){                 //delete node with key
             //perform usual BST delete
             if(root ==  null){
                 return root;
