@@ -1,5 +1,5 @@
 public class AVLTrees {
-     static class Node{
+     static class Node{                  //class Node
         int data, height;
         Node left,right;
 
