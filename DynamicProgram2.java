@@ -255,7 +255,7 @@ public class DynamicProgram2 {
      }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {    //main function
        int nums[] ={2,3,1,1,4};
         System.out.println(minJumps(nums));
     }
