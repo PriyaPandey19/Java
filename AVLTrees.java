@@ -239,7 +239,7 @@ public class AVLTrees {
 
 
 
-    public static void main(String args[]){
+    public static void main(String args[]){    //main function
         root = insert(root, 10);
         root = insert(root, 20);
         root = insert(root, 30);
