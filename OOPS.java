@@ -8,7 +8,7 @@ public class OOPS {
 
    } 
 }
-interface Herbviours{
+interface Herbviours{           //inteface
   void eat();
 }
 interface Carnivours{
