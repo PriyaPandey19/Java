@@ -11,7 +11,7 @@ public class OOPS {
 interface Herbviours{           //inteface
   void eat();
 }
-interface Carnivours{
+interface Carnivours{           //interface
     void sleep();
 }
 class Beer implements Herbviours,Carnivours{
