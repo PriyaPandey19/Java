@@ -437,6 +437,34 @@ public class LinkedListImplementationt {
 
 
 
+    public Node reverseKGroup(Node head, int k) {               //reverse the k group of linked list
+     Node curr = head;
+     //check if there are k nodes to reverse
+     for(int i=0;i<k;i++){
+        if(curr == null) return head;
+        curr = curr.next;
+     }
+
+     //reverse k nodes
+     Node prev = null;
+     Node next = null;
+     curr = head;
+     for(int i=0;i<k;i++){
+        next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+     }
+     //recursively reverse the remaining nodes
+     if(curr != null){
+        head.next = reverseKGroup(curr,k);
+     }
+     //prev is the new head of the reversed group
+     return prev;
+
+    }
+
+
 
 
 
