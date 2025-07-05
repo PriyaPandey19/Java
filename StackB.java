@@ -412,6 +412,36 @@ public class StackB{
         }
         return ans;
        }
+
+
+
+    public int longestValidParentheses(String s) {       //longest valid parentehesis
+     int n = s.length();
+     int index = -1;
+     Stack<Integer> st = new Stack<>();
+     int ans =0;
+     for(int i=0;i<n;i++){
+        if(s.charAt(i) == '('){
+            st.push(i);    //push index of (
+        }
+        else{
+            if(!st.isEmpty()){
+                st.pop();   //match found for )
+                if(!st.isEmpty()){
+                    ans = Math.max(ans, i-st.peek());
+                }
+                else{
+                    ans = Math.max(ans, i-index);
+                }
+            }
+            else{
+                index =i;
+            }
+
+        }
+     } 
+     return ans;
+    }
     public static void main(String args[]){
      Stack s = new Stack<>();
      s.push(1);
