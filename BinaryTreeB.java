@@ -544,7 +544,7 @@ public class BinaryTreeB {
     
 
 
-public static int findMaxSum(Node root){
+public static int findMaxSum(Node root){            //find max sum
     Result result = new Result();
     result.maxSum = Integer.MIN_VALUE;
     maxSum(root, result);
