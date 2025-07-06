@@ -100,8 +100,8 @@ public class BasicSorting {
     int arr[] ={1,4,1,3,2,4,3,7};
     
     
-    //Arrays.sort(arr,Collections.reverseOrder());  //using inbuilt function to sort in descending order
-    // countingSort(arr);
-    //  printArr(arr);
+    Arrays.sort(arr);  //using inbuilt function to sort in descending order
+    countingSort(arr);
+     printArr(arr);
   }
 }
