@@ -14,7 +14,7 @@ interface Herbviours{           //inteface
 interface Carnivours{           //interface
     void sleep();
 }
-class Beer implements Herbviours,Carnivours{
+class Beer implements Herbviours,Carnivours{             //impelemnts interface
     public void eat(){
         System.out.println("Bear eats plants and meat");
     }
