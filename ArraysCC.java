@@ -249,6 +249,24 @@ public class ArraysCC {
         return maxProfit;
     }
 
+
+    public int[] plusOne(int[] digits) {            //plus one number to array
+        int n = digits.length;
+
+        for(int i = n-1;i>=0;i--){   //traverse the array from last
+            if(digits[i] < 9){
+            digits[i]++;         //value is less than 9 so only increment
+            return digits;
+        }
+        digits[i] =0;
+        }
+
+        int[] result = new int[n+1];   //if 9 is there so we need to insert 1 at position 0
+        result[0] = 1;
+        return result;
+
+    }
+
     public static void main(String args[]) {
         int height[] = { 1, 2, 2, 2, 2, 1, 9, 8 };
         // int height[] ={4,2,0,6,3,2,5};
