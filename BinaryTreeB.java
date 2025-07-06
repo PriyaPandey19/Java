@@ -439,7 +439,7 @@ public class BinaryTreeB {
     return data;
   }
 
-  public static void preoder(Node root){
+  public static void preoder(Node root){             //preorder
     if(root == null){
         return;
     }
