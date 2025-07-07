@@ -282,17 +282,17 @@ public class ArraysCC {
     public boolean containsDuplicate(int[] nums) {     //return true if duplicate are there
      Set<Integer> seen = new HashSet<>();
      for(int num : nums){
-        if(seen.contains(num)){
+        if(seen.contains(num)){            //if eleemnts are there so return true
             return true;
         }
-        seen.add(num);
+        seen.add(num);                    //otherwise add in hashset
      }   
      return false;
     }
 
     public static void main(String args[]) {            //main function
         int height[] = { 2,2,1 };
-        System.out.println(singleNumber(height));
+        System.out.println((height));
         // int height[] ={4,2,0,6,3,2,5};
         // int prices[] ={7,1,5,3,6,4};ṇ
         // int numbers[] = {2,4,6,8,4,1};
