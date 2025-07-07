@@ -389,12 +389,12 @@ public static boolean solveKTUtil(int x,int y, int movei,int sol[][],int xMove[]
         System.out.println("solution does not exists");
     }
 
-//     int maze[][] ={{1,0,0,0},
-//                    {1,1,0,1},
-//                    {0,1,0,0},
-//                   {1,1,1,1}   
-// };
-// solveMaze(maze);
+    int maze[][] ={{1,0,0,0},
+                   {1,1,0,1},
+                   {0,1,0,0},
+                  {1,1,1,1}   
+};
+solveMaze(maze);
 
 //letterCombinations(("23"));         
  solveKT(); 
