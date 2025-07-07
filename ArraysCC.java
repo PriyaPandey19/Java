@@ -1,5 +1,8 @@
 //import java.util.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class ArraysCC {
     public static int linearSearch(int numbers[], int key) { // linear search
         for (int i = 0; i < numbers.length; i++) {
@@ -267,7 +270,7 @@ public class ArraysCC {
 
     }
 
-    public int singleNumber(int[] nums) {
+    public static int singleNumber(int[] nums) {   //return that number that does not repeat in array
       int result =0;
       for(int num :nums){
       result ^= num;
@@ -275,8 +278,21 @@ public class ArraysCC {
       return result;
     }
 
+
+    public boolean containsDuplicate(int[] nums) {     //return true if duplicate are there
+     Set<Integer> seen = new HashSet<>();
+     for(int num : nums){
+        if(seen.contains(num)){
+            return true;
+        }
+        seen.add(num);
+     }   
+     return false;
+    }
+
     public static void main(String args[]) {            //main function
-        int height[] = { 1, 2, 2, 2, 2, 1, 9, 8 };
+        int height[] = { 2,2,1 };
+        System.out.println(singleNumber(height));
         // int height[] ={4,2,0,6,3,2,5};
         // int prices[] ={7,1,5,3,6,4};ṇ
         // int numbers[] = {2,4,6,8,4,1};
@@ -299,6 +315,6 @@ public class ArraysCC {
         // System.out.println(linearSearch(numbers, 6));
         // System.out.println(buyAndSellStock(prices));
 
-        Occurence(height);
+        //Occurence(height);
     }
 }
