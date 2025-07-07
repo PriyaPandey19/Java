@@ -267,7 +267,7 @@ public class ArraysCC {
 
     }
 
-    public static void main(String args[]) {
+    public static void main(String args[]) {            //main function
         int height[] = { 1, 2, 2, 2, 2, 1, 9, 8 };
         // int height[] ={4,2,0,6,3,2,5};
         // int prices[] ={7,1,5,3,6,4};ṇ
