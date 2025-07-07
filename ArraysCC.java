@@ -267,6 +267,14 @@ public class ArraysCC {
 
     }
 
+    public int singleNumber(int[] nums) {
+      int result =0;
+      for(int num :nums){
+      result ^= num;
+      }  
+      return result;
+    }
+
     public static void main(String args[]) {            //main function
         int height[] = { 1, 2, 2, 2, 2, 1, 9, 8 };
         // int height[] ={4,2,0,6,3,2,5};
