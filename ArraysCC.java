@@ -290,15 +290,15 @@ public class ArraysCC {
      return false;
     }
 
-     public  static int missingNumber(int[] nums) {
+     public  static int missingNumber(int[] nums) {       //find missing number in array
        int n = nums.length;
-       int expectedSum = n*(n+1)/2;
+       int expectedSum = n*(n+1)/2;        //expected sum 3+0+1+2 = 6
 
        int actualSum =0;
        for(int num : nums){
-        actualSum += num;
+        actualSum += num;                   //actual sum 3+0+1 = 4
        }  
-       return expectedSum - actualSum;
+       return expectedSum - actualSum;        //so diffrence is ans = 6-4 =2
     }
 
     public static void main(String args[]) {            //main function
