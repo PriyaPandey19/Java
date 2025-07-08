@@ -212,7 +212,7 @@ public static void printSudoku(int sudoku[][]){     //print sudoku
 
 
 
-
+//solve maze
 public static void printSolution(int sol[][]){ //print Sol for rat in maze
     for(int i=0;i<sol.length;i++){
         for(int j=0;j<sol.length;j++){
