@@ -294,7 +294,7 @@ public static void bfs(int pos, int len, StringBuilder sb, String D){
 
 //knight tour   
 static int N = 8;
-public static boolean isSafe(int x, int y,int sol[][]){
+public static boolean isSafe(int x, int y,int sol[][]){      //is safe for knight
     return(x >= 0 && x < N && y >=0 && y<N  && sol[x][y] == -1); 
 }
 
