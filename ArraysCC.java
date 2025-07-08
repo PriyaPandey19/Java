@@ -290,6 +290,17 @@ public class ArraysCC {
      return false;
     }
 
+     public  static int missingNumber(int[] nums) {
+       int n = nums.length;
+       int expectedSum = n*(n+1)/2;
+
+       int actualSum =0;
+       for(int num : nums){
+        actualSum += num;
+       }  
+       return expectedSum - actualSum;
+    }
+
     public static void main(String args[]) {            //main function
         int height[] = { 2,2,1 };
         System.out.println((height));

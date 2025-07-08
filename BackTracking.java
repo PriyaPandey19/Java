@@ -352,7 +352,6 @@ public static boolean solveKTUtil(int x,int y, int movei,int sol[][],int xMove[]
 
 
 
-
     public static void main(String[] args){    //main function
         // int n = 4;
         // char board[][] = new char[n][n];
