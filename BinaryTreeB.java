@@ -558,7 +558,7 @@ public static int findMaxSum(Node root){            //find max sum
 
   
 
-public static void main(String args[]){
+public static void main(String args[]){    //main function
     Node root = new Node(1);
     root.left = new Node(2);
     root.right = new Node(3);
