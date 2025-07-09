@@ -363,7 +363,7 @@ public class BinaryTreeB {
 
 
 
-  public static int lcaDist(Node root, int n){
+  public static int lcaDist(Node root, int n){       //lcs dist
     if(root == null){
         return -1;
     }
