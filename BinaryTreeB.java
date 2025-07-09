@@ -568,17 +568,17 @@ public static void main(String args[]){    //main function
     root.right.right = new Node(7);
     
 
-//TopView(root);
-//int k = 2;
-//KLevel(root, 1, k);
+TopView(root);
+int k = 2;
+KLevel(root, 1, k);
 
 // int n =5, k = 2;
 // KAncestor(root, n, k);
  
-// int x= 3;
-// deleteLeaves(root,x);
-// //System.out.print("Inorder traversal after ");
-// inorder(root);
+int x= 3;
+deleteLeaves(root,x);
+//System.out.print("Inorder traversal after ");
+inorder(root);
 
 
 System.out.println("Max path sum is "+ findMaxSum(root));

@@ -315,7 +315,7 @@ public class BST {
 
 
 
-    public static void main(String args[]) {
+    public static void main(String args[]) {     //main function
         // int values[] = {3,5,6,8,10,11,12};
         // Node root = createBST(values, 0, values.length-1);
         // preorder(root);
