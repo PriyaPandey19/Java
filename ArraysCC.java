@@ -302,15 +302,15 @@ public class ArraysCC {
        return expectedSum - actualSum;        //so diffrence is ans = 6-4 =2
     }
 
-     public static int thirdMax(int[] nums) {
-       Arrays.sort(nums);      //
-       int distinctCount = 1;
+     public static int thirdMax(int[] nums) {    //find the 3 max elements
+       Arrays.sort(nums);      //we will sort the elements
+       int distinctCount = 1;   
        int n = nums.length;
 
        for(int i=n-2;i>=0;i--){
-        if(nums[i] != nums[i+1]){
-            distinctCount++;
-            if(distinctCount == 3){
+        if(nums[i] != nums[i+1]){    //if we found the distinct count so increase its value
+            distinctCount++;  
+            if(distinctCount == 3){          //if we found the elements so return value
                 return nums[i];
             }
         }
