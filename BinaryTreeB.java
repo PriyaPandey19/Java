@@ -224,7 +224,7 @@ public class BinaryTreeB {
 
 
 
-    static class Info{
+    static class Info{               //class to find the top view of tree
         Node node;
         int hd;
 
