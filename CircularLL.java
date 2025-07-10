@@ -88,7 +88,7 @@ public class CircularLL {
    }
 
 
-   static void traverse(Node tail){
+   static void traverse(Node tail){   //traverse the CircularLL
     Node p;
     if(tail == null){
     System.out.println("list is empty");
