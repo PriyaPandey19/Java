@@ -318,6 +318,21 @@ public class ArraysCC {
        return nums[n-1];   
     }
 
+
+
+     public void moveZeroes(int[] nums) {     //move all zeroes to the end of array
+       int insertPos = 0;                      //starting idx  with 0;
+
+       for(int num : nums){
+        if(num != 0){           //if current element is not zero than add it in 0th idx and move the idx further 
+            nums[insertPos++] = num;
+        }
+       } 
+       while(insertPos < nums.length){
+        nums[insertPos++] =0;
+       }
+    }
+
     public static void main(String args[]) {            //main function
         int height[] = { 2,2,1 };
         System.out.println((height));
