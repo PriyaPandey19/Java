@@ -144,7 +144,7 @@ public class AVLTrees {
 
 
 
-       public static Node getMiNode(Node root){
+       public static Node getMiNode(Node root){   //function to get min node
         Node curr = root;
         //min data is in left
         while(curr.left != null)
