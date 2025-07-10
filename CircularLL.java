@@ -107,7 +107,7 @@ public class CircularLL {
 
 
 
-   public static void main(String args[]){
+   public static void main(String args[]){    //main function
    Node tail = null;
    tail = addToEmpty(tail, 6);
    tail= addEnd(tail, 8);
