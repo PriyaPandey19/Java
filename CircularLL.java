@@ -3,7 +3,7 @@ public class CircularLL {
         int data;
         Node next;
     };
-    static Node addToEmpty(Node tail, int data){
+    static Node addToEmpty(Node tail, int data){    //add node to empty CLL
         if(tail != null){
             return tail;
         }
