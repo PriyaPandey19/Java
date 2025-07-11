@@ -141,7 +141,8 @@ public class CustomArrayList {
     }
 
 
-public static ArrayList<Integer> beautifulAList(int n){
+public static ArrayList<Integer> beautifulAList(int n){    //beaurtiful array list
+    //beautiful array is an array such that for every i, 1 <= i < n
     ArrayList<Integer> ans = new ArrayList<>();
     divideConque(1,1,ans,n);
     return ans;
