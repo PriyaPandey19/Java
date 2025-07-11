@@ -37,7 +37,7 @@ public class CircularLL {
     return tail;
 }
 
-   static Node addAfter(Node tail,int data,int item){
+   static Node addAfter(Node tail,int data,int item){   //add after a tail node
     if(tail == null){
         return null;
     }
