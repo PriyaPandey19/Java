@@ -128,7 +128,8 @@ public class CustomArrayList {
 
     }
 
-    public static boolean isMonotonic(ArrayList<Integer> list){
+    public static boolean isMonotonic(ArrayList<Integer> list){  //is monotonic or not
+            //monotonic means either increasing or decreasing
             boolean inc = true;
             boolean dec = true;
             for(int i =0;i<list.size()-1;i++){
