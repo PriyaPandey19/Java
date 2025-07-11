@@ -341,7 +341,9 @@ public class ArraysCC {
       List<Integer> result = new ArrayList<>();   
 
       for(int i=0;i<nums.length;i++){
-        int index = Math.abs(nums[i]) -1;
+        int index = Math.abs(nums[i]) -1;  //get the index of the number
+        //if the number is positive, we will mark it as negative to indicate that it is present
+        //if it is already negative, it means we have seen this number before
         if(nums [index] > 0){
             nums[index] = -nums[index];
         }
