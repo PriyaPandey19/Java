@@ -157,7 +157,7 @@ public static void divideConque(int start,int increment,ArrayList<Integer> ans,i
 
     public static void main(String args[]){
         ArrayList<Integer> list= new ArrayList<>();
-        //ArrayList<ArrayList<Integer>> mainlist = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> mainlist = new ArrayList<>();
 
         // ArrayList<Integer> list = new ArrayList<>();
         // list.add(1); list.add(2);
