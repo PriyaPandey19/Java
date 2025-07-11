@@ -14,7 +14,7 @@ public class CircularLL {
        return tail;
     }
 
-    static Node addFront(Node tail, int data){
+    static Node addFront(Node tail, int data){    //add front
      if(tail == null){
         return addToEmpty(tail, data);
      }
