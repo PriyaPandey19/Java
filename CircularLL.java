@@ -25,7 +25,7 @@ public class CircularLL {
      return tail;
     }
 
-    static Node addEnd(Node tail,int data){
+    static Node addEnd(Node tail,int data){   //add  at the end
         if(tail == null){
         return addToEmpty(tail, data);
     }
