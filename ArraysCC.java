@@ -336,7 +336,8 @@ public class ArraysCC {
     }
 
 
-     public List<Integer> findDisappearedNumbers(int[] nums) {
+     public List<Integer> findDisappearedNumbers(int[] nums) {    //find disappeared numbers
+      //we will use the index of the array to mark the numbers that are present
       List<Integer> result = new ArrayList<>();   
 
       for(int i=0;i<nums.length;i++){
