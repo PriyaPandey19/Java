@@ -1,7 +1,9 @@
 //import java.util.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class ArraysCC {
@@ -331,6 +333,24 @@ public class ArraysCC {
        while(insertPos < nums.length){
         nums[insertPos++] =0;
        }
+    }
+
+
+     public List<Integer> findDisappearedNumbers(int[] nums) {
+      List<Integer> result = new ArrayList<>();   
+
+      for(int i=0;i<nums.length;i++){
+        int index = Math.abs(nums[i]) -1;
+        if(nums [index] > 0){
+            nums[index] = -nums[index];
+        }
+      }  
+      for(int i=0;i<nums.length;i++){
+        if(nums[i] > 0){
+            result.add(i+1);
+        }
+      }
+      return result;
     }
 
     public static void main(String args[]) {            //main function
