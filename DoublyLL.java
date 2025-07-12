@@ -1,5 +1,6 @@
 public class DoublyLL {
-    public class Node{
+    public class Node{              //class for node
+        //data, next and prev pointers
         int data;
         Node next;
         Node prev;
