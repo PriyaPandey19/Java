@@ -33,7 +33,7 @@ public class DequeB {
         }
     }
 
-    public static void main(String args[]) {
+    public static void main(String args[]) {    //main function
     Stack s = new Stack();
     s.push(1);
     s.push(2);
