@@ -66,7 +66,7 @@ public class DoublyLL {
         return val;
     }
 
-    public int removeLast(){               //remove last
+    public int removeLast(){               //remove last 
         if(head == null){
             System.out.println("Dll is empty");
             return Integer.MIN_VALUE;

@@ -374,7 +374,7 @@ public class DynamicProgramming {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {    //main function
    int coins[] ={1,2,3};
    int sum =4;
    System.out.println(coinChange(coins, sum));
