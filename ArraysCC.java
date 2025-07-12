@@ -360,9 +360,10 @@ public class ArraysCC {
         Arrays.sort(nums);
         int n = nums.length;
 
-        int product1 = nums[n-1] * nums[n-2] * nums[n-3];
+        int product1 = nums[n-1] * nums[n-2] * nums[n-3];   //as last 3 digits are largest so multiply them
 
-        int product2 = nums[0] * nums[1] * nums[n-1];
+        //this is done to handle the case where we have two negative numbers and one positive number
+        int product2 = nums[0] * nums[1] * nums[n-1];   //as first 2 digits are smallest and last digit is largest so multiply them
 
         return Math.max(product1, product2);
     }
