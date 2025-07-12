@@ -59,7 +59,7 @@ public class DivideAndConquer{
       quickSort(arr, pidx+1, ei);   //right half
     }
 
-    public static int partition(int arr[],int si,int ei){
+    public static int partition(int arr[],int si,int ei){     //partition function
     int pivot = arr[ei];
     int i= si-1;   //to make place for els smaller than pivot
 
@@ -82,7 +82,7 @@ public class DivideAndConquer{
 
 
 
-    public static int search(int arr[],int tar,int si,int ei){ 
+    public static int search(int arr[],int tar,int si,int ei){    
            if(arr[si]>arr[ei]){
             return -1; 
            }                                                 //search in rotated sorted array
