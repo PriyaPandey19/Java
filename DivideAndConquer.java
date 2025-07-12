@@ -163,7 +163,10 @@ public static String[] merge1(String[] arr1,String[] arr2){
    return arr3;
 }
 
-public static boolean isAlphabetSmaller(String str1,String str2){
+public static boolean isAlphabetSmaller(String str1,String str2){    //is alphabet smaller
+    if(str1 == null || str2 == null){
+        return false;
+    }
     if(str1.compareTo(str2)<0){
         return true;
     }
