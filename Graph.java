@@ -424,10 +424,10 @@ public class Graph {
        createGraph(graph);
        int src =0;
        dijkstra(graph, src);
-      //topSort1(graph);
-    //   System.out.println(detectCycle(graph));
-    //   System.out.println(isBipartitieGraph(graph));
-    // System.out.println(hasPath(graph, 0, 5, new boolean[V]));
+      topSort1(graph);
+      System.out.println(detectCycle(graph));
+      System.out.println(isBipartitieGraph(graph));
+    System.out.println(hasPath(graph, 0, 5, new boolean[V]));
 
     }
 }
