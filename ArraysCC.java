@@ -356,6 +356,17 @@ public class ArraysCC {
       return result;
     }
 
+    public  static int maximumProduct(int[] nums) {    //find maximum product of three numbers
+        Arrays.sort(nums);
+        int n = nums.length;
+
+        int product1 = nums[n-1] * nums[n-2] * nums[n-3];
+
+        int product2 = nums[0] * nums[1] * nums[n-1];
+
+        return Math.max(product1, product2);
+    }
+
     public static void main(String args[]) {            //main function
         int height[] = { 2,2,1 };
         System.out.println((height));
