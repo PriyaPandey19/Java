@@ -82,7 +82,7 @@ public class DivideAndConquer{
 
 
 
-    public static int search(int arr[],int tar,int si,int ei){    
+    public static int search(int arr[],int tar,int si,int ei){      //the serach function for rotated sorted array
            if(arr[si]>arr[ei]){
             return -1; 
            }                                                 //search in rotated sorted array
