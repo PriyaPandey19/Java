@@ -374,7 +374,9 @@ public class ArraysCC {
      Map<Integer, Integer> map = new HashMap<>();
 
      for(int i=0;i<nums.length;i++){
-        if(map.containsKey(nums[i])){
+        if(map.containsKey(nums[i])){   //if the number is already present in the map so return its previous index
+            //if the difference between the current index and the previous index is less than or equal to k, return true
+            //otherwise update the index of the number in the map
             int prevIndex = map.get(nums[i]);
 
             if(i - prevIndex <= k){
