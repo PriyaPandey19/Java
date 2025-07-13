@@ -316,10 +316,10 @@ public class BST {
 
 
     public static void main(String args[]) {      //main function
-        // int values[] = {3,5,6,8,10,11,12};
-        // Node root = createBST(values, 0, values.length-1);
-        // preorder(root);
-        // Node root = null;
+        int values[] = {3,5,6,8,10,11,12};
+        Node root = createBST(values, 0, values.length-1);
+        preorder(root);
+       // Node root = null;
 
         // for(int i =0;i<values.length;i++){
         // root = insert(root, values[i]);
@@ -366,7 +366,7 @@ public class BST {
         // System.out.println("largest BST size "+ maxBST);
         // System.out.println(printInRange(root, 5, 70));
 
-        Node root = new Node(9);
+       // Node root = new Node(9);
         root.left = new Node(4);
         root.right = new Node(17);
         root.left.left = new Node(3);
