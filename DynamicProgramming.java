@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 public class DynamicProgramming {
-    public static int fibTabulation(int n, int f[]){
+    public static int fibTabulation(int n, int f[]){    //fibonacci using tabulation
         int dp[] = new int[n+1];
         dp[0] =0;
         dp[1] = 1;
