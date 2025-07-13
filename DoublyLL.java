@@ -100,7 +100,7 @@ public class DoublyLL {
     }
     head = prev;
     }
-   public static void main(String args[]){
+   public static void main(String args[]){   //main function
     DoublyLL dll = new DoublyLL();
      dll.addLast(3);
      dll.addLast(2);
