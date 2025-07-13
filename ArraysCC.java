@@ -2,8 +2,10 @@
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class ArraysCC {
@@ -366,6 +368,22 @@ public class ArraysCC {
         int product2 = nums[0] * nums[1] * nums[n-1];   //as first 2 digits are smallest and last digit is largest so multiply them
 
         return Math.max(product1, product2);
+    }
+
+    public static boolean containsNearbyDuplicate(int[] nums, int k) {  //check if there are duplicates within k distance
+     Map<Integer, Integer> map = new HashMap<>();
+
+     for(int i=0;i<nums.length;i++){
+        if(map.containsKey(nums[i])){
+            int prevIndex = map.get(nums[i]);
+
+            if(i - prevIndex <= k){
+                return true;
+            }
+        }
+        map.put(nums[i] ,i);
+     }   
+     return false;
     }
 
     public static void main(String args[]) {            //main function
