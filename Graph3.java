@@ -196,7 +196,7 @@ public class Graph3 {
 
     
 
-   public static void main(String[] args) {
+   public static void main(String[] args) {   //main function
     int V = 5;
     ArrayList<Edge> graph[] = new ArrayList[V];
     createGraph(graph);
