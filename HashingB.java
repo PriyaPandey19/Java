@@ -243,9 +243,9 @@ public class HashingB {
      String t = "care";  
      System.out.println(isAnagram(s, t));
 
-    //  int arr1[] ={7,3,9};
-    //  int arr2[] ={6,3,9,2,9,4};
-    //  interSectionUnion(arr1, arr2);
+     int arr3[] ={7,3,9};
+     int arr4[] ={6,3,9,2,9,4};
+     interSectionUnion(arr3, arr4);
     HashMap<String,String> tickets = new HashMap<>();    //main function of get path
     tickets.put("Chennai","Bengaluru");
     tickets.put("Mumbai","Delhi");
