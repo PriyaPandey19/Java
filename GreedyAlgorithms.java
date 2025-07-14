@@ -324,7 +324,7 @@ public class GreedyAlgorithms {
 
 
 
-  public static void main(String args[]) {
+  public static void main(String args[]) {              // main function
     // Integer coins[] ={1,2,5,10,20,50,100,500,1000};
     // int amount = 1219;
     // minCoins(coins, amount);
