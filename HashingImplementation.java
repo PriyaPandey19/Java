@@ -167,7 +167,7 @@ public class HashingImplementation {                    //implementstion of hash
       System.out.println(hm.get("India"));
       System.out.println(hm.remove("India"));
       System.out.println(hm.get("India"));
-   // HashMap<String, Integer> hm = new HashMap<>();
+    HashMap<String, Integer> hm1 = new HashMap<>();
 
    
    //    hm.put("India",100);
