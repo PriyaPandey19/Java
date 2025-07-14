@@ -284,7 +284,7 @@ static class Edge2 implements Comparable<Edge2>{
             return this.wt - e2.wt;
         }
     }
-    static void createGraph(ArrayList<Edge2> edges){
+    static void createGraph(ArrayList<Edge2> edges){   //function to create graph for kruskal
         edges.add(new Edge2(0, 1, 10));
         edges.add(new Edge2(0, 2, 15));
         edges.add(new Edge2(0, 3, 30));
