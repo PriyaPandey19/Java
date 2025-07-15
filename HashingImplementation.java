@@ -175,8 +175,8 @@ public class HashingImplementation {                    //implementstion of hash
        hm.put("us", 30);
       hm.put("Nepal", 2);
 
-   //    Set<String> keys = hm.keySet();
-   //    System.out.println(keys);
+   //   Set<String> keys = hm.keySet();
+       System.out.println(keys);
 
    //    for(String k: keys) {
    //       System.out.println("key=" +k+",value="+hm.get(k));
