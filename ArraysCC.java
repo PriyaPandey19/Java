@@ -413,7 +413,7 @@ public class ArraysCC {
     public static void main(String args[]) {            //main function
         int height[] = { 2,2,1 };
         System.out.println((height));
-        // int height[] ={4,2,0,6,3,2,5};
+        int height1[] ={4,2,0,6,3,2,5};
         // int prices[] ={7,1,5,3,6,4};ṇ
         // int numbers[] = {2,4,6,8,4,1};
         // int key =10;
