@@ -170,7 +170,7 @@ public class HashingImplementation {                    //implementstion of hash
     HashMap<String, Integer> hm1 = new HashMap<>();
 
    
-   //    hm.put("India",100);
+      hm.put("India",100);
    //    hm.put("china",11);
    //    hm.put("us", 30);
    //    hm.put("Nepal", 2);
