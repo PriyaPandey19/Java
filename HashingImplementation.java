@@ -171,7 +171,7 @@ public class HashingImplementation {                    //implementstion of hash
 
    
       hm.put("India",100);
-   //    hm.put("china",11);
+       hm.put("china",11);
    //    hm.put("us", 30);
    //    hm.put("Nepal", 2);
 
