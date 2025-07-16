@@ -431,6 +431,30 @@ public class ArraysCC {
         return new int[]{duplicate, missing};
     }
 
+
+
+    public int findLengthOfLCIS(int[] nums) {     //find the length of longest continuous increasing subsequence
+     if(nums.length == 0) 
+     return 0;
+
+     int maxlength =1;
+     int currentlength =1;
+
+     for(int i=1;i<nums.length;i++){
+        if(nums[i] > nums[i-1]){
+            currentlength++;
+            maxlength = Math.max(maxlength, currentlength);
+        }
+        else{
+            currentlength =1;
+        }
+     } 
+     return maxlength;
+    }
+
+    
+
+
     public static void main(String args[]) {            //main function
         int height[] = { 2,2,1 };
         System.out.println((height));
