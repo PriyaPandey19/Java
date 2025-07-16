@@ -440,6 +440,10 @@ public class ArraysCC {
      int maxlength =1;
      int currentlength =1;
 
+
+
+     //we will traverse the array and check if the current element is greater than the previous element
+     //if it is, we will increment the current length
      for(int i=1;i<nums.length;i++){
         if(nums[i] > nums[i-1]){
             currentlength++;
