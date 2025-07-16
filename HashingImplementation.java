@@ -152,7 +152,7 @@ public class HashingImplementation {                    //implementstion of hash
 
 
    
-   public static void main(String args[]){
+   public static void main(String args[]){      //main function
       HashMap<String, Integer> hm= new HashMap<>();
       hm.put("India",100);
       hm.put("China",150);
