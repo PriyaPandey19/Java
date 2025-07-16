@@ -133,10 +133,10 @@ public class HeapB{
     pq.add(1);
     pq.add(5);
 
-    // while(!pq.isEmpty()){
-    //     System.out.println(pq.peek());
-    //     pq.remove();
-    // }
+    while(!pq.isEmpty()){
+        System.out.println(pq.peek());
+        pq.remove();
+    }
 
 
 
