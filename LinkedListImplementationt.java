@@ -476,10 +476,10 @@ public class LinkedListImplementationt {
     // head.next.next = new Node(3);
     // head.next.next.next = temp;
 
-    // System.out.println(isCycle());
-    // removeCycle();
-    // System.out.println(isCycle());
-    //LinkedList<Integer> ll = new LinkedList<>();
+    System.out.println(isCycle());
+    removeCycle();
+    System.out.println(isCycle());
+   // LinkedList<Integer> ll = new LinkedList<>();
     ll.addLast(1);
     ll.addLast(2);
     ll.addLast(3);
