@@ -171,7 +171,7 @@ public class PractiseEight {
       List<String> listStartA= Arrays.asList("apple","banana","apricot","cherry","Avacado");
       
       
-      // List<Integer> evenList = list.stream().filter(n -> n%2 == 0).map(n -> n *5).collect(Collectors.toList());
+       List<Integer> evenList = list.stream().filter(n -> n%2 == 0).map(n -> n *5).collect(Collectors.toList());
 
       // int  sum = list.stream().reduce(10,(a,b) -> a+b);
 
