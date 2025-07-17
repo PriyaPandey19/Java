@@ -461,7 +461,7 @@ public class ArraysCC {
      for(int num : arr){
         total += num;
      }   
-     if(total %3 != 0) return false;
+     if(total %3 != 0) return false;    //the total sum should be divisible by 3 then only it will divide into three parts
 
      int target = total/3;
      int count =0;
