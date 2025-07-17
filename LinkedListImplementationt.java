@@ -470,7 +470,7 @@ public class LinkedListImplementationt {
 
     public static void  main(String args[]){        //main function
      LinkedListImplementationt ll = new LinkedListImplementationt();
-    // head = new Node(1);
+     head = new Node(1);
     // Node temp = new Node(2);
     // head.next = temp;
     // head.next.next = new Node(3);
