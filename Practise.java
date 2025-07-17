@@ -3,7 +3,7 @@ import java.util.*;     //BASIC QUESTIONS
 public class Practise {
     public static void main(String [] args){
         Scanner scn  = new Scanner(System.in);         
-        //  int n = scn.nextInt(); 
+         int n = scn.nextInt(); 
         //  switch(n){
         //     case 1:
         //         System.out.println("monday");
