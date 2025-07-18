@@ -201,7 +201,7 @@ public static void countDigit(int num){   //8
 }
 
 
-public static void sumOfGivenNum(int num){   //7
+public static void sumOfGivenNum(int num){   //7  sum of digits
     int sum =0;
     while(num >0){
     int digit = num %10;
