@@ -479,6 +479,25 @@ public class ArraysCC {
      return false;
     }
 
+     public int[] sortArrayByParityII(int[] nums) {    //sort array by parity
+        //we will use two pointers to keep track of the even and odd indices
+        int[] result = new int[nums.length];
+        int evenIndex = 0;
+        int oddIndex = 1;
+
+        for(int num : nums){
+            if(num % 2 == 0){
+                result[evenIndex] = num;
+                evenIndex += 2;
+            }
+            else{
+                result[oddIndex] = num;
+                oddIndex += 2;
+            }
+        }
+        return result;
+    }
+
     
 
 
