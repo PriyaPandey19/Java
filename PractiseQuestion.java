@@ -1,6 +1,6 @@
 public class PractiseQuestion {
 
-    public static void SumOfAlternate(int numbers){        //32
+    public static void SumOfAlternate(int numbers){        //32   sum of alternate
 
         int ans = 0;
         boolean add = true;
