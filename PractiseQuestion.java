@@ -213,7 +213,7 @@ public static void sumOfGivenNum(int num){   //7
 
 
 
-public static void prducttillGivenNum(int n){   //5
+public static void prducttillGivenNum(int n){   //5   product till n
     int product =1;
     for(int i=1;i<=n;i++){
         product *= i;   
