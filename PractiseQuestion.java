@@ -222,7 +222,7 @@ public static void prducttillGivenNum(int n){   //5
 }
 
 
-public static void sumtillGivenNum(int n){   //4
+public static void sumtillGivenNum(int n){   //4   sum till n
     int sum =0;
     for(int i=0;i<=n;i++){
         sum += i;   
