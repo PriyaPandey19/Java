@@ -240,7 +240,7 @@ public static void numberReverse(int n){   //3
 }
 
 
-public static void number(int n){   //1
+public static void number(int n){   //1    //print number from 0 to n
     
     for(int i=0;i<=n;i++){
        System.out.println(i);
@@ -255,7 +255,7 @@ public static void number(int n){   //1
 
 
 
-
+ 
 
    
 
