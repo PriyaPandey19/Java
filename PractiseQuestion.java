@@ -179,7 +179,7 @@ public static void primesBetweenRange(int start,int end){   //16
     
 }
 
-public static void reverseNumber(int num){    //9
+public static void reverseNumber(int num){    //9  reverse number
     int reverse = 0;
     while(num >0){
         int digit = num %10;
