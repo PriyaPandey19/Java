@@ -191,7 +191,7 @@ public static void reverseNumber(int num){    //9  reverse number
 
 
 
-public static void countDigit(int num){   //8
+public static void countDigit(int num){   //8 count digits
     int count =0;
     while(num >0){
         num/= 10;
