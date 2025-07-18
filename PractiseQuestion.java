@@ -231,7 +231,7 @@ public static void sumtillGivenNum(int n){   //4
 }
 
 
-public static void numberReverse(int n){   //3
+public static void numberReverse(int n){   //3   reverse number from n to 0
     
     for(int i=n;i>=0;i--){
        System.out.println(i);
