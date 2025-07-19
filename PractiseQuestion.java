@@ -163,7 +163,7 @@ public static void primesBetweenRange(int start,int end){   //16
   }
 
 
-  public static boolean Palindrome(int n){         //10
+  public static boolean Palindrome(int n){         //10  palindrome number
     int palindrome = n;
     int reverse =0;
 
