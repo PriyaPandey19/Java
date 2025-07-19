@@ -125,7 +125,7 @@ public static void primesBetweenRange(int start,int end){   //16
 }
 
 
-  public static void Countfactor(int n){         //13
+  public static void Countfactor(int n){         //13  count factors
     System.out.println("Factors of "+ n +" are");
     int count =0;
     for(int i=1;i<=n;i++){
@@ -137,7 +137,7 @@ public static void primesBetweenRange(int start,int end){   //16
    System.out.println("total factor count are: "+count);
   }
 
-  public static void Sumfactor(int n){         //12
+  public static void Sumfactor(int n){         //12   sum of factors
     int sum =0;
     int count =0;
     for(int i=1;i<=n;i++){
