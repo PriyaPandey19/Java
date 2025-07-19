@@ -61,7 +61,7 @@ public class PractiseQuestion {
         return number * factorial(number-1);
     }
 
-  public static void PerfectOrNot(int n){       //18
+  public static void PerfectOrNot(int n){       //18  perfect number
     int Sum =0;
     for(int i=1;i<n;i++){
         if(n % i ==0){
