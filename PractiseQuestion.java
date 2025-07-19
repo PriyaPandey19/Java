@@ -115,7 +115,7 @@ public static void primesInRange(int range){   //15
 }
   
    
-public static void primesBetweenRange(int start,int end){   //16
+public static void primesBetweenRange(int start,int end){   //16 primes between range
     for(int i=start;i<=end;i++){
       if(isPrime(i)){
        System.out.println(i+" ");
