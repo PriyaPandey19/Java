@@ -150,7 +150,7 @@ public static void primesBetweenRange(int start,int end){   //16
   }
 
 
-  public static void factor(int n){         //11
+  public static void factor(int n){         //11   factor
    // int sum =0;
     //int count =0;
     for(int i=1;i<=n;i++){
