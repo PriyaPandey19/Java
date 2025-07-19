@@ -54,7 +54,7 @@ public class PractiseQuestion {
     }
 
 
-    public static int factorial(int number){   //27
+    public static int factorial(int number){   //27 factorial
         if(number ==0){
           return 1;
         }
