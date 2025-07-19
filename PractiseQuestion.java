@@ -105,7 +105,7 @@ public class PractiseQuestion {
 return isPrime;
 }
   
-public static void primesInRange(int range){   //15
+public static void primesInRange(int range){   //15  primes in range
     for(int i=2;i<=range;i++){
       if(isPrime(i)){
        System.out.println(i+" ");
