@@ -16,7 +16,7 @@ public class PractiseQuestion {
     }
 
 
-    public static void FirstLastSum(int num){     //31
+    public static void FirstLastSum(int num){     //31 first last sum
         int lastDigit = num%10;
         int firstDigit =0;
         while(num >0){
