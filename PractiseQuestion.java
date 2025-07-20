@@ -260,7 +260,7 @@ public static void number(int n){   //1    //print number from 0 to n
    
 
     public static void main(String[] args){
-    //     int n = 4;
+       int n = 4;
     //    for(int i=0;i<n;i++){
     //     System.out.println(Fibonacci(i));
     // }
