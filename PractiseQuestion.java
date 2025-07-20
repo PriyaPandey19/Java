@@ -265,7 +265,7 @@ public static void number(int n){   //1    //print number from 0 to n
     //     System.out.println(Fibonacci(i));
     // }
      // PerfectOrNotRange(100);
-   //System.out.println(Palindrome(1267));
+   System.out.println(Palindrome(1267));
     reverseNumber(123);
    number(4);
     }
