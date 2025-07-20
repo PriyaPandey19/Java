@@ -498,6 +498,17 @@ public class ArraysCC {
         return result;
     }
 
+    public int findNumbers(int[] nums) {   //find numbers with even number of digits
+        //we will count the number of digits in each number and check if it is even or
+        int count =0;
+        for(int num :nums){
+            if(Integer.toString(Math.abs(num)).length() % 2 == 0){
+                count++;
+            }
+        }
+        return count;
+    }
+
     
 
 
