@@ -27,7 +27,7 @@ public class PractiseQuestion {
         System.out.println(sum);
     }
 
-    public static void SwapTwo(int a,int b){   //30
+    public static void SwapTwo(int a,int b){   //30  swap two numbers
         int temp = a;
         a =b;
         b = temp;
