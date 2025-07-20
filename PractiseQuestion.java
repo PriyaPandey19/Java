@@ -93,7 +93,7 @@ public class PractiseQuestion {
   }
 
 
-  public static boolean isPrime(int n){    //14
+  public static boolean isPrime(int n){    //14  is prime number
     boolean isPrime = true;
     for(int i=2;i<=Math.sqrt(n);i++){
         if(n%i ==0){
