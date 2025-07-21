@@ -46,7 +46,7 @@ public class PractiseQuestion {
     return fib;
     }
 
-    public static int calculateSum(int n) { // 4
+    public static int calculateSum(int n) { // 4 calculate sum of n numbers
         if (n == 0) {
             return 0;
         }
