@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class QueueB {
+public class QueueB {    // Queue implementation in Java
 
     static class Node{
         int data;
