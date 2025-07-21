@@ -190,7 +190,7 @@ public class Recurison {
     }
 
     public static void main(String[] args) {
-        // printnumbersDec(5);
+        printnumbersDec(5);
         // printnumbersDec(5);
         // System.out.println("Factorial of 5: " + factorial(5));
         // System.out.println(calculateSum(6));
