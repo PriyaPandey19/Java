@@ -364,14 +364,14 @@ public class QueueB {    // Queue implementation in Java
     //   q.remove();  
     // }
 
-    // java.util.Queue<Integer> q = new LinkedList<>();
-    // q.add(1);
-    // q.add(2);
-    // q.add(3);
-    // q.add(4);
+    java.util.Queue<Integer> q = new LinkedList<>();
+    q.add(1);
+    q.add(2);
+    q.add(3);
+    q.add(4);
    
 
-    java.util.Queue<Integer> q = new LinkedList<>();
+    //java.util.Queue<Integer> q = new LinkedList<>();
     q.add(10);
     q.add(20);
     q.add(30);
