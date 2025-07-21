@@ -36,7 +36,7 @@ public class PractiseQuestion {
     }
 
 
-    public static int Fibonacci(int n){   //28
+    public static int Fibonacci(int n){   //28  fibonacci series
         if(n ==0 || n==1){
             return n;
         }
