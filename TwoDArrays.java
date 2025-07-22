@@ -141,12 +141,12 @@ public static int Sumof2ndRow(int matrix[][]){      //sum of 2nd row in 2d Matri
 public static int[][] Transpose(int m,int n,int matrix[][]){    //Transpose of matrix
     int ans[][] = new int[n][m];
 
-    for(int i=0;i<n;i++){
-        for(int j =0;j<m;j++){
-            ans[i][j] = matrix[j][i];
+        for(int i=0;i<n;i++){
+            for(int j =0;j<m;j++){
+                ans[i][j] = matrix[j][i];
+            }
         }
-    }
-    return ans;
+        return ans;   //2d maktrix answer
 
 }
 
