@@ -247,8 +247,8 @@ public static int subStringSearch(String haystack, String needle){     //29) to 
         //System.out.println(compress(str)); // a3b2c2d4
 
 
-        String str1 = "hi, how are you?";
-        System.out.println(toUpperCase(str));
+        // String str1 = "hi, how are you?";
+        // System.out.println(toUpperCase(str));
 
         // StringBuilder sb = new StringBuilder("");
         // for(char ch ='a';ch<='z';ch++){
