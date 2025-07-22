@@ -244,7 +244,7 @@ public static int subStringSearch(String haystack, String needle){     //29) to 
          String s2 = "silent";
          System.out.println(checkAnagram(s1, s2));
 
-        // System.out.println(compress(str)); // a3b2c2d4
+        System.out.println(compress(str)); // a3b2c2d4
 
 
         // String str = "hi, how are you?";
