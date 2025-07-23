@@ -166,7 +166,7 @@ public static void SortArray(int arr[]){           //0s 1s 2s in array
 
     public static void main(String args[]){
       int matrix[][] =new int[3][3];
-       int n = matrix.length, m =matrix[0].length;
+    //   int n = matrix.length, m =matrix[0].length;
       
     //   Scanner sc = new Scanner(System.in);
     //   //input
