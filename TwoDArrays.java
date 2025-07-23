@@ -165,7 +165,7 @@ public static void SortArray(int arr[]){           //0s 1s 2s in array
 
 
     public static void main(String args[]){
-    //   int matrix[][] =new int[3][3];
+      int matrix[][] =new int[3][3];
     //   int n = matrix.length, m =matrix[0].length;
       
     //   Scanner sc = new Scanner(System.in);
@@ -186,7 +186,7 @@ public static void SortArray(int arr[]){           //0s 1s 2s in array
     //  search(matrix,6);
 
 
-    int matrix[][] ={
+    int matrix1[][] ={
         {1,4,9},
         {11,4,3},
         {2,2,3}
