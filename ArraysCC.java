@@ -509,6 +509,22 @@ public class ArraysCC {
         return count;
     }
 
+
+    public int findMaxConsecutiveOnes(int[] nums) {     //find the maximum number of consecutive 1s in the array
+     //we will use a variable to keep track of the current count of 1s and
+     int maxCount =0;
+     int currentCount = 0;
+
+     for(int num : nums){
+        if(num == 1){
+            currentCount++;
+            maxCount = Math.max(maxCount, currentCount);
+        }else{
+            currentCount =0;
+        }
+     }   
+     return maxCount;
+    }
     
 
 
