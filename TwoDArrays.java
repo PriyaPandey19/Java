@@ -177,12 +177,12 @@ public static void SortArray(int arr[]){           //0s 1s 2s in array
     //  } 
 
      //output
-     for(int i=0;i<n;i++){
-        for(int j=0;j<m;j++){
-            System.out.print(matrix[i][j] + " ");
-        }
-         System.out.println();
-     }
+    //  for(int i=0;i<n;i++){
+    //     for(int j=0;j<m;j++){
+    //         System.out.print(matrix[i][j] + " ");
+    //     }
+    //      System.out.println();
+    //  }
       search(matrix,6);
 
 
