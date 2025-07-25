@@ -528,6 +528,7 @@ public class ArraysCC {
 
 
      public int countNegatives(int[][] grid) {  //count the number of negative numbers in a sorted 2D grid
+        //we will start from the top right corner and move left or down based on the value
        int m = grid.length;
        int n = grid[0].length;
        int row =0, col = n-1;
