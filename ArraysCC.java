@@ -546,7 +546,8 @@ public class ArraysCC {
        return count;
     }
 
-    public boolean uniqueOccurrences(int[] arr) {
+    public boolean uniqueOccurrences(int[] arr) {  //check if all occurrences of elements are unique
+       //we will use a hashmap to count the occurrences of each number and then check if the
        HashMap<Integer, Integer> map = new HashMap<>();
 
        for(int num : arr){
@@ -555,6 +556,7 @@ public class ArraysCC {
        HashSet<Integer> set = new HashSet<>(map.values());
 
        return set.size() == map.size();
+    }
     
 
 
