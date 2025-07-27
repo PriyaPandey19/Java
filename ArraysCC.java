@@ -559,7 +559,8 @@ public class ArraysCC {
     }
 
 
-    public int heightChecker(int[] heights) {  //
+    public int heightChecker(int[] heights) {  //check how many heights are not in the expected order
+        //we will sort the array and compare it with the original array
         int[] expected = heights.clone();
         Arrays.sort(expected);
 
