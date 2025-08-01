@@ -606,6 +606,23 @@ public class ArraysCC {
        }
        return result;
     }
+
+      public int findLucky(int[] arr) {   //find the lucky integer in the array
+       //a lucky integer is an integer that occurs exactly as many times as its value
+       //we will use a frequency array to count the occurrences of each number
+       //and then check if any number occurs exactly as many times as its value
+       int[] freq = new int[501];
+
+       for(int num : arr){
+        freq[num]++;
+       } 
+       for(int i=500;i>=1;i--){
+        if(freq[i] == i){
+            return i;
+        }
+       }
+return -1;
+    }
     
 
 
