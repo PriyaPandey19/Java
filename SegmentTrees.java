@@ -30,7 +30,10 @@ public class SegmentTrees {
         int right = getSumUtil(2*i+2, mid+1, sj, qi, qj);
         return left +right;
       }
-
+    }
+    public static int getSum(int arr[], int qi, int qj){
+      int n = arr.length;
+      return getSumUtil(0, 0, n-1, qi, qj);
     }
     
 
