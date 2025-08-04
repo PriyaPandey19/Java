@@ -31,9 +31,20 @@ public class SegmentTrees {
         return left +right;
       }
     }
-    public static int getSum(int arr[], int qi, int qj){
+    public static int getSum(int arr[], int qi, int qj){    //function to get sum
       int n = arr.length;
       return getSumUtil(0, 0, n-1, qi, qj);
+    }
+
+
+    public static void updateUtil(int i, int si, int sj, int idx, int diff){
+    }
+
+    public static void update(int arr[], int idx , int newVal){
+      int n = arr.length;
+      int diff = newVal - arr[idx];
+      arr[idx]= newVal;
+      updateUtil(0,0,n-1, idx, diff);
     }
     
 
