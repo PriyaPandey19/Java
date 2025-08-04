@@ -37,7 +37,7 @@ public class SegmentTrees {
     }
 
 
-    public static void updateUtil(int i, int si, int sj, int idx, int diff){
+    public static void updateUtil(int i, int si, int sj, int idx, int diff){ 
       if(idx >sj || idx < si){
         return; //out of range
       }
@@ -49,11 +49,29 @@ public class SegmentTrees {
       }
     }
 
-    public static void update(int arr[], int idx , int newVal){
+    public static void update(int arr[], int idx , int newVal){  //update the value at index idx
       int n = arr.length;
       int diff = newVal - arr[idx];
       arr[idx]= newVal;
       updateUtil(0,0,n-1, idx, diff);
+    }
+
+
+
+
+
+
+
+    public static void buildTree(int arr[], int i, int start, int end){            //build bst  tree using array 
+        if(start == end){
+            tree[i] = arr[start];
+            return;
+        }
+        int mid = (start +end)/2;
+        buildSt(arr, 2*i+1, start, mid);    //left subtree 2*i+1
+        buildSt(arr, 2*i+2, mid+1, end);     //right subtree 2*i+2
+        tree[i] = Math.max(tree[2*i+1], tree[2*i+2]);
+
     }
     
 
