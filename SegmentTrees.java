@@ -38,6 +38,15 @@ public class SegmentTrees {
 
 
     public static void updateUtil(int i, int si, int sj, int idx, int diff){
+      if(idx >sj || idx < si){
+        return; //out of range
+      }
+      tree[i] += diff; //update the value
+      if(si != sj){
+        int mid = (si + sj)/2;
+        updateUtil(2*i+1, si,mid, idx, diff);//update left subtree
+        updateUtil(2*i+2,mid+1, sj, idx, diff);//update right subtree
+      }
     }
 
     public static void update(int arr[], int idx , int newVal){
@@ -58,6 +67,8 @@ public class SegmentTrees {
     // for(int i=0;i<tree.length;i++){
     //     System.out.print(tree[i]+ " ");
     // }
+    System.out.println(getSum(arr, 2, 5));
+    update(arr, 2, 2);
     System.out.println(getSum(arr, 2, 5));
   }  
 }
