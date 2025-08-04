@@ -62,6 +62,11 @@ public class SegmentTrees {
 
 
 
+
+
+
+
+
     public static void buildTree(int i, int si, int sj, int arr[]){
         if(si == sj){
             tree[i] = arr[si];
@@ -73,7 +78,49 @@ public class SegmentTrees {
         tree[i] = Math.max(tree[2*i+1], tree[2*i+2]);
 
     }
-    
+     
+    public static int getMax(int arr[],int qi, int qj){    //function to get maximum value in range
+      int n = arr.length;
+      return getMaxUtil(0,0, n-1, qi, qj);
+    }
+
+    public static int getMaxUtil(int i, int si, int sj, int qi, int qj){
+      if( si > qj || sj < qi){
+        return Integer.MIN_VALUE;
+      }   
+      else if(si >= qi && sj <= qj){
+        return  tree[i];
+      }
+      else{
+        int mid = (si + sj)/2;
+        int leftAns = getMaxUtil(2*i+1, si, mid, qi, qj);
+        int rightAns = getMaxUtil(2*i+2, mid+1, sj, qi, qj);
+        return Math.max(leftAns, rightAns);
+      }
+    }
+
+
+ public static void update1(int arr[], int idx , int newVal){  //update the value at index idx
+      
+      arr[idx]= newVal;
+      int n = arr.length;
+      updateUtil1(0,0,n-1, idx, newVal);
+    } 
+
+    public static void updateUtil1(int i, int si, int sj, int idx, int newVal){ 
+      if(idx <si || idx > sj){
+        return; //out of range
+      }
+      tree[i] = Math.max(tree[i], newVal); //update the value
+      if(si != sj){
+        int mid = (si + sj)/2;
+        updateUtil1(2*i+1, si,mid, idx, newVal);//update left subtree
+        updateUtil1(2*i+2,mid+1, sj, idx, newVal);//update right subtree
+    }
+    }
+
+   
+
 
 
   public static void main(String[] args) {      //main function
@@ -97,5 +144,13 @@ public class SegmentTrees {
       for(int i=0;i<tree.length;i++){
         System.out.print(tree[i]+ " ");
       }
+      // int max = getMax(arr2, 2, 5);
+      // System.out.println(max);
+
+      update1(arr2, 2, 20);
+      int max1 = getMax(arr2, 2, 5);
+      System.out.println(max1);
+
+
   }  
 }
