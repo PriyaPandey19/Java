@@ -17,6 +17,23 @@ public class SegmentTrees {
 
     }
 
+    public static int getSumUtil(int i, int si, int sj, int qi, int qj){
+      if(qj<= si || qi >= sj){ //non overlapping
+        return 0;
+      }
+      else if(si >= qi && sj <= qj){  //complete overlapping
+        return tree[i];
+      } 
+      else{                           //partial overlapping
+        int mid = (si + sj)/2;
+        int left = getSumUtil(2*i+1, si, mid, qi, qj);
+        int right = getSumUtil(2*i+2, mid+1, sj, qi, qj);
+        return left +right;
+      }
+
+    }
+    
+
 
   public static void main(String[] args) {      //main function
     int arr[] ={1,2,3,4,5,6,7,8};
