@@ -62,14 +62,14 @@ public class SegmentTrees {
 
 
 
-    public static void buildTree(int arr[], int i, int start, int end){            //build bst  tree using array 
-        if(start == end){
-            tree[i] = arr[start];
+    public static void buildTree(int i, int si, int sj, int arr[]){
+        if(si == sj){
+            tree[i] = arr[si];
             return;
         }
-        int mid = (start +end)/2;
-        buildSt(arr, 2*i+1, start, mid);    //left subtree 2*i+1
-        buildSt(arr, 2*i+2, mid+1, end);     //right subtree 2*i+2
+        int mid = (si +sj)/2;
+        buildTree(2*i+1, si, mid, arr);    //left subtree 2*i+1
+        buildTree(2*i+2, mid+1, sj, arr);     //right subtree 2*i+2
         tree[i] = Math.max(tree[2*i+1], tree[2*i+2]);
 
     }
@@ -77,16 +77,25 @@ public class SegmentTrees {
 
 
   public static void main(String[] args) {      //main function
-    int arr[] ={1,2,3,4,5,6,7,8};
-    int n = arr.length;
-    init(n);
-    buildSt(arr, 0, 0, n-1);
+    //int arr[] ={1,2,3,4,5,6,7,8};
+   // int n = arr.length;
+    // init(n);
+    // buildSt(arr, 0, 0, n-1);
 
-    // for(int i=0;i<tree.length;i++){
-    //     System.out.print(tree[i]+ " ");
-    // }
-    System.out.println(getSum(arr, 2, 5));
-    update(arr, 2, 2);
-    System.out.println(getSum(arr, 2, 5));
+    // // for(int i=0;i<tree.length;i++){
+    // //     System.out.print(tree[i]+ " ");
+    // // }
+    // System.out.println(getSum(arr, 2, 5));
+    // update(arr, 2, 2);
+    // System.out.println(getSum(arr, 2, 5));
+
+
+      int arr2[] ={6,8,-1,2,17,1,3,2,4};
+      int n1 = arr2.length;
+      init(n1);
+      buildTree(0,0,n1-1, arr2);
+      for(int i=0;i<tree.length;i++){
+        System.out.print(tree[i]+ " ");
+      }
   }  
 }
