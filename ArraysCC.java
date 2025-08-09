@@ -611,6 +611,10 @@ public class ArraysCC {
        //a lucky integer is an integer that occurs exactly as many times as its value
        //we will use a frequency array to count the occurrences of each number
        //and then check if any number occurs exactly as many times as its value
+
+
+
+
        int[] freq = new int[501];
 
        for(int num : arr){
@@ -622,6 +626,28 @@ public class ArraysCC {
         }
        }
 return -1;
+    }
+
+
+     public int[] sortArrayByParity(int[] nums) {   //sort array by parity
+     int left =0, right = nums.length-1;
+
+     while(left < right){
+        if(nums[left] % 2  == 0){
+            left++;
+        }
+        else if(nums[right] % 2 != 0){
+            right--;
+        }
+        else{
+            int temp =  nums[left];
+            nums[left] = nums[right];
+            nums[right] = temp;
+            left++;
+            right--;
+        }
+     } 
+     return nums;  
     }
     
 
