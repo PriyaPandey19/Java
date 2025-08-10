@@ -629,7 +629,7 @@ return -1;
     }
 
 
-     public int[] sortArrayByParity(int[] nums) {   //sort array by parity
+     public int[] sortArrayByParity(int[] nums) {   //sort array by parity place even number in starting
      int left =0, right = nums.length-1;
 
      while(left < right){
