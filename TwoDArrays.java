@@ -192,7 +192,7 @@ public static void SortArray(int arr[]){           //0s 1s 2s in array
         {2,2,3}
         
     };
-   //staircaseSearch(matrix, 14);
+   staircaseSearch(matrix, 14);
     // System.out.println(Sumof2ndRow(matrix));
 //   int[][] result = Transpose(3, 3, matrix);
 
