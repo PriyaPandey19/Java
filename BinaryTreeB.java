@@ -163,7 +163,7 @@ public class BinaryTreeB {
 
 
 
-    static class Info2{     //class to foind diameter for tree
+    static class Info2{     //class to find diameter for tree
         int diam;
         int ht;
 
