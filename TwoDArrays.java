@@ -170,7 +170,7 @@ public static void SortArray(int arr[]){           //0s 1s 2s in array
       
 
 
-  Scanner sc = new Scanner(System.in);
+//  Scanner sc = new Scanner(System.in);
       //input
     //  for(int i=0;i<n;i++) {
     //     for(int j=0;j<m;j++){
